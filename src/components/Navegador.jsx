@@ -14,7 +14,7 @@ function Navegador() {
                         src="logo.svg"
                         width="30"
                         height="30"
-                        className="d-inline-block align-top"
+                        className="d-inline-block align-top fs-4"
                     />{' '}
                     Bi ♥ u Cosmetics
                 </Navbar.Brand>
