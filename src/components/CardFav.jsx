@@ -1,24 +1,26 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Badge from 'react-bootstrap/Badge';
 
-function CardFav() {
+function CardFav({ name, description, price, stars, img }) {
   return (
-    <Card className='card h100'>
-      <Card.Img variant="top" src="skincare.png" />
+    <Card className='card h100' style={{ width: '28rem' }}>
+      <Card.Img variant="top" src={img} />
       <Card.Body>
-        <h4>⭐⭐⭐⭐⭐</h4>
-        <Card.Title>
-          Card Title
+        <Card.Title className='fw-normal text-primary'>
+          {name}
         </Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+        <p className='fs-4 fw-light text-primary'><Badge bg="secondary" text='primary'>⭐ {stars}</Badge></p>
+        <Card.Text className='fw-light text-primary'>
+          {description}
         </Card.Text>
-        <Button variant="secondary" className='border-primary'>Go somewhere</Button>
+        <Button variant="secondary" className='border-primary fw-light'>Ver producto</Button>
       </Card.Body>
       <Card.Footer>
-        <small className="text-muted">$50.000 COP</small>
+        <small className="text-muted fs-5 text-primary">{`${new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'COP' }).format(
+          price,
+        )}`}</small>
       </Card.Footer>
     </Card>
   );

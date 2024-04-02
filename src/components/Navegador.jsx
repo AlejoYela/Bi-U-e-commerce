@@ -6,9 +6,9 @@ import Buscador from './Buscador';
 
 function Navegador() {
     return (
-        <Navbar expand="lg" className="bg-primary-subtle px-4">
+        <Navbar expand="lg" className="bg-secondary px-4 fixed-top">
             <Container fluid>
-                <Navbar.Brand className='text-primary-emphasis fw-medium' href="#home">
+                <Navbar.Brand className='text-primary fw-medium' href="#home">
                     <img
                         alt=""
                         src="logo.svg"
