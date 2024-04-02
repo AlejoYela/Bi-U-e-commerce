@@ -4,16 +4,22 @@ import Card from 'react-bootstrap/Card';
 
 function CardFav() {
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="logo192.png" />
+    <Card className='card h100'>
+      <Card.Img variant="top" src="skincare.png" />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
+        <h4>⭐⭐⭐⭐⭐</h4>
+        <Card.Title>
+          Card Title
+        </Card.Title>
         <Card.Text>
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Button variant="secondary" className='border-primary'>Go somewhere</Button>
       </Card.Body>
+      <Card.Footer>
+        <small className="text-muted">$50.000 COP</small>
+      </Card.Footer>
     </Card>
   );
 }

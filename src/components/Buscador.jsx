@@ -14,11 +14,11 @@ function Buscador() {
 
   return (
     <Form className="d-flex">
-      <Form.Control type="search" placeholder="Buscar" className="me-2 fs-5" aria-label="Search" />
+      <Form.Control type="search" placeholder="Buscar" className="me-2 fs-5 fw-light" aria-label="Search" />
 
       <Button
         className="boton"
-        variant="outline-primary border-2"
+        variant="outline-primary border-1"
         onMouseEnter={handleImageHover}
         onMouseLeave={handleImageLeave}
       >

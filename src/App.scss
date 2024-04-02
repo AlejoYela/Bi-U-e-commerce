@@ -1,14 +1,16 @@
 $body-bg: #fdf6f0;
-$primary: #7a0036;
+$primary: #635447;
+$secondary: #D6C2B6;
 $font-family-base: "Josefin Sans", sans-serif;
 
 
 .image-container {
     position: relative;
     width: 100%;
+    margin-bottom: 7svw;
 }
 
-.imagen{
+.imagen {
     width: 100%;
 }
 
@@ -23,15 +25,13 @@ $font-family-base: "Josefin Sans", sans-serif;
     padding: 6svw;
 }
 
-.text-overlay h1{
+.text-overlay h1 {
     font-size: 3svw;
 }
 
 .text-overlay p {
     font-size: 1.3svw;
 }
-
-
 
 @media (max-width: 768px) {
     .text-overlay {
@@ -40,10 +40,10 @@ $font-family-base: "Josefin Sans", sans-serif;
         padding: 2svw;
     }
 
-    .text-overlay h1{
+    .text-overlay h1 {
         font-size: 5.5lvw;
     }
-    
+
     .text-overlay p {
         font-size: 4lvw;
     }
