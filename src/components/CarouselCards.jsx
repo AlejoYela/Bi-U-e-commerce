@@ -1,52 +1,52 @@
 import Carousel from 'react-bootstrap/Carousel';
 import CardFav from './CardFav';
-import products from '../productos.json'
+import products from '../productos.json';
 import useScreenSize from '../hooks/useScreenSize';
 
 function CarouserCards() {
+    const { width } = useScreenSize();
 
-  const { width } = useScreenSize();
+    // Helper function to group recipes based on responsive breakpoints
+    const groupRecipes = (products, breakpointItems) => {
+        const groupedRecipes = [];
+        let currentGroup = [];
 
-// Helper function to group recipes based on responsive breakpoints
-const groupRecipes = (products, breakpointItems) => {
-  const groupedRecipes = [];
-  let currentGroup = [];
+        for (let i = 0; i < products.length; i++) {
+            currentGroup.push(products[i]);
 
-  for (let i = 0; i < products.length; i++) {
-    currentGroup.push(products[i]);
+            if (currentGroup.length === breakpointItems || i === products.length - 1) {
+                groupedRecipes.push(currentGroup);
+                currentGroup = [];
+            }
+        }
 
-    if (currentGroup.length === breakpointItems || i === products.length - 1) {
-      groupedRecipes.push(currentGroup);
-      currentGroup = [];
-    }
-  }
+        return groupedRecipes;
+    };
 
-  return groupedRecipes;
-};
+    // Filter products with more than 4.5 stars
+    const filteredProducts = products.filter(product => product.estrellas > 4.5);
 
-const responsive = {
-  items: width >= 1289 ? 4 : 1, // Show 4 cards on desktops
-};
+    const responsive = {
+        items: width >= 1289 ? 3 : 1, // Show 4 cards on desktops
+    };
 
-return (
-  <div>
-      <Carousel responsive={responsive}>
-        {groupRecipes(products, responsive.items).map(
-          (item, index) => (
-            <Carousel.Item key={index}>
-              <div className="d-flex justify-content-center gap-4 px-4">
-                {item.map((product, index) => (
-                  <CardFav key={index} name={product.nombre} description={product.descripcion} price={product.precio} stars={product.estrellas} img={product.imagen}/>
-                ))}
-              </div>
-            </Carousel.Item>
-          )
-        )}
-      </Carousel>
-    
-  </div>
-);
-
+    return (
+        <div>
+            <Carousel responsive={responsive} indicators={false}>
+                {groupRecipes(filteredProducts, responsive.items).map(
+                    (item, index) => (
+                        <Carousel.Item key={index}>
+                            <div className="d-flex justify-content-center gap-4 px-4">
+                                {item.map((product, index) => (
+                                    <CardFav key={index} name={product.nombre} description={product.descripcion} price={product.precio} stars={product.estrellas} img={product.imagen} />
+                                ))}
+                            </div>
+                        </Carousel.Item>
+                    )
+                )}
+            </Carousel>
+        </div>
+    );
 }
 
 export default CarouserCards;

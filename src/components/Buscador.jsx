@@ -14,7 +14,7 @@ function Buscador() {
 
   return (
     <Form className="d-flex">
-      <Form.Control type="search" placeholder="Buscar" className="me-2 fs-5 fw-light border-primary" aria-label="Search" />
+      <Form.Control type="search" placeholder="Buscar" className="me-2 fs-5 fw-light border-0 bg-secondary text-end" aria-label="Search" />
 
       <Button
         className="boton"

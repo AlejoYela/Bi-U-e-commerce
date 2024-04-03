@@ -6,7 +6,6 @@ $font-family-base: "Josefin Sans", sans-serif;
 
 .image-container {
     position: relative;
-    
     margin-bottom: 7svw;
 }
 
@@ -45,10 +44,23 @@ $font-family-base: "Josefin Sans", sans-serif;
 
 @media (max-width: 768px) {
 
-    .carrusel-inicio{
-        height: 0;
-        width: 0;
-        margin-bottom: 20svw;
+    .text-overlay {
+        position: relative;
+        transform: translateY(0%);
+        left: 0svw;
+        right: 0svw;
+    }
+
+    .text-overlay h1 {
+        font-size: 6svw;
+    }
+
+    .text-overlay h2 {
+        font-size: 5svw;
+    }
+
+    .text-overlay p {
+        font-size: 3.5svw;
     }
 }
 
