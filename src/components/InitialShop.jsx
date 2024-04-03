@@ -1,7 +1,5 @@
 import React from 'react';
-import Image from 'react-bootstrap/Image';
-import Button from 'react-bootstrap/Button';
-import Carousel from 'react-bootstrap/Carousel';
+import {Image, Button, Carousel} from 'react-bootstrap'
 
 function InitialShop() {
     return (
@@ -11,7 +9,7 @@ function InitialShop() {
                 <div className="text-overlay text-primary bg-light bg-opacity-75 rounded-5">
                     <img
                         alt=""
-                        src="logo.svg"
+                        src="icons/logo.svg"
                         className=""
                     />
                     <p className='titulo fw-normal'>BiU Cosmetics</p>

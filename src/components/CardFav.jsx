@@ -1,7 +1,5 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import Badge from 'react-bootstrap/Badge';
+import { Button, Card, Badge } from 'react-bootstrap'
 
 function CardFav({ name, description, price, stars, img }) {
   return (
@@ -11,7 +9,7 @@ function CardFav({ name, description, price, stars, img }) {
         <Card.Title className='fw-normal text-primary'>
           {name}
         </Card.Title>
-        <p className='fs-4 fw-lighter text-primary'><Badge bg="secondary" text='primary'>⭐ {stars}</Badge></p>
+        <p className='fs-4 fw-lighter text-primary'><Badge bg="secondary" text='primary'><img alt="" src="icons/star.svg" width="17" height="17" className="d-inline-block align-top fs-3"/> {stars}</Badge></p>
         <Card.Text className='fw-light text-primary'>
           {description}
         </Card.Text>

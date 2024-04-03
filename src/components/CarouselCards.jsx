@@ -1,4 +1,4 @@
-import Carousel from 'react-bootstrap/Carousel';
+import {Carousel} from 'react-bootstrap';
 import CardFav from './CardFav';
 import products from '../productos.json';
 import useScreenSize from '../hooks/useScreenSize';
@@ -27,7 +27,7 @@ function CarouserCards() {
     const filteredProducts = products.filter(product => product.estrellas > 4.5);
 
     const responsive = {
-        items: width >= 1289 ? 3 : 1, // Show 4 cards on desktops
+        items: width >= 1289 && width < 2000 ? 3 : width >= 2000 ? 4: 1, // Show 4 cards on desktops
     };
 
     return (
