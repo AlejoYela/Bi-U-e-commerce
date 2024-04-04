@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Offcanvas, Nav, Accordion, Container, Row, Col, Image } from 'react-bootstrap';
+import TargetCategoria from './TargetCategoria';
 
 
 function OffCanvas() {
@@ -14,31 +15,19 @@ function OffCanvas() {
 
             <Offcanvas show={show} onHide={handleClose}>
                 <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Categorías</Offcanvas.Title>
+                    <Offcanvas.Title className='fw-light fs-2'>Categorías</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
 
-                    <Accordion defaultActiveKey="0" flush>
+                    <Accordion flush>
                         <Accordion.Item eventKey="0">
                             <Accordion.Header>Maquillaje</Accordion.Header>
                             <Accordion.Body>
                                 <Container fluid='bg'>
                                     <Col>
-                                        <Row>
-                                            <a href="">
-                                                <p className='position-absolute'>Piel</p>
-                                                <Image src="categorias/1.png" fluid className="imagen" />
-
-                                            </a>
-                                        </Row>
-                                        <Row>
-                                            <p className='position-absolute'>Labios</p>
-                                            <Image src="categorias/2.png" fluid className="imagen" />
-                                        </Row>
-                                        <Row>
-                                            <p className='position-absolute'>Ojos</p>
-                                            <Image src="categorias/3.png" fluid className="imagen" />
-                                        </Row>
+                                        <TargetCategoria title={"Piel"} src={"categorias/1.png"} />
+                                        <TargetCategoria title={"Labios"} src={"categorias/2.png"} />
+                                        <TargetCategoria title={"Ojos"} src={"categorias/3.png"} />
                                     </Col>
                                 </Container>
                             </Accordion.Body>
@@ -48,35 +37,14 @@ function OffCanvas() {
                             </Accordion.Header>
                             <Accordion.Body>
                                 <Container fluid='bg'>
-                                    <Row>
-                                        <Col>
-                                            <img src="logo192.png" alt="" />
-                                            <p>Limpiadores</p>
-                                        </Col>
-                                        <Col>
-                                            <img src="logo192.png" alt="" />
-                                            <p>Hidratantes</p>
-                                        </Col>
-                                        <Col>
-                                            <img src="logo192.png" alt="" />
-                                            <p>Exfoliantes</p>
-                                        </Col>
-
-                                        <Col>
-                                            <img src="logo192.png" alt="" />
-                                            <p>Protectores solares</p>
-                                        </Col>
-                                        <Col>
-                                            <img src="logo192.png" alt="" />
-                                            <p>Tónicos</p>
-                                        </Col>
-
-                                        <Col>
-                                            <img src="logo192.png" alt="" />
-                                            <p>Sérums</p>
-                                        </Col>
-
-                                    </Row>
+                                    <Col>
+                                        <TargetCategoria title={"Limpiadores"} src={"categorias/4.png"} />
+                                        <TargetCategoria title={"Hidratantes"} src={"categorias/5.png"} />
+                                        <TargetCategoria title={"Exfoliantes"} src={"categorias/6.png"} />
+                                        <TargetCategoria title={"Protectores solares"} src={"categorias/7.png"} />
+                                        <TargetCategoria title={"Tónicos"} src={"categorias/8.png"} />
+                                        <TargetCategoria title={"Serums"} src={"categorias/9.png"} />
+                                    </Col>
                                 </Container>
                             </Accordion.Body>
                         </Accordion.Item>

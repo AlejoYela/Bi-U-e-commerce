@@ -2,14 +2,13 @@ $body-bg: #FFF6ed;
 $primary: #593A23;
 $secondary: #Fdecda;
 $font-family-base: "Josefin Sans", sans-serif;
+$offcanvas-horizontal-width: 800px;
 
 
 .image-container {
     position: relative;
     margin-bottom: 7svw;
 }
-
-
 
 .imagen {
     width: 100%;
@@ -41,6 +40,7 @@ $font-family-base: "Josefin Sans", sans-serif;
 .text-overlay img {
     width: 15svw;
 }
+
 
 @media (max-width: 768px) {
 
