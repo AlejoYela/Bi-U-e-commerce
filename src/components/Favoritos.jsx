@@ -12,7 +12,7 @@ function Favoritos() {
   };
 
   return (
-    <div style={{ margin: width >= 1289 ? responsive.desktop : responsive.mobile }}>
+    <div style={{ margin: width >= 1289 ? responsive.desktop : responsive.mobile }} id='Favoritos'>
       <div className='text-center mb-5'>
         <h2 className='text-primary fw-normal'>F A V O R I T O S</h2>
         <h3 className='text-primary fs-4 fw-light'>!Los productos más populares!</h3>

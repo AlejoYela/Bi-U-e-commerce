@@ -9,7 +9,7 @@ function Buscador() {
   const handleShow = () => setShow(true);
 
   return (
-    <div>
+    <div className='d-flex justify-content-center'>
       <Nav.Link className='text-primary fs-5 fw-light' href="#action2" onClick={handleShow}><Button
         className="boton"
         variant="outline-primary border-0 bg-transparent"

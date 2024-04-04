@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Offcanvas, Nav, Accordion, Container, Row, Col, Image } from 'react-bootstrap';
+import { Offcanvas, Nav, Accordion, Container, Col } from 'react-bootstrap';
 import TargetCategoria from './TargetCategoria';
 
 
