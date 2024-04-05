@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Buscador from './Buscador';
+import renderTooltip from '../hooks/renderTooltip.js'
 
 import { Container, Navbar, Nav, Button, Badge, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import OffCanvas from './OffCanvas';
@@ -9,15 +10,8 @@ function Navegador() {
     const tooltipText = {
         user: 'Usuario',
         cart: 'Carrito',
-        search: 'Buscar'
+        fav: 'Favoritos'
     };
-
-    const renderTooltip = (props) => (
-
-        <Tooltip id="button-tooltip" {...props}>
-            {tooltipText[props]}
-        </Tooltip>
-    );
 
     return (
         <Navbar expand="lg" className="bg-secondary px-4 fixed-top">
@@ -46,7 +40,7 @@ function Navegador() {
                             placement="bottom"
                             delay={{ show: 100, hide: 100 }}
                             alt="Usuario"
-                            overlay={renderTooltip('user')}
+                            overlay={renderTooltip(tooltipText, 'user')}
                         >
                             <Button
                                 className="boton"
@@ -58,11 +52,28 @@ function Navegador() {
                                 </a>
                             </Button>
                         </OverlayTrigger>
+
+                        <OverlayTrigger
+                            placement="bottom"
+                            delay={{ show: 100, hide: 100 }}
+                            alt='Favoritos'
+                            overlay={renderTooltip(tooltipText, 'fav')}
+                        >
+                            <Button
+                                className="boton"
+                                variant="outline-primary border-0 bg-transparent"
+                            >
+                                <a href="#">
+                                    <img src='icons/fav.svg' alt="Buscar" />
+                                </a><Badge bg="primary">0</Badge>
+                            </Button>
+                        </OverlayTrigger>
+
                         <OverlayTrigger
                             placement="bottom"
                             delay={{ show: 100, hide: 100 }}
                             alt='Carrito'
-                            overlay={renderTooltip('cart')}
+                            overlay={renderTooltip(tooltipText, 'cart')}
                         >
                             <Button
                                 className="boton"
@@ -74,14 +85,8 @@ function Navegador() {
                             </Button>
                         </OverlayTrigger>
 
-                        <OverlayTrigger
-                            placement="bottom"
-                            delay={{ show: 100, hide: 100 }}
-                            alt='Buscar'
-                            overlay={renderTooltip('search')}
-                        >
-                            <Buscador />
-                        </OverlayTrigger>
+                        <Buscador />
+
                     </Nav>
 
                 </Navbar.Collapse>

@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import { Container, Button, Modal, Image, Col, Row } from 'react-bootstrap';
 
-function ModalQuick({ state, name }) {
+function ModalQuick({ state, name, description, img }) {
 
     const [show, setShow] = useState(false);
 
@@ -20,17 +19,32 @@ function ModalQuick({ state, name }) {
                 <p className='fs-5 text-primary'>Vista rápida</p>
             </Button>
 
-            <Modal show={show} onHide={handleClose} centered>
+            <Modal show={show} onHide={handleClose} centered size='xl'>
                 <Modal.Header closeButton>
-                    <Modal.Title>{name}</Modal.Title>
+                    <Modal.Title className='fw-normal fs-2'>{name}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+                <Modal.Body>
+
+                    <Container fluid>
+                        <Row className='m-5 gap-5'>
+                            <Col className='d-flex justify-content-center' xl={4}>
+                                <Image className='rounded shadow' width='350svw' src={img} ></Image>
+                            </Col>
+                            <Col >
+                                <Container>
+                                    <p className='fw-light fs-5'>{description}</p>
+                                </Container>
+                            </Col>
+                        </Row>
+                    </Container>
+
+                </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
-                        Close
+                        Cerrar
                     </Button>
                     <Button variant="primary" onClick={handleClose}>
-                        Save Changes
+                        Ver detalles
                     </Button>
                 </Modal.Footer>
             </Modal>

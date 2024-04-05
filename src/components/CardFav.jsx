@@ -10,7 +10,7 @@ function CardFav({ name, description, price, stars, img }) {
     <Card className='card h100 shadow' style={{ width: '28rem' }}>
       <div className='position-relative' onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
         <Card.Img variant="top" src={img} style={{ opacity: isShown ? 0.2 : 1, transition: 'opacity 0.5s ease-in-out;' }} />
-        <ModalQuick state={isShown} name={name} />
+        <ModalQuick state={isShown} name={name} description={description} img={img}/>
       </div>
 
       <Card.Body>
