@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Card, Badge } from 'react-bootstrap'
+import ModalQuick from './ModalQuick';
 
 function CardFav({ name, description, price, stars, img }) {
 
@@ -7,22 +8,13 @@ function CardFav({ name, description, price, stars, img }) {
 
   return (
     <Card className='card h100 shadow' style={{ width: '28rem' }}>
-      <div className='position-relative'>
-        {isShown &&
-          <Button
-            className="boton bg-transparent position-absolute top-50 start-50 translate-middle"
-            variant="outline-primary border-0"
-          >
-            <img src='icons/search-vine.svg' alt="Buscar" width={80} />
-            <p className='fs-5'>Ver detalle</p>
-          </Button>
-        }
-        <a href="#">
-          <Card.Img variant="top" src={img} onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)} style={{ opacity: isShown ? 0.2 : 1 }} />
-        </a>
+      <div className='position-relative' onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
+        <Card.Img variant="top" src={img} style={{ opacity: isShown ? 0.2 : 1, transition: 'opacity 0.5s ease-in-out;' }} />
+        <ModalQuick state={isShown} name={name} />
       </div>
 
       <Card.Body>
+
         <Card.Title className='fw-normal text-primary'>
           {name}
         </Card.Title>

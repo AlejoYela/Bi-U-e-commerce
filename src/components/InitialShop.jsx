@@ -15,7 +15,7 @@ function InitialShop() {
                     />
 
                     <h2 className='fw-light mb-3'>Tienda de Maquillaje y Skincare</h2>
-                    <Button variant="secondary" className="d-lg-inline-block fw-light" size="lg">Ver catálogo completo</Button>
+                    <Button variant="outline-primary" className="d-lg-inline-block fw-light" size="lg">Ver catálogo completo</Button>
                 </div>
             </Carousel.Item>
             <Carousel.Item>
@@ -23,7 +23,7 @@ function InitialShop() {
                 <div className="text-overlay text-primary bg-light bg-opacity-75 rounded-5">
                     <h1 className='fw-light'>Descubre tu Belleza Auténtica</h1>
                     <p className='fw-light'>Explora Nuestra Colección de Cuidado de la Piel</p>
-                    <Button variant="secondary" className="d-lg-inline-block fw-light" size="lg">Ver catálogo de Skincare</Button>
+                    <Button variant="outline-primary" className="d-lg-inline-block fw-light" size="lg">Ver catálogo de Skincare</Button>
                 </div>
             </Carousel.Item>
 

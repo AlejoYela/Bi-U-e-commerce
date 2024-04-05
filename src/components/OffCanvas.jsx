@@ -19,7 +19,7 @@ function OffCanvas() {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
 
-                    <Accordion flush>
+                    <Accordion flush alwaysOpen>
                         <Accordion.Item eventKey="0">
                             <Accordion.Header>Maquillaje</Accordion.Header>
                             <Accordion.Body>
@@ -47,6 +47,10 @@ function OffCanvas() {
                                     </Col>
                                 </Container>
                             </Accordion.Body>
+                        </Accordion.Item>
+                        <Accordion.Item>
+                            <Accordion.Header>Accesorios
+                            </Accordion.Header>
                         </Accordion.Item>
                     </Accordion>
                 </Offcanvas.Body>
