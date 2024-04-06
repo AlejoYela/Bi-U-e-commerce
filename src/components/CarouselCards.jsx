@@ -1,4 +1,4 @@
-import {Carousel} from 'react-bootstrap';
+import { Carousel } from 'react-bootstrap';
 import CardFav from './CardFav';
 import products from '../productos.json';
 import useScreenSize from '../hooks/useScreenSize';
@@ -27,7 +27,7 @@ function CarouserCards() {
     const filteredProducts = products.filter(product => product.estrellas > 4.5);
 
     const responsive = {
-        items: width >= 1289 && width < 2000 ? 3 : width >= 2000 ? 4: 1, // Show 4 cards on desktops
+        items: width >= 1189 && width < 2000 ? 3 : width >= 2000 ? 4 : 1, // Show 4 cards on desktops
     };
 
     return (
@@ -38,7 +38,7 @@ function CarouserCards() {
                         <Carousel.Item key={index}>
                             <div className="d-flex justify-content-center gap-4 px-4">
                                 {item.map((product, index) => (
-                                    <CardFav key={index} name={product.nombre} description={product.descripcion} price={product.precio} stars={product.estrellas} img={product.imagen} />
+                                    <CardFav key={index} name={product.nombre} description={product.descripcion} price={product.precio} stars={product.estrellas} img={product.imagen} stock={product.stock} />
                                 ))}
                             </div>
                         </Carousel.Item>

@@ -1,19 +1,15 @@
 [
   {
     "producto_id": 1,
-    "nombre": "Labial rojo intenso",
+    "nombre": "Labial hidratante en barra",
     "descripcion": "Labial de larga duración con un acabado mate aterciopelado. Fórmula enriquecida con vitamina E para hidratar los labios.",
     "tipo": "Maquillaje",
     "categoria": "Labios",
-    "subcategoria": "Labiales",
     "tono": "Rojo",
-    "acabado": "Mate",
     "estrellas": 4.8,
-    "imagen": "imagenes/1.png",
     "precio": 35000,
-    "marca": "Maybelline",
-    "descuento": 10,
-    "stock": 100
+    "stock": false,
+    "imagen": "imagenes/1.png"
   },
   {
     "producto_id": 2,
@@ -21,18 +17,10 @@
     "descripcion": "Crema hidratante para todo tipo de piel, con almendras y aloe vera. Aporta hidratación profunda y duradera.",
     "tipo": "Skincare",
     "categoria": "Rostro",
-    "subcategoria": "Hidratantes",
-    "tipoPiel": "Todo tipo de piel",
-    "principiosActivos": [
-      "Ácido hialurónico",
-      "Aloe vera"
-    ],
     "estrellas": 5,
-    "imagen": "imagenes/2.png",
     "precio": 60000,
-    "marca": "La Roche-Posay",
-    "promocion": "Envío gratis",
-    "novedades": true
+    "stock": true,
+    "imagen": "imagenes/2.png"
   },
   {
     "producto_id": 3,
@@ -40,15 +28,11 @@
     "descripcion": "Sombra de ojos de alta pigmentación con un acabado satinado y tonos intensos. Disponible en una amplia gama de colores.",
     "tipo": "Maquillaje",
     "categoria": "Ojos",
-    "subcategoria": "Sombras",
     "color": "Dorado",
-    "acabado": "Satinado",
     "estrellas": 4.9,
-    "imagen": "imagenes/3.png",
     "precio": 25000,
-    "marca": "MAC Cosmetics",
-    "oferta": "2x1 en sombras de ojos",
-    "vegano": true
+    "stock": true,
+    "imagen": "imagenes/3.png"
   },
   {
     "producto_id": 4,
@@ -56,16 +40,11 @@
     "descripcion": "Base de maquillaje de cobertura media con un acabado natural. Fórmula oil-free y de larga duración.",
     "tipo": "Maquillaje",
     "categoria": "Rostro",
-    "subcategoria": "Bases de maquillaje",
     "tono": "Beige claro",
-    "cobertura": "Media",
-    "acabado": "Natural",
     "estrellas": 4.8,
-    "imagen": "imagenes/4.png",
     "precio": 50000,
-    "marca": "L'Oréal Paris",
-    "nuevo": true,
-    "crueltyfree": true
+    "stock": true,
+    "imagen": "imagenes/4.png"
   },
   {
     "producto_id": 5,
@@ -73,16 +52,10 @@
     "descripcion": "Tónico facial que elimina las impurezas y equilibra el pH de la piel. Contiene extracto de pepino para refrescar e hidratar.",
     "tipo": "Skincare",
     "categoria": "Rostro",
-    "subcategoria": "Tónicos",
-    "tipoPiel": "Piel mixta a grasa",
-    "principiosActivos": [
-      "Extracto de pepino"
-    ],
     "estrellas": 4.7,
-    "imagen": "imagenes/5.png",
     "precio": 40000,
-    "marca": "Neutrogena",
-    "ecologico": true
+    "stock": true,
+    "imagen": "imagenes/5.png"
   },
   {
     "producto_id": 6,
@@ -90,15 +63,11 @@
     "descripcion": "Delineador de ojos de alta precisión con un acabado negro intenso. Fórmula resistente al agua y de larga duración.",
     "tipo": "Maquillaje",
     "categoria": "Ojos",
-    "subcategoria": "Delineadores",
     "color": "Negro",
-    "acabado": "Intenso",
-    "pincel": "Fino",
     "estrellas": 4.7,
-    "imagen": "imagenes/6.png",
     "precio": 30000,
-    "marca": "Maybelline",
-    "oferta": "30% de descuento en delineadores"
+    "stock": true,
+    "imagen": "imagenes/6.png"
   },
   {
     "producto_id": 7,
@@ -106,15 +75,11 @@
     "descripcion": "Máscara de pestañas que aporta volumen y longitud a las pestañas. Fórmula con cepillo de cerdas gruesas para un efecto de pestañas postizas.",
     "tipo": "Maquillaje",
     "categoria": "Ojos",
-    "subcategoria": "Máscaras de pestañas",
-    "efecto": "Volumen y longitud",
     "cepillo": "Grueso",
-    "waterproof": true,
     "estrellas": 4.9,
-    "imagen": "imagenes/7.png",
     "precio": 45000,
-    "marca": "L'Oréal Paris",
-    "nuevo": true
+    "stock": true,
+    "imagen": "imagenes/7.png"
   },
   {
     "producto_id": 8,
@@ -122,18 +87,10 @@
     "descripcion": "Crema facial con retinol que reduce las arrugas y líneas de expresión. Fórmula con ácido hialurónico para hidratar la piel.",
     "tipo": "Skincare",
     "categoria": "Rostro",
-    "subcategoria": "Antiarrugas",
-    "principiosActivos": [
-      "Retinol",
-      "Ácido hialurónico"
-    ],
-    "tipoPiel": "Piel madura",
-    "edadRecomendada": "+35 años",
     "estrellas": 4.6,
-    "imagen": "imagenes/8.png",
     "precio": 80000,
-    "marca": "La Roche-Posay",
-    "dermatologicamenteTesteado": true
+    "stock": true,
+    "imagen": "imagenes/8.png"
   },
   {
     "producto_id": 9,
@@ -141,17 +98,10 @@
     "descripcion": "Serum facial con vitamina C que reduce las manchas oscuras y unifica el tono de la piel. Fórmula con ácido hialurónico para hidratar la piel.",
     "tipo": "Skincare",
     "categoria": "Rostro",
-    "subcategoria": "Serums",
-    "principiosActivos": [
-      "Vitamina C",
-      "Ácido hialurónico"
-    ],
-    "tipoPiel": "Todo tipo de piel",
     "estrellas": 4.8,
-    "imagen": "imagenes/9.png",
     "precio": 70000,
-    "marca": "Neutrogena",
-    "oferta": "2x1 en serums faciales"
+    "stock": true,
+    "imagen": "imagenes/9.png"
   },
   {
     "producto_id": 10,
@@ -159,13 +109,10 @@
     "descripcion": "Prebase de maquillaje que difumina los poros y prolonga la duración del maquillaje. Fórmula oil-free y de textura ligera.",
     "tipo": "Maquillaje",
     "categoria": "Rostro",
-    "subcategoria": "Prebases",
-    "tipoPiel": "Todo tipo de piel",
-    "efecto": "Piel lisa y uniforme",
     "estrellas": 4.8,
-    "imagen": "imagenes/10.png",
     "precio": 40000,
-    "marca": "Benefit Cosmetics"
+    "stock": true,
+    "imagen": "imagenes/10.png"
   },
   {
     "producto_id": 11,
@@ -173,326 +120,22 @@
     "descripcion": "Brochas de pelo suave y difuminado ideal para crear looks de ojos ahumados. Mango ergonómico para un mejor agarre.",
     "tipo": "Herramientas de belleza",
     "categoria": "Brochas",
-    "subcategoria": "Ojos",
     "material": "Pelo sintético",
     "estrellas": 4.9,
-    "imagen": "imagenes/11.png",
     "precio": 20000,
-    "marca": "Benefit Cosmetics"
+    "stock": true,
+    "imagen": "imagenes/11.png"
   },
   {
     "producto_id": 12,
-    "nombre": "Labial rojo suave",
+    "nombre": "Labial velvet en barra",
     "descripcion": "Labial de larga duración con un acabado mate aterciopelado. Fórmula enriquecida con vitamina E para hidratar los labios.",
     "tipo": "Maquillaje",
     "categoria": "Labios",
-    "subcategoria": "Labiales",
     "tono": "Rojo",
-    "acabado": "Mate",
     "estrellas": 4.6,
-    "imagen": "imagenes/12.png",
     "precio": 35000,
-    "marca": "Maybelline",
-    "descuento": 10,
-    "stock": 100
-  },
-  {
-    "producto_id": 13,
-    "nombre": "Corrector líquido",
-    "descripcion": "Corrector líquido de alta cobertura para disimular ojeras y manchas. Fórmula ligera y de larga duración.",
-    "tipo": "Maquillaje",
-    "categoria": "Rostro",
-    "subcategoria": "Correctores",
-    "tono": "Natural",
-    "cobertura": "Alta",
-    "acabado": "Natural",
-    "estrellas": 3.7,
-    "imagen": "imagenes/13.png",
-    "precio": 28000,
-    "marca": "NARS",
-    "oferta": "25% de descuento en correctores"
-  },
-  {
-    "producto_id": 14,
-    "nombre": "Exfoliante facial",
-    "descripcion": "Exfoliante facial suave que elimina células muertas y promueve la regeneración celular. Contiene microgránulos de albaricoque.",
-    "tipo": "Skincare",
-    "categoria": "Rostro",
-    "subcategoria": "Exfoliantes",
-    "tipoPiel": "Todo tipo de piel",
-    "principiosActivos": [
-      "Microgránulos de albaricoque"
-    ],
-    "estrellas": 4.4,
-    "imagen": "imagenes/14.png",
-    "precio": 35000,
-    "marca": "Caudalie",
-    "vegano": true
-  },
-  {
-    "producto_id": 15,
-    "nombre": "Paleta de sombras de ojos",
-    "descripcion": "Paleta de sombras de ojos con una combinación de tonos mate y satinados. Ideal para crear una variedad de looks.",
-    "tipo": "Maquillaje",
-    "categoria": "Ojos",
-    "subcategoria": "Paletas de sombras",
-    "estrellas": 3.8,
-    "imagen": "imagenes/15.png",
-    "precio": 55000,
-    "marca": "Urban Decay",
-    "nuevo": true
-  },
-  {
-    "producto_id": 16,
-    "nombre": "Agua micelar desmaquillante",
-    "descripcion": "Agua micelar que elimina el maquillaje y las impurezas sin necesidad de enjuagar. Fórmula suave y refrescante.",
-    "tipo": "Skincare",
-    "categoria": "Rostro",
-    "subcategoria": "Desmaquillantes",
-    "tipoPiel": "Todo tipo de piel",
-    "estrellas": 3.6,
-    "imagen": "imagenes/16.png",
-    "precio": 25000,
-    "marca": "Garnier",
-    "promocion": "Compra 2 y llévate 1 gratis"
-  },
-  {
-    "producto_id": 13,
-    "nombre": "Corrector líquido",
-    "descripcion": "Corrector líquido de alta cobertura para disimular ojeras y manchas. Fórmula ligera y de larga duración.",
-    "tipo": "Maquillaje",
-    "categoria": "Rostro",
-    "subcategoria": "Correctores",
-    "tono": "Natural",
-    "cobertura": "Alta",
-    "acabado": "Natural",
-    "estrellas": 3.7,
-    "imagen": "imagenes/13.png",
-    "precio": 28000,
-    "marca": "NARS",
-    "oferta": "25% de descuento en correctores"
-  },
-  {
-    "producto_id": 14,
-    "nombre": "Exfoliante facial",
-    "descripcion": "Exfoliante facial suave que elimina células muertas y promueve la regeneración celular. Contiene microgránulos de albaricoque.",
-    "tipo": "Skincare",
-    "categoria": "Rostro",
-    "subcategoria": "Exfoliantes",
-    "tipoPiel": "Todo tipo de piel",
-    "principiosActivos": [
-      "Microgránulos de albaricoque"
-    ],
-    "estrellas": 4.4,
-    "imagen": "imagenes/14.png",
-    "precio": 35000,
-    "marca": "Caudalie",
-    "vegano": true
-  },
-  {
-    "producto_id": 15,
-    "nombre": "Paleta de sombras de ojos",
-    "descripcion": "Paleta de sombras de ojos con una combinación de tonos mate y satinados. Ideal para crear una variedad de looks.",
-    "tipo": "Maquillaje",
-    "categoria": "Ojos",
-    "subcategoria": "Paletas de sombras",
-    "estrellas": 3.8,
-    "imagen": "imagenes/15.png",
-    "precio": 55000,
-    "marca": "Urban Decay",
-    "nuevo": true
-  },
-  {
-    "producto_id": 16,
-    "nombre": "Agua micelar desmaquillante",
-    "descripcion": "Agua micelar que elimina el maquillaje y las impurezas sin necesidad de enjuagar. Fórmula suave y refrescante.",
-    "tipo": "Skincare",
-    "categoria": "Rostro",
-    "subcategoria": "Desmaquillantes",
-    "tipoPiel": "Todo tipo de piel",
-    "estrellas": 3.6,
-    "imagen": "imagenes/16.png",
-    "precio": 25000,
-    "marca": "Garnier",
-    "promocion": "Compra 2 y llévate 1 gratis"
-  },
-  {
-    "producto_id": 17,
-    "nombre": "Rubor en polvo compacto",
-    "descripcion": "Rubor en polvo compacto de larga duración con acabado mate. Disponible en una variedad de tonos para adaptarse a diferentes looks.",
-    "tipo": "Maquillaje",
-    "categoria": "Rostro",
-    "subcategoria": "Rubores",
-    "estrellas": 4.3,
-    "imagen": "imagenes/17.png",
-    "precio": 32000,
-    "marca": "Revlon"
-  },
-  {
-    "producto_id": 18,
-    "nombre": "Gel limpiador facial",
-    "descripcion": "Gel limpiador facial que elimina el exceso de grasa y las impurezas. Fórmula suave y sin fragancia, ideal para uso diario.",
-    "tipo": "Skincare",
-    "categoria": "Rostro",
-    "subcategoria": "Limpiadores faciales",
-    "tipoPiel": "Piel mixta a grasa",
-    "estrellas": 3.7,
-    "imagen": "imagenes/18.png",
-    "precio": 28000,
-    "marca": "Cetaphil",
-    "promocion": "20% de descuento en limpiadores faciales"
-  },
-  {
-    "producto_id": 19,
-    "nombre": "Labial líquido mate",
-    "descripcion": "Labial líquido de acabado mate y larga duración. Fórmula ligera que no reseca los labios.",
-    "tipo": "Maquillaje",
-    "categoria": "Labios",
-    "subcategoria": "Labiales",
-    "acabado": "Mate",
-    "estrellas": 3.6,
-    "imagen": "imagenes/19.png",
-    "precio": 38000,
-    "marca": "NYX Professional Makeup",
-    "nuevo": true
-  },
-  {
-    "producto_id": 20,
-    "nombre": "Contorno en crema",
-    "descripcion": "Contorno en crema para definir y resaltar los rasgos faciales. Fórmula cremosa y de fácil difuminado.",
-    "tipo": "Maquillaje",
-    "categoria": "Rostro",
-    "subcategoria": "Contornos",
-    "estrellas": 4.5,
-    "imagen": "imagenes/20.png",
-    "precio": 42000,
-    "marca": "Anastasia Beverly Hills"
-  },
-  {
-    "producto_id": 21,
-    "nombre": "Gel de ducha hidratante",
-    "descripcion": "Gel de ducha hidratante que limpia suavemente la piel sin resecarla. Fórmula enriquecida con glicerina y extracto de avena.",
-    "tipo": "Skincare",
-    "categoria": "Cuerpo",
-    "subcategoria": "Geles de ducha",
-    "estrellas": 4.4,
-    "imagen": "imagenes/21.png",
-    "precio": 18000,
-    "marca": "Dove"
-  },
-  {
-    "producto_id": 22,
-    "nombre": "Paleta de iluminadores",
-    "descripcion": "Paleta de iluminadores con una variedad de tonos para resaltar diferentes áreas del rostro. Fórmula altamente pigmentada y de larga duración.",
-    "tipo": "Maquillaje",
-    "categoria": "Rostro",
-    "subcategoria": "Iluminadores",
-    "estrellas": 3.8,
-    "imagen": "imagenes/22.png",
-    "precio": 48000,
-    "marca": "Too Faced"
-  },
-  {
-    "producto_id": 23,
-    "nombre": "Crema corporal reafirmante",
-    "descripcion": "Crema corporal reafirmante que mejora la elasticidad de la piel y reduce la apariencia de la celulitis. Fórmula enriquecida con cafeína y extracto de algas marinas.",
-    "tipo": "Skincare",
-    "categoria": "Cuerpo",
-    "subcategoria": "Cremas corporales",
-    "estrellas": 3.6,
-    "imagen": "imagenes/23.png",
-    "precio": 55000,
-    "marca": "Nivea",
-    "descuento": 15,
-    "stock": 75
-  },
-  {
-    "producto_id": 24,
-    "nombre": "Perfume floral",
-    "descripcion": "Perfume floral con notas de jazmín y rosa. Fragancia fresca y femenina ideal para uso diario.",
-    "tipo": "Fragancias",
-    "categoria": "Perfumes",
-    "notasAromaticas": [
-      "Jazmín",
-      "Rosa"
-    ],
-    "estrellas": 3.7,
-    "imagen": "imagenes/24.png",
-    "precio": 75000,
-    "marca": "Chanel"
-  },
-  {
-    "producto_id": 25,
-    "nombre": "Gel exfoliante corporal",
-    "descripcion": "Gel exfoliante corporal que elimina las células muertas y suaviza la piel. Fórmula con partículas de jojoba y vitamina E.",
-    "tipo": "Skincare",
-    "categoria": "Cuerpo",
-    "subcategoria": "Exfoliantes corporales",
-    "estrellas": 4.5,
-    "imagen": "imagenes/25.png",
-    "precio": 32000,
-    "marca": "The Body Shop",
-    "nuevo": true
-  },
-  {
-    "producto_id": 26,
-    "nombre": "Brillo labial transparente",
-    "descripcion": "Brillo labial transparente que proporciona un acabado brillante y voluminoso. Fórmula no pegajosa y de larga duración.",
-    "tipo": "Maquillaje",
-    "categoria": "Labios",
-    "subcategoria": "Brillos labiales",
-    "estrellas": 4.3,
-    "imagen": "imagenes/26.png",
-    "precio": 25000,
-    "marca": "Fenty Beauty"
-  },
-  {
-    "producto_id": 27,
-    "nombre": "Desodorante en spray",
-    "descripcion": "Desodorante en spray que proporciona protección contra el mal olor y la transpiración. Fórmula suave y de secado rápido.",
-    "tipo": "Skincare",
-    "categoria": "Cuerpo",
-    "subcategoria": "Desodorantes",
-    "estrellas": 3.6,
-    "imagen": "imagenes/27.png",
-    "precio": 18000,
-    "marca": "Dove",
-    "promocion": "Llévate 2 y paga 1"
-  },
-  {
-    "producto_id": 28,
-    "nombre": "Delineador de cejas",
-    "descripcion": "Delineador de cejas con punta fina para definir y rellenar las cejas de manera precisa. Fórmula resistente al agua y de larga duración.",
-    "tipo": "Maquillaje",
-    "categoria": "Rostro",
-    "subcategoria": "Cejas",
-    "estrellas": 4.5,
-    "imagen": "imagenes/28.png",
-    "precio": 28000,
-    "marca": "Anastasia Beverly Hills"
-  },
-  {
-    "producto_id": 29,
-    "nombre": "Crema de manos hidratante",
-    "descripcion": "Crema de manos hidratante que nutre y suaviza la piel. Fórmula ligera y de rápida absorción.",
-    "tipo": "Skincare",
-    "categoria": "Manos",
-    "subcategoria": "Cremas de manos",
-    "estrellas": 4.4,
-    "imagen": "imagenes/29.png",
-    "precio": 15000,
-    "marca": "Neutrogena"
-  },
-  {
-    "producto_id": 30,
-    "nombre": "Esmalte de uñas",
-    "descripcion": "Esmalte de uñas de larga duración con acabado brillante. Disponible en una amplia gama de colores.",
-    "tipo": "Maquillaje",
-    "categoria": "Uñas",
-    "subcategoria": "Esmaltes de uñas",
-    "estrellas": 3.6,
-    "imagen": "imagenes/30.png",
-    "precio": 18000,
-    "marca": "OPI"
+    "stock": true,
+    "imagen": "imagenes/12.png"
   }
 ]

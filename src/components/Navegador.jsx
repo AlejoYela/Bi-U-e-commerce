@@ -9,12 +9,12 @@ function Navegador() {
 
     const tooltipText = {
         user: 'Usuario',
-        cart: 'Carrito',
+        cart: 'Bolsa',
         fav: 'Favoritos'
     };
 
     return (
-        <Navbar expand="lg" className="bg-secondary px-4 fixed-top">
+        <Navbar expand="lg" className="bg-secondary px-4 fixed-top bg-opacity-75">
             <Container fluid>
                 <Navbar.Brand className='text-primary fw-medium' href="#home">
                     <img
@@ -24,7 +24,7 @@ function Navegador() {
                         height="30"
                         className="d-inline-block align-top fs-3"
                     />{' '}
-                    BiU Cosmetics
+                    Bi･U Cosmetics
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
