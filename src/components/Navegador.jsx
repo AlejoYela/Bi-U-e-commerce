@@ -14,7 +14,7 @@ function Navegador() {
     };
 
     return (
-        <Navbar expand="lg" className="bg-secondary px-4 fixed-top bg-opacity-75">
+        <Navbar expand="lg" className="bg-secondary px-4 sticky-top bg-opacity-75">
             <Container fluid>
                 <Navbar.Brand className='text-primary fw-medium' href="#home">
                     <img
@@ -35,7 +35,7 @@ function Navegador() {
                     </Nav>
 
 
-                    <Nav>
+                    <Nav className='d-flex flex-row-reverse'>
                         <OverlayTrigger
                             placement="bottom"
                             delay={{ show: 100, hide: 100 }}

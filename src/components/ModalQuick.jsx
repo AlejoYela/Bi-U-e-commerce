@@ -1,19 +1,15 @@
 import { useState } from 'react';
-import { Container, Button, Modal, Image, Col, Row, CloseButton, OverlayTrigger, Badge } from 'react-bootstrap';
+import { Container, Button, Modal, Image, Col, Row, CloseButton } from 'react-bootstrap';
 import Variantes from './Variantes';
-import renderTooltip from '../hooks/renderTooltip.js'
 
-function ModalQuick({ state, name, img, price, stock }) {
-
-    const tooltipText = {
-        cart: 'Bolsa',
-        fav: 'Favoritos'
-    };
+function ModalQuick({ state, name, img, price, stock, colors }) {
 
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const [hover, setHover] = useState(false);
 
     return (
         <>
@@ -22,14 +18,14 @@ function ModalQuick({ state, name, img, price, stock }) {
                 variant="outline-primary border-0"
                 onClick={handleShow}
             >
-                <img src={state ? 'icons/search-vine.svg' : 'icons/search-white.svg'} alt="Buscar" width={50} />
+                <img src={state ? 'icons/search-vine.svg' : 'icons/search-white.svg'} alt="Buscar" width={50} height={50} />
                 <p className='fs-6 text-primary'>Vista rápida</p>
             </Button>
 
             <Modal show={show} onHide={handleClose} centered size='lg' className='text-primary'>
 
                 <Modal.Body>
-                    <div className='position-absolute top-0 end-0 m-4' onClick={handleClose}>
+                    <div className='position-absolute top-0 end-0 m-3' onClick={handleClose}>
                         <CloseButton />
                     </div>
 
@@ -39,11 +35,11 @@ function ModalQuick({ state, name, img, price, stock }) {
                                 <Image className='rounded shadow img-fluid' src={img} >
                                 </Image>
                                 <Button
-                                    className="boton position-absolute top-0 end-0 mx-2"
+                                    className="boton position-absolute top-0 start-0 mx-2"
                                     variant="outline-primary border-0 bg-transparent"
                                 >
                                     <a href="#">
-                                        <img src='icons/fav.svg' alt="Buscar" width={20} />
+                                        <img src='icons/fav.svg' alt="Buscar" width={30} />
                                     </a>
                                 </Button>
                             </Col>
@@ -54,22 +50,22 @@ function ModalQuick({ state, name, img, price, stock }) {
                                         price,
                                     )}`}</p>
                                     <hr />
-                                    <small style={{ fontSize: '0.7svw' }} className='fw-bolder text-uppercase'>T o n o  :  P r i m e r o</small>
-                                    <Variantes />
+
+                                    <Variantes colors={colors} />
                                     {stock ?
 
-                                        <small style={{ fontSize: '1svw' }} className='d-inline-block text-success fw-light mb-2'><img width="15" className="d-inline-block align-text-bottom" src="icons/check.svg" alt="" /> Producto disponible</small> :
+                                        <p style={{ fontSize: '0.9rem' }} className='d-inline-block text-success fw-light mb-2'><img width="15" className="d-inline-block align-text-bottom" src="icons/check.svg" alt="" /> Producto disponible</p> :
 
-                                        <small style={{ fontSize: '1svw' }} className=' d-inline-block text-danger fw-light mb-2'><img width="15" className="d-inline-block align-text-bottom" src="icons/alert.svg" alt="" /> Producto agotado</small>}
+                                        <p style={{ fontSize: '0.9rem' }} className=' d-inline-block text-danger fw-light mb-2'><img width="15" className="d-inline-block align-text-bottom" src="icons/alert.svg" alt="" /> Producto agotado</p>}
                                     <div className='mb-3 '>
 
 
                                     </div>
-                                    <Container>
+                                    <Container className='p-0'>
                                         <Row class="d-flex gap-3">
 
                                             <Col className='d-grid'>
-                                                <Button variant="primary" onClick={handleClose}>
+                                                <Button variant="outline-primary fw-light" onClick={handleClose}>
                                                     Ver detalles
                                                 </Button>
                                             </Col>
@@ -77,9 +73,11 @@ function ModalQuick({ state, name, img, price, stock }) {
                                                 <Button
                                                     className="boton"
                                                     variant="outline-primary border-1 fw-light"
+                                                    onMouseEnter={() => setHover(true)}
+                                                    onMouseLeave={() => setHover(false)}
                                                 >
                                                     <a href="#" className='d-inline-block align-text-bottom'>
-                                                        <img src='icons/cart.svg' alt="Buscar" width={20} />
+                                                        <img src={hover ? 'icons/cart-white.svg' : 'icons/cart.svg'} alt="Buscar" width={20} />
                                                     </a>
                                                     {' '} Añadir a la bolsa
                                                 </Button>
