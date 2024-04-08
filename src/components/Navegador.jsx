@@ -14,7 +14,7 @@ function Navegador() {
     };
 
     return (
-        <Navbar expand="lg" className="bg-secondary px-4 sticky-top bg-opacity-75">
+        <Navbar expand="lg" className="bluring bg-secondary px-4 sticky-top bg-opacity-50">
             <Container fluid>
                 <Navbar.Brand className='text-primary fw-medium' href="#home">
                     <img

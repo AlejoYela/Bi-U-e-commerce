@@ -4,16 +4,6 @@ $secondary: #Fdecda;
 $font-family-base: "Josefin Sans", sans-serif;
 $offcanvas-horizontal-width: 800px;
 
-
-.image-container {
-    position: relative;
-    margin-bottom: 7svw;
-}
-
-.imagen {
-    width: 100%;
-}
-
 .text-overlay {
     position: absolute;
     top: 50%;
@@ -23,6 +13,16 @@ $offcanvas-horizontal-width: 800px;
     text-align: center;
     max-width: 100%;
     padding: 6svw;
+}
+
+.text-overlay-2 {
+    position: absolute;
+    top: 50%;
+    left: 50svw;
+    transform: translateY(-50%);
+    text-align: left;
+    max-width: 100%;
+    padding: 4svw;
 }
 
 .text-overlay h1 {
@@ -43,6 +43,10 @@ $offcanvas-horizontal-width: 800px;
 
 .variante {
     border-radius: 50%;
+}
+
+.bluring {
+    backdrop-filter: blur(12px);
 }
 
 

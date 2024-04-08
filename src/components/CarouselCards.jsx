@@ -39,7 +39,7 @@ function CarouserCards() {
 
     return (
         <div>
-            <Carousel responsive={responsive} indicators={false} nextIcon={<Button className='rounded-pill'><img src="icons/next.svg" alt="" /></Button>} prevIcon={<Button className='rounded-pill'><img src="icons/prev.svg" alt="" /></Button>}>
+            <Carousel interval={null} responsive={responsive} indicators={false} nextIcon={<Button className='rounded-pill'><img src="icons/next.svg" alt="" /></Button>} prevIcon={<Button className='rounded-pill'><img src="icons/prev.svg" alt="" /></Button>}>
 
                 {groupRecipes(productos, responsive.items).map(
                     (item, index) => (

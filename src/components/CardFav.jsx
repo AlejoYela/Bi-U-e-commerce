@@ -5,13 +5,15 @@ import ModalQuick from './ModalQuick';
 function CardFav({ name, price, stars, img, stock, colors }) {
   const [isHovered, setIsHovered] = useState(false);
 
+  const pesosConversion = `${new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'COP' }).format((price * 3770))}`;
+
   return (
     <Card className='card h100 shadow' style={{ width: '28rem' }}>
       <div className='position-relative' onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
         <Fade in={isHovered} appear>
           <Card.Img variant="top" src={img} style={{ opacity: isHovered ? 0.2 : 1 }} />
         </Fade>
-        <ModalQuick state={isHovered} name={name} price={price} img={img} stock={stock} colors={colors} />
+        <ModalQuick state={isHovered} name={name} price={pesosConversion} img={img} stock={stock} colors={colors} />
       </div>
 
       <Card.Body>
@@ -24,7 +26,7 @@ function CardFav({ name, price, stars, img, stock, colors }) {
           </Badge>
         </p>
         <Card.Text className='fw-light text-primary fs-5'>
-          {`${new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'COP' }).format((price * 3770))}`}
+          {pesosConversion}
         </Card.Text>
 
         <div className="d-grid">

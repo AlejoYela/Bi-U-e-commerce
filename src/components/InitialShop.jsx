@@ -3,9 +3,9 @@ import { Image, Button, Carousel } from 'react-bootstrap'
 
 function InitialShop() {
     return (
-        <Carousel className='carrusel-inicio' indicators={false}>
+        <Carousel indicators={false}>
             <Carousel.Item>
-                <Image src="promos/1.png" fluid className="imagen" />
+                <Image src="promos/1.png" fluid className="w-100" />
                 <div className="text-overlay text-primary bg-light bg-opacity-75 rounded-5">
                     <img
                         alt=""

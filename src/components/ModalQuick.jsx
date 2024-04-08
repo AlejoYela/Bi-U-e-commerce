@@ -46,9 +46,7 @@ function ModalQuick({ state, name, img, price, stock, colors }) {
                             <Col>
                                 <Container width='250svw' >
                                     <h2 className='fs-5 fw-light'>{name.toUpperCase()}</h2>
-                                    <p >{`${new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'COP' }).format(
-                                        price,
-                                    )}`}</p>
+                                    <p >{price}</p>
                                     <hr />
 
                                     <Variantes colors={colors} />
