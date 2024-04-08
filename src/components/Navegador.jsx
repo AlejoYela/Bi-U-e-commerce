@@ -2,7 +2,7 @@ import React from 'react';
 import Buscador from './Buscador';
 import renderTooltip from '../hooks/renderTooltip.js'
 
-import { Container, Navbar, Nav, Button, Badge, OverlayTrigger, Tooltip } from 'react-bootstrap'
+import { Container, Navbar, Nav, Button, Badge, OverlayTrigger} from 'react-bootstrap'
 import OffCanvas from './OffCanvas';
 
 function Navegador() {

@@ -10,8 +10,8 @@ function CarouserCards() {
     const [productos, setProductos] = useState([]);
 
     useEffect(() => {
-        axios(`http://makeup-api.herokuapp.com/api/v1/products.json?rating_greater_than=4.9`).then(({ data }) => {
-            const favProducts = data.slice(0, 12)
+        axios(`http://makeup-api.herokuapp.com/api/v1/products.json?rating_greater_than=4.8`).then(({ data }) => {
+            const favProducts = data.slice(0, 8)
             setProductos(favProducts);
         });
     }, []);

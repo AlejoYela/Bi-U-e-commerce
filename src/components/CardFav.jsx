@@ -28,11 +28,12 @@ function CardFav({ name, price, stars, img, stock, colors }) {
         <Card.Text className='fw-light text-primary fs-5'>
           {pesosConversion}
         </Card.Text>
-
+      </Card.Body>
+      <Card.Footer className='bg-transparent border-0'>
         <div className="d-grid">
           <Button variant="outline-primary" size='lg' className='fw-light'>Ver producto</Button>
         </div>
-      </Card.Body>
+      </Card.Footer>
     </Card>
   );
 }
