@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Card, Badge, Fade } from 'react-bootstrap';
 import ModalQuick from './ModalQuick';
+import { Link } from 'react-router-dom';
 
-function CardFav({ name, price, stars, img, stock, colors }) {
+function CardFav({ id, name, price, stars, img, stock, colors }) {
   const [isHovered, setIsHovered] = useState(false);
 
   const pesosConversion = `${new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'COP' }).format((price * 3770))}`;
@@ -30,9 +31,11 @@ function CardFav({ name, price, stars, img, stock, colors }) {
         </Card.Text>
       </Card.Body>
       <Card.Footer className='bg-transparent border-0'>
-        <div className="d-grid">
+
+        <Link className="d-grid" style={{textDecoration: 'none'}} to={`/producto/${id}`}>
           <Button variant="outline-primary" size='lg' className='fw-light'>Ver producto</Button>
-        </div>
+        </Link>
+
       </Card.Footer>
     </Card>
   );

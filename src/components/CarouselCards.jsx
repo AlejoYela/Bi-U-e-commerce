@@ -1,20 +1,9 @@
-import { useState, useEffect } from 'react';
 import { Carousel, Button } from 'react-bootstrap';
 import CardFav from './CardFav';
 import useScreenSize from '../hooks/useScreenSize';
-import axios from 'axios';
 
-function CarouserCards() {
+function CarouserCards({productos}) {
     const { width } = useScreenSize();
-
-    const [productos, setProductos] = useState([]);
-
-    useEffect(() => {
-        axios(`http://makeup-api.herokuapp.com/api/v1/products.json?rating_greater_than=4.8`).then(({ data }) => {
-            const favProducts = data.slice(0, 12)
-            setProductos(favProducts);
-        });
-    }, []);
 
     // Helper function to group recipes based on responsive breakpoints
     const groupRecipes = (productos, breakpointItems) => {
@@ -46,7 +35,7 @@ function CarouserCards() {
                         <Carousel.Item key={index}>
                             <div className="d-flex justify-content-center gap-4 px-4">
                                 {item.map((product, index) => (
-                                    <CardFav key={index} name={product.name} price={product.price} stars={product.rating} img={product.api_featured_image} stock={true} colors={product.product_colors} />
+                                    <CardFav key={index} id={product.id} name={product.name} price={product.price} stars={product.rating} img={product.api_featured_image} stock={true} colors={product.product_colors} description = {product.description}/>
                                 ))}
                             </div>
                         </Carousel.Item>

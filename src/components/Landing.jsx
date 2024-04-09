@@ -2,17 +2,16 @@ import React from 'react';
 import InitialShop from './InitialShop';
 import Favoritos from './Favoritos';
 import ProductoEstrella from './ProductoEstrella';
-import Footer from './Footer';
 import VeganSection from './VeganSection';
 
 
-function Landing() {
+
+function Landing({productos}) {
     return (<div>
         <InitialShop />
-        <Favoritos />
+        <Favoritos productos={productos}/>
         <ProductoEstrella />
         <VeganSection />
-        <Footer />
     </div>);
 }
 

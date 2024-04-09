@@ -2,7 +2,7 @@ import React from 'react';
 import CarouserCards from './CarouselCards';
 import useScreenSize from '../hooks/useScreenSize';
 
-function Favoritos() {
+function Favoritos({productos}) {
 
   const { width } = useScreenSize();
 
@@ -17,7 +17,7 @@ function Favoritos() {
         <h2 className='text-primary fw-normal'>F A V O R I T O S</h2>
         <h3 className='text-primary fs-4 fw-light'>!Los productos más populares!</h3>
       </div>
-      <CarouserCards />
+      <CarouserCards productos={productos}/>
     </div>
   );
 }

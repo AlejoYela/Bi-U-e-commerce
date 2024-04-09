@@ -21,7 +21,7 @@ function OffCanvas() {
 
                     <Accordion flush>
                         <Accordion.Item eventKey="0">
-                            <Accordion.Header>Maquillaje</Accordion.Header>
+                            <Accordion.Header><p className='m-0 fs-5 fw-light'>Maquillaje</p></Accordion.Header>
                             <Accordion.Body>
                                 <Container fluid='bg'>
                                     <Col>
@@ -33,7 +33,7 @@ function OffCanvas() {
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="1">
-                            <Accordion.Header>Skincare
+                            <Accordion.Header><p className='m-0 fs-5 fw-light'>Skincare</p>
                             </Accordion.Header>
                             <Accordion.Body>
                                 <Container fluid='bg'>
@@ -49,7 +49,7 @@ function OffCanvas() {
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item>
-                            <Accordion.Header>Accesorios
+                            <Accordion.Header><p className='m-0 fs-5 fw-light'>Accesorios</p>
                             </Accordion.Header>
                         </Accordion.Item>
                     </Accordion>
