@@ -3,6 +3,7 @@ import InitialShop from './InitialShop';
 import Favoritos from './Favoritos';
 import ProductoEstrella from './ProductoEstrella';
 import Footer from './Footer';
+import VeganSection from './VeganSection';
 
 
 function Landing() {
@@ -10,7 +11,8 @@ function Landing() {
         <InitialShop />
         <Favoritos />
         <ProductoEstrella />
-        <Footer/>
+        <VeganSection />
+        <Footer />
     </div>);
 }
 

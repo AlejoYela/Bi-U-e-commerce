@@ -11,7 +11,7 @@ function CarouserCards() {
 
     useEffect(() => {
         axios(`http://makeup-api.herokuapp.com/api/v1/products.json?rating_greater_than=4.8`).then(({ data }) => {
-            const favProducts = data.slice(0, 8)
+            const favProducts = data.slice(0, 12)
             setProductos(favProducts);
         });
     }, []);
