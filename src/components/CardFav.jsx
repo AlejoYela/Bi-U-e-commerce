@@ -3,7 +3,7 @@ import { Button, Card, Badge, Fade } from 'react-bootstrap';
 import ModalQuick from './ModalQuick';
 import { Link } from 'react-router-dom';
 
-function CardFav({ id, name, price, stars, img, stock, colors }) {
+function CardFav({ id, name, price, stars, img, stock, colors, type }) {
   const [isHovered, setIsHovered] = useState(false);
 
   const pesosConversion = `${new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'COP' }).format((price * 3770))}`;
@@ -14,11 +14,11 @@ function CardFav({ id, name, price, stars, img, stock, colors }) {
         <Fade in={isHovered} appear>
           <Card.Img variant="top" src={img} style={{ opacity: isHovered ? 0.2 : 1 }} />
         </Fade>
-        <ModalQuick state={isHovered} name={name} price={pesosConversion} img={img} stock={stock} colors={colors} />
+        <ModalQuick id={id} state={isHovered} name={name} price={pesosConversion} img={img} stock={stock} colors={colors} type={type}/>
       </div>
 
       <Card.Body>
-        <Card.Title className='fw-bold fs-6 text-primary'>
+        <Card.Title className='fw-bold fs-6 text-primary'> 
           <small>{name.toUpperCase()}</small>
         </Card.Title>
         <p className='fs-4 text-primary'>
@@ -32,7 +32,7 @@ function CardFav({ id, name, price, stars, img, stock, colors }) {
       </Card.Body>
       <Card.Footer className='bg-transparent border-0'>
 
-        <Link className="d-grid" style={{textDecoration: 'none'}} to={`/producto/${id}`}>
+        <Link className="d-grid" style={{textDecoration: 'none'}} to={`/producto/${type}/${id}`}>
           <Button variant="outline-primary" size='lg' className='fw-light'>Ver producto</Button>
         </Link>
 

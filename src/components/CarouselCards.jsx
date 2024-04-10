@@ -3,6 +3,9 @@ import CardFav from './CardFav';
 import useScreenSize from '../hooks/useScreenSize';
 
 function CarouserCards({productos}) {
+
+
+
     const { width } = useScreenSize();
 
     // Helper function to group recipes based on responsive breakpoints
@@ -35,7 +38,7 @@ function CarouserCards({productos}) {
                         <Carousel.Item key={index}>
                             <div className="d-flex justify-content-center gap-4 px-4">
                                 {item.map((product, index) => (
-                                    <CardFav key={index} id={product.id} name={product.name} price={product.price} stars={product.rating} img={product.api_featured_image} stock={true} colors={product.product_colors} description = {product.description}/>
+                                    <CardFav key={index} id={product.id} name={product.name} price={product.price} stars={product.rating} img={product.api_featured_image} stock={true} colors={product.product_colors} description = {product.description} type={product.product_type}/>
                                 ))}
                             </div>
                         </Carousel.Item>

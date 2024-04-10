@@ -6,10 +6,10 @@ import VeganSection from './VeganSection';
 
 
 
-function Landing({productos}) {
+function Landing() {
     return (<div>
         <InitialShop />
-        <Favoritos productos={productos}/>
+        <Favoritos/>
         <ProductoEstrella />
         <VeganSection />
     </div>);

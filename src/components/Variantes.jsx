@@ -6,7 +6,7 @@ function Variantes({ colors }) {
     const showColorName = colors && colors.length > 0 && colors.some(variante => variante.colour_name !== null);
 
     // Lógica para determinar el nombre inicial del tono
-    const inicial = showColorName ? colors[0].colour_name : 'Ninguno';
+    const inicial = showColorName ? colors[0].colour_name : '';
 
     const [selectedVariant, setSelectedVariant] = useState(inicial);
 
@@ -16,9 +16,8 @@ function Variantes({ colors }) {
 
     return (
         <Container className='p-0'>
-            {/* Mostrar el nombre del tono si hay colores con nombres */}
             {showColorName &&
-                <small style={{ fontSize: '0.6rem' }} className='fw-bolder text-uppercase'>{'Tono : ' + selectedVariant}</small>}
+                <small style={{ fontSize: '0.6rem' }} className='fw-bolder text-uppercase'>{selectedVariant}</small>}
             <Container fluid className='d-flex justify-content-start gap-1 mb-2 p-0'>
                 {/* Mapear los colores y crear botones */}
                 {colors && colors.map((variante, index) => (

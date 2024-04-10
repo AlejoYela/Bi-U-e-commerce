@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Container, Button, Modal, Image, Col, Row, CloseButton } from 'react-bootstrap';
 import Variantes from './Variantes';
+import { Link } from 'react-router-dom';
 
-function ModalQuick({ state, name, img, price, stock, colors }) {
+function ModalQuick({ id, state, name, img, price, stock, colors, type }) {
 
     const [show, setShow] = useState(false);
 
@@ -63,9 +64,12 @@ function ModalQuick({ state, name, img, price, stock, colors }) {
                                         <Row class="d-flex gap-3">
 
                                             <Col className='d-grid'>
-                                                <Button variant="outline-primary fw-light" onClick={handleClose}>
-                                                    Ver detalles
-                                                </Button>
+
+                                                <Link className="d-grid" style={{ textDecoration: 'none' }} to={`/producto/${type}/${id}`}>
+                                                    <Button variant="outline-primary fw-light" onClick={handleClose}>
+                                                        Ver detalles
+                                                    </Button>
+                                                </Link>
                                             </Col>
                                             <Col className='d-grid'>
                                                 <Button
