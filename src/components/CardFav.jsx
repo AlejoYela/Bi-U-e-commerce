@@ -9,7 +9,7 @@ function CardFav({ id, name, price, stars, img, stock, colors, type }) {
   const pesosConversion = `${new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'COP' }).format((price * 3770))}`;
 
   return (
-    <Card className='card h100 shadow' style={{ width: '28rem' }}>
+    <Card className='card h100 border-primary border-1' style={{ width: '28rem' }}>
       <div className='position-relative' onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
         <Fade in={isHovered} appear>
           <Card.Img variant="top" src={img} style={{ opacity: isHovered ? 0.2 : 1 }} />
@@ -33,7 +33,7 @@ function CardFav({ id, name, price, stars, img, stock, colors, type }) {
       <Card.Footer className='bg-transparent border-0'>
 
         <Link className="d-grid" style={{textDecoration: 'none'}} to={`/producto/${type}/${id}`}>
-          <Button variant="outline-primary" size='lg' className='fw-light'>Ver producto</Button>
+          <Button variant="outline-primary" size='lg' className='fw-light border-1 mb-2'>Ver producto</Button>
         </Link>
 
       </Card.Footer>

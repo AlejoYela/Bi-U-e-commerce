@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom'
 import Navegador from './components/Navegador.jsx';
 import Footer from './components/Footer.jsx';
 import Producto from './components/Producto.jsx';
+import All from './components/All.jsx';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Landing />} />
         <Route path='/producto/:product_type/:id' element={<Producto />} />
+        <Route path='/productos' element={<All/>}/>
       </Routes>
 
       <Footer />

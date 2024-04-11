@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image, Button, Carousel } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 
 function InitialShop() {
     return (
@@ -15,7 +16,9 @@ function InitialShop() {
                     />
 
                     <h2 className='fw-light mb-3'>Tienda de Maquillaje y Skincare</h2>
-                    <Button variant="outline-primary" className="d-lg-inline-block fw-light" size="lg">Ver catálogo completo</Button>
+                    <Link to='/productos'>
+                        <Button variant="outline-primary" className="d-lg-inline-block fw-light" size="lg">Ver catálogo completo</Button>
+                    </Link>
                 </div>
             </Carousel.Item>
             <Carousel.Item>
