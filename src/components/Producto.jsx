@@ -44,8 +44,9 @@ function Producto() {
                             <p style={{ fontSize: '0.9rem' }} className=' d-inline-block text-danger fw-light mb-2'><img width="15" className="d-inline-block align-text-bottom" src="/icons/alert.svg" alt="" /> Producto agotado</p>}
 
                         <p>{producto.price}</p>
-                        <p>{producto.description}</p>
                         <Variantes colors={producto.product_colors} />
+                        <p>{producto.description}</p>
+
                         <ul>
                             {producto.tag_list && producto.tag_list.map(tag => {
                                 return (<li>
