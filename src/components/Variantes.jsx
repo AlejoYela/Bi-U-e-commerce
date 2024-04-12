@@ -18,7 +18,7 @@ function Variantes({ colors }) {
         <Container className='p-0'>
             {showColorName &&
                 <small style={{ fontSize: '0.7rem' }} className='fw-bolder text-uppercase'>COLOR: {selectedVariant}</small>}
-            <Container fluid className='d-flex justify-content-start gap-2 mb-4 p-0'>
+            <Container fluid className='d-flex flex-wrap justify-content-start gap-2 mb-4 p-0'>
                 {/* Mapear los colores y crear botones */}
                 {colors && colors.map((variante, index) => (
                     <Button key={index} className='rounded-pill border-primary border-0 p-1' style={{ backgroundColor: variante.hex_value, height: '1svw', width: '1svw' }} onClick={() => handleVariant(variante.colour_name)}></Button>

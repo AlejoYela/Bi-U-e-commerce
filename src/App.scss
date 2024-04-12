@@ -47,7 +47,6 @@ $offcanvas-horizontal-width: 800px;
     backdrop-filter: blur(12px);
 }
 
-
 @media (max-width: 768px) {
 
     .text-overlay {
@@ -69,6 +68,7 @@ $offcanvas-horizontal-width: 800px;
         font-size: 3.5svw;
     }
 }
+
 
 
 @import "../node_modules/bootstrap/scss/bootstrap";

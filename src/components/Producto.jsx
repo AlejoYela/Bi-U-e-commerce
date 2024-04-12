@@ -29,7 +29,7 @@ function Producto() {
     return (
         <Container>
             <Row className='gap-5 p-5'>
-                <Col><Image src={producto.api_featured_image} className='w-100 border border-1 border-primary' rounded /></Col>
+                <Col><Image src={producto.api_featured_image} className='mw-50 border border-1 border-primary' rounded /></Col>
                 <Col >
                     <Container>
                         <h2 className='fs-4 fw-normal text-uppercase mb-3'>{producto.name}</h2>
@@ -39,10 +39,10 @@ function Producto() {
                             </Badge>
                         </p>
                         <p className='fs-4 fw-light'>{pesosConversion}</p>
-                        
+
                         <Variantes colors={producto.product_colors} />
 
-                        <Contador/>
+                        <Contador />
 
                         <Accordion flush className='my-3' >
                             <Accordion.Item eventKey="0">
@@ -52,39 +52,47 @@ function Producto() {
                                     </p>
                                 </Accordion.Header>
                                 <Accordion.Body>
-                                    <p className='my-4'>{producto.description}</p>
+                                    <p className='fw-light fs-5 m-0'>{producto.description}</p>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="1">
                                 <Accordion.Header><p className='m-0 p-0 fs-5 fw-light'>
-                                        Características y beneficios
-                                    </p></Accordion.Header>
+                                    Características y beneficios
+                                </p></Accordion.Header>
                                 <Accordion.Body>
-                                    Hola soy un texto de acordeón
+                                    <p className='fw-light fs-5 m-0'>
+                                        Hola soy un texto de acordeón
+                                    </p>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="2">
                                 <Accordion.Header><p className='m-0 p-0 fs-5 fw-light'>
-                                        ¿Cómo se usa?
-                                    </p></Accordion.Header>
+                                    ¿Cómo se usa?
+                                </p></Accordion.Header>
                                 <Accordion.Body>
-                                    Hola soy un texto de acordeón
+                                    <p className='fw-light fs-5 m-0'>
+                                        Hola soy un texto de acordeón
+                                    </p>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="3">
                                 <Accordion.Header><p className='m-0 p-0 fs-5 fw-light'>
-                                        Ingredientes
-                                    </p></Accordion.Header>
+                                    Ingredientes
+                                </p></Accordion.Header>
                                 <Accordion.Body>
-                                    Hola soy un texto de acordeón
+                                    <p className='fw-light fs-5 m-0'>
+                                        Hola soy un texto de acordeón
+                                    </p>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="4">
                                 <Accordion.Header><p className='m-0 p-0 fs-5 fw-light'>
-                                        Envío
-                                    </p></Accordion.Header>
-                                <Accordion.Body>
-                                    Hola soy un texto de acordeón
+                                    Envío
+                                </p></Accordion.Header>
+                                <Accordion.Body> 
+                                    <p className='fw-light fs-5'>
+                                        Hola soy un texto de acordeón
+                                    </p>
                                 </Accordion.Body>
                             </Accordion.Item>
 

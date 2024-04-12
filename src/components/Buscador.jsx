@@ -26,9 +26,9 @@ function Buscador() {
           className="boton"
           variant="outline-primary border-0 bg-transparent"
         >
-          <a href="#">
+          
             <img src='icons/search-vine.svg' alt="Buscar" />
-          </a>
+          
         </Button></Nav.Link >
 
         <Offcanvas show={show} onHide={handleClose} placement='top' className='h-25'>

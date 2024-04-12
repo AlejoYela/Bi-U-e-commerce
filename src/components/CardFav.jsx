@@ -12,7 +12,7 @@ function CardFav({ id, name, price, stars, img, stock, colors, type }) {
     <Card className='card h100 border-primary border-1' style={{ width: '28rem' }}>
       <div className='position-relative' onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
         <Fade in={isHovered} appear>
-          <Card.Img variant="top" src={img} style={{ opacity: isHovered ? 0.2 : 1 }} />
+          <Card.Img variant="top" src={img} style={{ opacity: isHovered ? 0.2 : 1, height: '200px', objectFit: 'cover' }} />
         </Fade>
         <ModalQuick id={id} state={isHovered} name={name} price={pesosConversion} img={img} stock={stock} colors={colors} type={type}/>
       </div>
