@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Offcanvas, Nav, Accordion, Container, Col } from 'react-bootstrap';
 import TargetCategoria from './TargetCategoria';
 
-
 function OffCanvas() {
     const [show, setShow] = useState(false);
 
@@ -13,7 +12,7 @@ function OffCanvas() {
         <div>
             <Nav.Link className='text-primary fs-5 fw-light' href="#action2" onClick={handleShow}>Categorías</Nav.Link >
 
-            <Offcanvas show={show} onHide={handleClose}>
+            <Offcanvas show={show} onHide={handleClose} backdrop={false} placement="start"> {/* Añade opciones de configuración */}
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title className='fw-light fs-2'>Categorías</Offcanvas.Title>
                 </Offcanvas.Header>

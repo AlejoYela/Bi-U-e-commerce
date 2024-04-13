@@ -29,7 +29,7 @@ function Producto() {
     return (
         <Container>
             <Row className='gap-5 p-5'>
-                <Col><Image src={producto.api_featured_image} className='mw-50 border border-1 border-primary' rounded /></Col>
+                <Col><Image src={producto.api_featured_image} className='w-100 border border-1 border-primary' rounded /></Col>
                 <Col >
                     <Container>
                         <h2 className='fs-4 fw-normal text-uppercase mb-3'>{producto.name}</h2>
@@ -89,7 +89,7 @@ function Producto() {
                                 <Accordion.Header><p className='m-0 p-0 fs-5 fw-light'>
                                     Envío
                                 </p></Accordion.Header>
-                                <Accordion.Body> 
+                                <Accordion.Body>
                                     <p className='fw-light fs-5'>
                                         Hola soy un texto de acordeón
                                     </p>

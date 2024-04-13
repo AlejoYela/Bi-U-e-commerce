@@ -1,6 +1,6 @@
-$body-bg: white;
-$primary: #593A23;
-$secondary: #ffdbd7;
+$body-bg: #FFF8F4;
+$primary: #382C26;
+$secondary: #F8E0D4;
 $font-family-base: "Josefin Sans", sans-serif;
 $offcanvas-horizontal-width: 800px;
 
@@ -45,6 +45,15 @@ $offcanvas-horizontal-width: 800px;
 
 .bluring {
     backdrop-filter: blur(12px);
+}
+
+.image-container {
+    position: relative;
+    margin-bottom: 7svw;
+}
+
+.imagen {
+    width: 100%;
 }
 
 @media (max-width: 768px) {
