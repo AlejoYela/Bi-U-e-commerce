@@ -60,9 +60,13 @@ function Producto() {
                                     Características y beneficios
                                 </p></Accordion.Header>
                                 <Accordion.Body>
-                                    <p className='fw-light fs-5 m-0'>
-                                        Hola soy un texto de acordeón
-                                    </p>
+                                    <ul className='d-flex gap-5 p-0 m-0 '>
+                                        {producto.tag_list && producto.tag_list.map(tag => {
+                                            return (<li className='m-0 p-0 fs-5 fw-light'>
+                                                {tag}
+                                            </li>)
+                                        })}
+                                    </ul>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="2">
@@ -97,13 +101,7 @@ function Producto() {
                             </Accordion.Item>
 
                         </Accordion>
-                        <ul className='d-flex gap-5 p-0'>
-                            {producto.tag_list && producto.tag_list.map(tag => {
-                                return (<li>
-                                    {tag}
-                                </li>)
-                            })}
-                        </ul>
+
 
                     </Container>
                 </Col>

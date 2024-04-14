@@ -29,7 +29,7 @@ function ModalQuick({ id, state, name, img, price, stock, colors, type }) {
 
                     <Row className='my-3 mx-auto gap-5'>
                         <Col className='position-relative d-flex justify-content-center' xl={4}>
-                            <Image className='rounded shadow img-fluid' src={img} />
+                            <Image className='rounded shadow ms-5' src={img} height={250} />
                             <Button
                                 className="boton position-absolute top-0 start-0 mx-2"
                                 variant="outline-primary border-0 bg-transparent"
@@ -41,7 +41,7 @@ function ModalQuick({ id, state, name, img, price, stock, colors, type }) {
                         </Col>
                         <Col>
                             <Container width='250svw'>
-                                <h2 className='fs-5 fw-light'>{name.toUpperCase()}</h2>
+                                <h2 className='fs-5 fw-light' >{name.toUpperCase()}</h2>
                                 <p >{price}</p>
                                 <hr />
                                 <Variantes colors={colors} />
