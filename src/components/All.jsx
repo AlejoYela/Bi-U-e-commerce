@@ -6,7 +6,7 @@ import CardFav from './CardFav';
 function All() {
     const [producto, setProducto] = useState([]);
     const [cardsToShow, setCardsToShow] = useState(12);
-    const [loadMore, setLoadMore] = useState(true);
+    const [loadMore, setLoadMore] = useState(false);
     const [showFilter, setShowFilter] = useState(false);
     const [showOrder, setShowOrder] = useState(false);
     const [precioMin, setPrecioMin] = useState(0);
@@ -23,11 +23,13 @@ function All() {
         axios.get(`http://makeup-api.herokuapp.com/api/v1/products.json`)
             .then(({ data }) => {
                 setProducto(data);
+                setLoading(false)
+                setLoadMore(true)
             })
             .catch((error) => {
                 console.error(error);
-            }).finally(() => {
-                setLoading(false)
+                setLoading(true)
+                setLoadMore(false)
             });
     }, []);
 
@@ -97,12 +99,26 @@ function All() {
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                         <Container className={showOrder ? 'd-grid gap-4 mb-4 align-items-center px-0' : 'd-flex justify-content-end gap-4 mb-4 align-items-center px-0'}>
+                            <div className='fw-normal fs-5 d-none d-xl-block d-lg-block d-xl-block'>
+                                <img
+                                    alt=""
+                                    src="icons/order.svg"
+                                    width="40"
+                                    height="30"
+                                    className="d-inline-block align-top"
+                                />
+                                Ordenar por:
+                            </div>
 
-                            <h3 className='fw-light fs-5'>Precio:</h3>
+
+                            <h3 className='fw-light fs-5 m-0 align-middle'>Precio:</h3>
 
                             <Form.Control type="number" value={precioMin} onChange={handlePrecioMinChange} className='w-auto fw-light fs-5' />
                             <span className="fw-light fs-5 m-0">-</span>
                             <Form.Control type="number" value={precioMax} onChange={handlePrecioMaxChange} className='w-auto fw-light fs-5' />
+
+                            <vr />
+
                             <Form.Select aria-label="Default select example" className={showOrder ? 'w-100 fw-light fs-5' : 'w-25 fw-light fs-5'}>
 
                                 <option className='fw-light' value="1">Más vendidos</option>
@@ -125,13 +141,58 @@ function All() {
 
                 <Row className="justify-content-center">
                     <Col>
+                        <div className=' mb-3 fw-normal fs-5 d-none d-xl-block d-lg-block d-xl-block'>
+                            <img
+                                alt=""
+                                src="icons/filter.svg"
+                                width="40"
+                                height="30"
+                                className="d-inline-block align-top"
+                            />
+                            Filtrar por:
+
+                        </div>
+
+
 
                         <Offcanvas show={showFilter} onHide={handleCloseFilter} responsive="lg">
                             <Offcanvas.Header closeButton>
-                                <Offcanvas.Title className="d-lg-none">Filtrar</Offcanvas.Title>
+                                <Offcanvas.Title className="d-lg-none">Filtrar productos:</Offcanvas.Title>
+
                             </Offcanvas.Header>
-                            <Offcanvas.Body>
+
+                            <Offcanvas.Body className='d-grid'>
+
+                                <ListGroup className='mb-4'>
+                                    <h4 className='fw-light fs-5'>Categorías</h4>
+                                    <ListGroup.Item className='fs-5 fw-light'>
+                                        <Form.Check
+                                            type='checkbox'
+                                            label='Filtro product 1'
+                                        />
+                                    </ListGroup.Item>
+                                    <ListGroup.Item className='fs-5 fw-light'>
+                                        <Form.Check
+                                            type='checkbox'
+                                            label='Filtro product 2'
+                                        />
+                                    </ListGroup.Item>
+                                    <ListGroup.Item className='fs-5 fw-light'>
+                                        <Form.Check
+                                            type='checkbox'
+                                            label='Filtro product 3'
+                                        />
+                                    </ListGroup.Item>
+                                    <ListGroup.Item className='fs-5 fw-light'>
+                                        <Form.Check
+                                            type='checkbox'
+                                            label='Filtro product 4'
+                                        />
+                                    </ListGroup.Item>
+                                </ListGroup>
+
                                 <ListGroup>
+                                    <h4 className='fw-light fs-5'>Subcategorías</h4>
                                     <ListGroup.Item className='fs-5 fw-light'>
                                         <Form.Check
                                             type='checkbox'
@@ -162,11 +223,11 @@ function All() {
                     </Col>
                     <Col lg={10}>
 
-                        {loading && <Row className="justify-content-center">
+                        {loading && <Row className="d-flex justify-content-center">
                             {[1, 2, 3, 4].map((index) => (
                                 <Col className='d-flex px-2 mb-4' xs={12} sm={6} md={4} lg={3} key={index}>
-                                    <Card style={{ width: '18rem' }}>
-                                        <Card.Img variant="top" src={`images/holders/${index}.png`} />
+                                    <Card style={{ width: '28rem' }}>
+                                        <Card.Img style={{ height: '200px', objectFit: 'cover' }} variant="top" src={`images/holders/${index}.png`} />
                                         <Card.Body>
                                             <Placeholder as={Card.Title} animation="glow">
                                                 <Placeholder xs={6} />
