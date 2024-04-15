@@ -25,10 +25,10 @@ function CarouserCards({ productos, loading }) {
     };
 
     return (
-        <div>
-            <Carousel interval={null} responsive={responsive} indicators={false} nextIcon={<Button className='rounded-pill'><img src="icons/next.svg" alt="" /></Button>} prevIcon={<Button className='rounded-pill'><img src="icons/prev.svg" alt="" /></Button>}>
+        <div className='d-flex justify-content-center'>
+            <Carousel className='w-75' interval={null} responsive={responsive} indicators={false} nextIcon={<Button className='rounded-pill'><img src="icons/next.svg" alt="" /></Button>} prevIcon={<Button className='rounded-pill'><img src="icons/prev.svg" alt="" /></Button>}>
 
-                {loading && <Carousel.Item key={0} className=' d-flex justify-content-center gap-4 px-4'>
+                {loading && <Carousel.Item key={0} className='d-flex justify-content-center gap-4 px-4 '>
                     {[1, 2, 3, 4].map((index) => (
 
                         <Card style={{ width: '18rem' }}>
@@ -47,8 +47,6 @@ function CarouserCards({ productos, loading }) {
 
                     ))}
                 </Carousel.Item>}
-
-
 
                 {groupProductos(productos, responsive.items).map((group, index) => (
                     <Carousel.Item key={index}>

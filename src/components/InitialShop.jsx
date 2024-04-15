@@ -11,7 +11,6 @@ function InitialShop() {
                     <img
                         alt=""
                         src="icons/logo.svg"
-                        className=""
                         width={'10svw'}
                     />
 

@@ -21,7 +21,7 @@ function Variantes({ colors }) {
             <Container fluid className='d-flex flex-wrap justify-content-start gap-2 mb-4 p-0'>
                 {/* Mapear los colores y crear botones */}
                 {colors && colors.map((variante, index) => (
-                    <Button key={index} className='rounded-pill border-primary border-0 p-1' style={{ backgroundColor: variante.hex_value, height: '1svw', width: '1svw' }} onClick={() => handleVariant(variante.colour_name)}></Button>
+                    <Button key={index} className='rounded-pill border-primary border-0 p-1' style={{ backgroundColor: variante.hex_value, height: '1rem', width: '1rem' }} onClick={() => handleVariant(variante.colour_name)}></Button>
                 ))}
             </Container>
         </Container>

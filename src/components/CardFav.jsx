@@ -10,7 +10,7 @@ function CardFav({ id, name, price, stars, img, stock, colors, type }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <Card className={isHovered ? 'card h100 border-1' : 'card h100 border-0'} style={{ width: '28rem' }}>
+    <Card className={isHovered ? 'card h100 border-1' : 'card h100 border-0'} style={{ width: '18rem' }}>
       <div className='position-relative' onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
         <Fade in={isHovered} appear>
           <Card.Img variant="top" src={img} style={{ opacity: isHovered ? 0.2 : 1, height: '200px', objectFit: 'cover' }} />

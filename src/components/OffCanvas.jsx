@@ -47,9 +47,9 @@ function OffCanvas() {
                                 </Container>
                             </Accordion.Body>
                         </Accordion.Item>
-                        <Accordion.Item>
-                            <Accordion.Header><p className='m-0 fs-5 fw-light'>Accesorios</p>
-                            </Accordion.Header>
+                        <Accordion.Item className='m-3'>
+                            <a href='#' className='fs-5 fw-light' style={{textDecoration: 'none'}}>Accesorios</a>
+                        
                         </Accordion.Item>
                     </Accordion>
                 </Offcanvas.Body>

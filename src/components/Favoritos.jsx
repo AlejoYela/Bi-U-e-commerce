@@ -24,14 +24,14 @@ function Favoritos() {
 
   // Definir la configuración de responsive para el carrusel
   const responsive = {
-    desktop: "10svw 15svw 10svw 15svw",
+    desktop: "3svw auto 3svw auto",
     mobile: "10svw 5svw 10svw 5svw"
   };
 
   return (
     <div style={{ margin: width >= 1289 ? responsive.desktop : responsive.mobile }} id='Favoritos'>
       <div className='text-center mb-5'>
-        <h2 className='text-primary fw-normal'>F A V O R I T O S</h2>
+        <h2 className='text-primary fw-light'>F A V O R I T O S</h2>
         <h3 className='text-primary fs-4 fw-light'>¡Los productos más populares!</h3>
       </div>
       <CarouserCards productos={productosFav} loading={loading} />

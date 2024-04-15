@@ -29,7 +29,7 @@ function Producto() {
     return (
         <Container>
             <Row className='gap-5 p-5'>
-                <Col><Image src={producto.api_featured_image} className='w-100 border border-1 border-primary' rounded /></Col>
+                <Col xs={12} sm={12} md={12} lg={5} xl={5}><Image src={producto.api_featured_image} className='w-100 border border-1 border-primary img-fluid' rounded /></Col>
                 <Col >
                     <Container>
                         <h2 className='fs-4 fw-normal text-uppercase mb-3'>{producto.name}</h2>
