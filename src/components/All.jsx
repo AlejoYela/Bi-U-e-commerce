@@ -1,20 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Button, Offcanvas, Form, ListGroup, Placeholder, Card } from 'react-bootstrap';
+import { Container, Row, Col, Button, Offcanvas, Form, Placeholder, Card } from 'react-bootstrap';
 import axios from 'axios';
 import CardFav from './CardFav';
+import Filters from './Filters';
 
 function All() {
     const [producto, setProducto] = useState([]);
     const [cardsToShow, setCardsToShow] = useState(12);
-    const [loadMore, setLoadMore] = useState(false);
-    const [showFilter, setShowFilter] = useState(false);
     const [showOrder, setShowOrder] = useState(false);
-    const [precioMin, setPrecioMin] = useState(0);
-    const [precioMax, setPrecioMax] = useState(500000);
     const [loading, setLoading] = useState(true);
 
-    const handleCloseFilter = () => setShowFilter(false);
-    const handleShowFilter = () => setShowFilter(true);
+    const [filters, setFilters] = useState({
+        category: 'all',
+        minPrice: 0,
+        maxPrice: 100
+    });
+
+    const filteredProducts = (products) => {
+        return products.filter(product => {
+            return (
+                product.price >= filters.minPrice && product.price <= filters.maxPrice &&
+                (
+                    filters.category === 'all' ||
+                    product.category === filters.category
+                )
+            );
+        });
+    };
 
     const handleCloseOrder = () => setShowOrder(false);
     const handleShowOrder = () => setShowOrder(true);
@@ -24,14 +36,22 @@ function All() {
             .then(({ data }) => {
                 setProducto(data);
                 setLoading(false)
-                setLoadMore(true)
             })
             .catch((error) => {
+                console.log('Error en importación de datos desde la API');
                 console.error(error);
                 setLoading(true)
-                setLoadMore(false)
             });
     }, []);
+
+    const categories = []
+
+    producto.forEach(element => {
+        if (element.category && !categories.includes(element.category)) {
+            categories.push(element.category);
+        }
+    });
+
 
     const handleLoadMore = () => {
         setCardsToShow(prevCards => prevCards + 12);
@@ -39,22 +59,28 @@ function All() {
 
     const handlePrecioMinChange = (event) => {
         const value = parseInt(event.target.value);
-        setPrecioMin(value);
+        setFilters({
+            ...filters,
+            minPrice: value
+        })
     };
 
     const handlePrecioMaxChange = (event) => {
         const value = parseInt(event.target.value);
-        setPrecioMax(value);
+        setFilters({
+            ...filters,
+            maxPrice: value
+        })
     };
+
+
+
+    const filteredProduct = filteredProducts(producto)
 
     return (
         <>
             <Container fluid='md'>
                 <h2 className='text-center my-5 text-uppercase fw-light fs-3'>Todos los productos</h2>
-
-
-
-
 
                 <div className='d-flex gap-3 text-center justify-content-center mb-4 bg-secondary py-2 px-0'>
                     <p className='m-0 p-0 fw-light fs-5'>Maquillaje</p>
@@ -83,29 +109,24 @@ function All() {
                         <img src='icons/search-vine.svg' alt="Buscar" />
                     </Button>
                 </Form>
-                <div className='d-flex gap-4'>
-                    <Button variant="outline-primary mb-3" className="d-lg-none" onClick={handleShowFilter}>
-                        <img src="/icons/filter.svg" alt="Filtrar" />
-                    </Button>
 
                     <Button variant="outline-primary mb-3" className="d-lg-none" onClick={handleShowOrder}>
                         <img src="/icons/order.svg" alt="Filtrar" />
                     </Button>
-                </div>
 
                 <Offcanvas show={showOrder} responsive="lg" onHide={handleCloseOrder}>
                     <Offcanvas.Header closeButton>
                         <Offcanvas.Title>Ordenar por:</Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Body>
-                        <Container className={showOrder ? 'd-grid gap-4 mb-4 align-items-center px-0' : 'd-flex justify-content-end gap-4 mb-4 align-items-center px-0'}>
+                        {!loading && <Container className={showOrder ? 'd-grid gap-4 mb-4 align-items-center px-0' : 'd-flex justify-content-end gap-4 mb-4 align-items-center px-0'}>
 
 
                             <h3 className='fw-light fs-5 m-0 align-middle'>Precio:</h3>
 
-                            <Form.Control type="number" value={precioMin} onChange={handlePrecioMinChange} className='w-auto fw-light fs-5' />
+                            <Form.Control type="number" value={filters.minPrice} onChange={handlePrecioMinChange} className='w-auto fw-light fs-5' />
                             <span className="fw-light fs-5 m-0">-</span>
-                            <Form.Control type="number" value={precioMax} onChange={handlePrecioMaxChange} className='w-auto fw-light fs-5' />
+                            <Form.Control type="number" value={filters.maxPrice} onChange={handlePrecioMaxChange} className='w-auto fw-light fs-5' />
 
                             <vr />
 
@@ -121,7 +142,7 @@ function All() {
                                 <option className='fw-light' value="8">Fecha: reciente a antiguo</option>
                             </Form.Select>
 
-                        </Container>
+                        </Container>}
 
                         {showOrder && <Button variant='outline-primary' className='fw-light fs-4' onClick={handleCloseOrder}>Aplicar</Button>}
 
@@ -131,85 +152,9 @@ function All() {
 
                 <Row className="justify-content-center">
                     <Col>
-                        <div className=' mb-3 fw-normal fs-5 d-none d-xl-block d-lg-block d-xl-block'>
-                            <img
-                                alt=""
-                                src="icons/filter.svg"
-                                width="40"
-                                height="30"
-                                className="d-inline-block align-top"
-                            />
-                            Filtrar por:
 
-                        </div>
+                        <Filters productos={producto} filters={filters} setFilters={setFilters} />
 
-
-
-                        <Offcanvas show={showFilter} onHide={handleCloseFilter} responsive="lg">
-                            <Offcanvas.Header closeButton>
-                                <Offcanvas.Title className="d-lg-none">Filtrar productos:</Offcanvas.Title>
-
-                            </Offcanvas.Header>
-
-                            <Offcanvas.Body className='d-grid'>
-
-                                <ListGroup className='mb-4'>
-                                    <h4 className='fw-light fs-5'>Categorías</h4>
-                                    <ListGroup.Item className='fs-5 fw-light'>
-                                        <Form.Check
-                                            type='checkbox'
-                                            label='Filtro product 1'
-                                        />
-                                    </ListGroup.Item>
-                                    <ListGroup.Item className='fs-5 fw-light'>
-                                        <Form.Check
-                                            type='checkbox'
-                                            label='Filtro product 2'
-                                        />
-                                    </ListGroup.Item>
-                                    <ListGroup.Item className='fs-5 fw-light'>
-                                        <Form.Check
-                                            type='checkbox'
-                                            label='Filtro product 3'
-                                        />
-                                    </ListGroup.Item>
-                                    <ListGroup.Item className='fs-5 fw-light'>
-                                        <Form.Check
-                                            type='checkbox'
-                                            label='Filtro product 4'
-                                        />
-                                    </ListGroup.Item>
-                                </ListGroup>
-
-                                <ListGroup>
-                                    <h4 className='fw-light fs-5'>Subcategorías</h4>
-                                    <ListGroup.Item className='fs-5 fw-light'>
-                                        <Form.Check
-                                            type='checkbox'
-                                            label='Filtro product 1'
-                                        />
-                                    </ListGroup.Item>
-                                    <ListGroup.Item className='fs-5 fw-light'>
-                                        <Form.Check
-                                            type='checkbox'
-                                            label='Filtro product 2'
-                                        />
-                                    </ListGroup.Item>
-                                    <ListGroup.Item className='fs-5 fw-light'>
-                                        <Form.Check
-                                            type='checkbox'
-                                            label='Filtro product 3'
-                                        />
-                                    </ListGroup.Item>
-                                    <ListGroup.Item className='fs-5 fw-light'>
-                                        <Form.Check
-                                            type='checkbox'
-                                            label='Filtro product 4'
-                                        />
-                                    </ListGroup.Item>
-                                </ListGroup>
-                            </Offcanvas.Body>
-                        </Offcanvas>
                     </Col>
                     <Col lg={10}>
 
@@ -233,8 +178,7 @@ function All() {
                             ))}
                         </Row>}
                         <Row className="d-flex justify-content-center">
-                            {producto
-                                .filter(producto => (producto.price * 3770) >= precioMin && (producto.price * 3770) <= precioMax)
+                            {filteredProduct
                                 .slice(0, cardsToShow)
                                 .map((producto) => (
                                     <Col className='d-flex px-2 mb-4 justify-content-center' xs={12} sm={6} md={4} lg={3} key={producto.id}>
@@ -251,13 +195,13 @@ function All() {
                                     </Col>
                                 ))}
                         </Row>
-                        {loadMore && (
-                            <div className="text-center mt-4">
-                                <Button className='fw-light fs-4 mb-5' variant="outline-primary" onClick={handleLoadMore}>
-                                    Mostrar más
-                                </Button>
-                            </div>
-                        )}
+
+                        <div className="text-center mt-4">
+                            <Button className='fw-light fs-4 mb-5' variant="outline-primary" onClick={handleLoadMore}>
+                                Mostrar más
+                            </Button>
+                        </div>
+
                     </Col>
                 </Row>
             </Container>

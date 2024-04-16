@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 
 function CardFav({ id, name, price, stars, img, stock, colors, type }) {
 
-  const pesosConversion = `${new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'COP' }).format((price * 3770))}`;
-
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -15,7 +13,7 @@ function CardFav({ id, name, price, stars, img, stock, colors, type }) {
         <Fade in={isHovered} appear>
           <Card.Img variant="top" src={img} style={{ opacity: isHovered ? 0.2 : 1, height: '200px', objectFit: 'cover' }} />
         </Fade>
-        <ModalQuick id={id} state={isHovered} name={name} price={pesosConversion} img={img} stock={stock} colors={colors} type={type} />
+        <ModalQuick id={id} state={isHovered} name={name} price={price} img={img} stock={stock} colors={colors} type={type} />
       </div>
 
       <Card.Body>
@@ -28,7 +26,7 @@ function CardFav({ id, name, price, stars, img, stock, colors, type }) {
           </Badge>
         </p>
         <Card.Text className='fw-light text-primary fs-5'>
-          {pesosConversion}
+          $ {price}
         </Card.Text>
       </Card.Body>
       <Card.Footer className='bg-transparent border-0'>

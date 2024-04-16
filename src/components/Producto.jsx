@@ -24,8 +24,6 @@ function Producto() {
             });
     }, []);
 
-    const pesosConversion = `${new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'COP' }).format((producto.price * 3770))}`;
-
     return (
         <Container>
             <Row className='gap-5 p-5'>
@@ -38,7 +36,7 @@ function Producto() {
                                 <img alt="" src="/icons/star.svg" width="17" height="17" className="d-inline-block align-top" /> {producto.rating ? producto.rating : "Sin calificaciones"}
                             </Badge>
                         </p>
-                        <p className='fs-4 fw-light'>{pesosConversion}</p>
+                        <p className='fs-4 fw-light'>{producto.price}</p>
 
                         <Variantes colors={producto.product_colors} />
 

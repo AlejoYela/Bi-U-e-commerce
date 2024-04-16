@@ -42,7 +42,7 @@ function ModalQuick({ id, state, name, img, price, stock, colors, type }) {
                         <Col>
                             <Container width='250svw'>
                                 <h2 className='fs-5 fw-light' >{name.toUpperCase()}</h2>
-                                <p >{price}</p>
+                                <p >$ {price}</p>
                                 <hr />
                                 <Variantes colors={colors} />
                                 {stock ? (

@@ -4,7 +4,7 @@ import useScreenSize from '../hooks/useScreenSize';
 
 
 function CarouserCards({ productos, loading }) {
-    console.log('STATE LOADING: ' + loading)
+
     const { width } = useScreenSize();
 
     // Helper function to group productos based on responsive breakpoints
