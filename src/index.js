@@ -4,11 +4,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './App.scss';
 import { BrowserRouter } from 'react-router-dom';
+import { FiltersProvider } from './context/Filters.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <App />
+    <FiltersProvider>
+      <App />
+    </FiltersProvider>
   </BrowserRouter>
 );
 

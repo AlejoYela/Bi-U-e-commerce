@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Offcanvas, Form, Placeholder, Card } from 'react-bootstrap';
 import axios from 'axios';
 import CardFav from './CardFav';
-import Filters from './Filters';
+import Filters from './FilterCategory';
+import { useFilters } from '../hooks/useFilters';
+
 
 function All() {
     const [producto, setProducto] = useState([]);
@@ -10,23 +12,7 @@ function All() {
     const [showOrder, setShowOrder] = useState(false);
     const [loading, setLoading] = useState(true);
 
-    const [filters, setFilters] = useState({
-        category: 'all',
-        minPrice: 0,
-        maxPrice: 100
-    });
-
-    const filteredProducts = (products) => {
-        return products.filter(product => {
-            return (
-                product.price >= filters.minPrice && product.price <= filters.maxPrice &&
-                (
-                    filters.category === 'all' ||
-                    product.category === filters.category
-                )
-            );
-        });
-    };
+    const {filters, filteredProducts, setFilters} = useFilters()
 
     const handleCloseOrder = () => setShowOrder(false);
     const handleShowOrder = () => setShowOrder(true);
@@ -110,9 +96,9 @@ function All() {
                     </Button>
                 </Form>
 
-                    <Button variant="outline-primary mb-3" className="d-lg-none" onClick={handleShowOrder}>
-                        <img src="/icons/order.svg" alt="Filtrar" />
-                    </Button>
+                <Button variant="outline-primary mb-3" className="d-lg-none" onClick={handleShowOrder}>
+                    <img src="/icons/order.svg" alt="Filtrar" />
+                </Button>
 
                 <Offcanvas show={showOrder} responsive="lg" onHide={handleCloseOrder}>
                     <Offcanvas.Header closeButton>
@@ -153,7 +139,7 @@ function All() {
                 <Row className="justify-content-center">
                     <Col>
 
-                        <Filters productos={producto} filters={filters} setFilters={setFilters} />
+                        <Filters productos={producto} filters={filters} setFilters={setFilters} loading={loading} />
 
                     </Col>
                     <Col lg={10}>

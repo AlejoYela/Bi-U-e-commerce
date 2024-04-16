@@ -1,8 +1,7 @@
-import { ListGroup, Form, Button, Offcanvas } from "react-bootstrap";
+import { ListGroup, Form, Button, Offcanvas, Placeholder, Spinner } from "react-bootstrap";
 import { useState } from "react";
 
-
-function Filters({ productos, filters, setFilters }) {
+function Filters({ productos, filters, setFilters, loading }) {
 
     const categories = []
 
@@ -40,10 +39,10 @@ function Filters({ productos, filters, setFilters }) {
                     height="30"
                     className="d-inline-block align-top"
                 />
-                Filtrar por:
+                {loading ? 'Cargando filtros' : 'Filtrar por:'}
 
             </div>
-            
+
             <Button variant="outline-primary mb-3" className="d-lg-none" onClick={handleShowFilter}>
                 <img src="/icons/filter.svg" alt="Filtrar" />
             </Button>
@@ -55,7 +54,17 @@ function Filters({ productos, filters, setFilters }) {
                 </Offcanvas.Header>
                 <Offcanvas.Body className='d-grid'>
                     <ListGroup className='mb-4'>
-                        <h4 className='fw-light fs-5 mb-3'>Categorías</h4>
+                        {!loading && <h4 className='fw-light fs-5 mb-3'>Categorías</h4>}
+
+                        {loading && [1, 2, 3, 4, 5].map(() => (
+                            <ListGroup.Item className='fs-5 fw-light'>
+                                <Placeholder as={Form.Check} animation="glow">
+                                    <Spinner animation="grow" size="sm" />
+                                </Placeholder>
+                            </ListGroup.Item>
+                        ))}
+
+
                         {categories.map((category) => (
                             <ListGroup.Item className='fs-5 fw-light'>
                                 <Form.Check
