@@ -4,6 +4,22 @@ import { FiltersContext } from "../context/Filters";
 export function useFilters (){
     const [filters, setFilters] = useContext(FiltersContext)
 
+    const handlePrecioMinChange = (event) => {
+        const value = parseInt(event.target.value);
+        setFilters({
+            ...filters,
+            minPrice: value
+        })
+    };
+
+    const handlePrecioMaxChange = (event) => {
+        const value = parseInt(event.target.value);
+        setFilters({
+            ...filters,
+            maxPrice: value
+        })
+    };
+
     const filteredProducts = (products) => {
         return products.filter(product => {
             return (
@@ -16,5 +32,5 @@ export function useFilters (){
         });
     };
 
-    return {filters, filteredProducts, setFilters}
+    return {filters, filteredProducts, setFilters, handlePrecioMaxChange, handlePrecioMinChange}
 }

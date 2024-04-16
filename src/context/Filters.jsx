@@ -12,8 +12,6 @@ export function FiltersProvider({ children }) {
         maxPrice: 100
     })
 
-    
-
     return (
         <FiltersContext.Provider value={[
             filters, 

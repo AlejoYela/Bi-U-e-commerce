@@ -12,7 +12,7 @@ function All() {
     const [showOrder, setShowOrder] = useState(false);
     const [loading, setLoading] = useState(true);
 
-    const {filters, filteredProducts, setFilters} = useFilters()
+    const {filters, filteredProducts, setFilters, handlePrecioMaxChange, handlePrecioMinChange} = useFilters()
 
     const handleCloseOrder = () => setShowOrder(false);
     const handleShowOrder = () => setShowOrder(true);
@@ -42,24 +42,6 @@ function All() {
     const handleLoadMore = () => {
         setCardsToShow(prevCards => prevCards + 12);
     };
-
-    const handlePrecioMinChange = (event) => {
-        const value = parseInt(event.target.value);
-        setFilters({
-            ...filters,
-            minPrice: value
-        })
-    };
-
-    const handlePrecioMaxChange = (event) => {
-        const value = parseInt(event.target.value);
-        setFilters({
-            ...filters,
-            maxPrice: value
-        })
-    };
-
-
 
     const filteredProduct = filteredProducts(producto)
 
