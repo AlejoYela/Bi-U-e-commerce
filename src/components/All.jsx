@@ -99,16 +99,6 @@ function All() {
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                         <Container className={showOrder ? 'd-grid gap-4 mb-4 align-items-center px-0' : 'd-flex justify-content-end gap-4 mb-4 align-items-center px-0'}>
-                            <div className='fw-normal fs-5 d-none d-xl-block d-lg-block d-xl-block'>
-                                <img
-                                    alt=""
-                                    src="icons/order.svg"
-                                    width="40"
-                                    height="30"
-                                    className="d-inline-block align-top"
-                                />
-                                Ordenar por:
-                            </div>
 
 
                             <h3 className='fw-light fs-5 m-0 align-middle'>Precio:</h3>
@@ -225,8 +215,8 @@ function All() {
 
                         {loading && <Row className="d-flex justify-content-center">
                             {[1, 2, 3, 4].map((index) => (
-                                <Col className='d-flex px-2 mb-4' xs={12} sm={6} md={4} lg={3} key={index}>
-                                    <Card style={{ width: '28rem' }}>
+                                <Col className='d-flex px-2 mb-4 justify-content-center' xs={12} sm={6} md={4} lg={3} key={index}>
+                                    <Card style={{ width: '18rem' }}>
                                         <Card.Img style={{ height: '200px', objectFit: 'cover' }} variant="top" src={`images/holders/${index}.png`} />
                                         <Card.Body>
                                             <Placeholder as={Card.Title} animation="glow">
@@ -242,12 +232,12 @@ function All() {
                                 </Col>
                             ))}
                         </Row>}
-                        <Row>
+                        <Row className="d-flex justify-content-center">
                             {producto
                                 .filter(producto => (producto.price * 3770) >= precioMin && (producto.price * 3770) <= precioMax)
                                 .slice(0, cardsToShow)
                                 .map((producto) => (
-                                    <Col className='d-flex px-2 mb-4' xs={12} sm={6} md={4} lg={3} key={producto.id}>
+                                    <Col className='d-flex px-2 mb-4 justify-content-center' xs={12} sm={6} md={4} lg={3} key={producto.id}>
                                         <CardFav
                                             id={producto.id}
                                             name={producto.name}
