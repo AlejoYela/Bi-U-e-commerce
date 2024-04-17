@@ -1,16 +1,12 @@
 import React from 'react';
 import Buscador from './Buscador';
 import OffCanvas from './OffCanvas';
-import renderTooltip from '../hooks/renderTooltip.js';
+import { renderTooltip, tooltipText } from '../hooks/renderTooltip.js';
 import { Container, Navbar, Nav, Button, Badge, OverlayTrigger } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Cart from './Cart.jsx';
 
 function Navegador() {
-    const tooltipText = {
-        user: 'Usuario',
-        cart: 'Bolsa',
-        fav: 'Favoritos'
-    };
 
     return (
         <Navbar expand="lg" className="bluring bg-secondary px-4 sticky-top bg-opacity-50">
@@ -53,15 +49,9 @@ function Navegador() {
                                 <a href="#"><img src='icons/fav.svg' alt="Favoritos" /><Badge bg="primary">0</Badge></a>
                             </Button>
                         </OverlayTrigger>
-                        <OverlayTrigger
-                            placement="bottom"
-                            delay={{ show: 100, hide: 100 }}
-                            overlay={renderTooltip(tooltipText, 'cart')}
-                        >
-                            <Button className="boton" variant="outline-primary border-0 bg-transparent">
-                                <a href="#"><img src='icons/cart.svg' alt="Carrito" /><Badge bg="primary">0</Badge></a>
-                            </Button>
-                        </OverlayTrigger>
+
+                        <Cart />
+
                         <Buscador />
                     </Nav>
                 </Navbar.Collapse>

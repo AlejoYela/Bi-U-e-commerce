@@ -1,11 +1,15 @@
 import {Tooltip} from 'react-bootstrap'
 
+export const tooltipText = {
+    user: 'Usuario',
+    cart: 'Bolsa',
+    fav: 'Favoritos',
+    search: 'Buscar'
+};
 
-const renderTooltip = (tooltipText, props) => (
+export const renderTooltip = (tooltipText, props) => (
 
     <Tooltip id="button-tooltip" {...props}>
         {tooltipText[props]}
     </Tooltip>
 );
-
-export default renderTooltip;

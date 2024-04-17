@@ -53,7 +53,7 @@ function CarouserCards({ productos, loading }) {
                         <div className="d-flex justify-content-center gap-4 px-4">
                             {group.map((product) => (
 
-                                <CardFav key={index} id={product.id} name={product.name} price={product.price} stars={product.rating} img={product.api_featured_image} stock={true} colors={product.product_colors} description={product.description} type={product.product_type} />
+                                <CardFav key={index} product={product} />
                             ))}
                         </div>
                     </Carousel.Item>

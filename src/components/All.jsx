@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Button, Offcanvas, Form, Placeholder, Card } from 'react-bootstrap';
+import { Container, Row, Col, Button, Form, Placeholder, Card } from 'react-bootstrap';
 import axios from 'axios';
 import CardFav from './CardFav';
-import Filters from './FilterCategory';
+import FilterCategory from './FilterCategory';
+import FilterPrice from './FilterPrice';
 import { useFilters } from '../hooks/useFilters';
-
 
 function All() {
     const [producto, setProducto] = useState([]);
     const [cardsToShow, setCardsToShow] = useState(12);
-    const [showOrder, setShowOrder] = useState(false);
     const [loading, setLoading] = useState(true);
 
-    const {filters, filteredProducts, setFilters, handlePrecioMaxChange, handlePrecioMinChange} = useFilters()
-
-    const handleCloseOrder = () => setShowOrder(false);
-    const handleShowOrder = () => setShowOrder(true);
+    const {filteredProducts} = useFilters()
 
     useEffect(() => {
         axios.get(`http://makeup-api.herokuapp.com/api/v1/products.json`)
@@ -29,15 +25,7 @@ function All() {
                 setLoading(true)
             });
     }, []);
-
-    const categories = []
-
-    producto.forEach(element => {
-        if (element.category && !categories.includes(element.category)) {
-            categories.push(element.category);
-        }
-    });
-
+    
 
     const handleLoadMore = () => {
         setCardsToShow(prevCards => prevCards + 12);
@@ -78,50 +66,12 @@ function All() {
                     </Button>
                 </Form>
 
-                <Button variant="outline-primary mb-3" className="d-lg-none" onClick={handleShowOrder}>
-                    <img src="/icons/order.svg" alt="Filtrar" />
-                </Button>
-
-                <Offcanvas show={showOrder} responsive="lg" onHide={handleCloseOrder}>
-                    <Offcanvas.Header closeButton>
-                        <Offcanvas.Title>Ordenar por:</Offcanvas.Title>
-                    </Offcanvas.Header>
-                    <Offcanvas.Body>
-                        {!loading && <Container className={showOrder ? 'd-grid gap-4 mb-4 align-items-center px-0' : 'd-flex justify-content-end gap-4 mb-4 align-items-center px-0'}>
-
-
-                            <h3 className='fw-light fs-5 m-0 align-middle'>Precio:</h3>
-
-                            <Form.Control type="number" value={filters.minPrice} onChange={handlePrecioMinChange} className='w-auto fw-light fs-5' />
-                            <span className="fw-light fs-5 m-0">-</span>
-                            <Form.Control type="number" value={filters.maxPrice} onChange={handlePrecioMaxChange} className='w-auto fw-light fs-5' />
-
-                            <vr />
-
-                            <Form.Select aria-label="Default select example" className={showOrder ? 'w-100 fw-light fs-5' : 'w-25 fw-light fs-5'}>
-
-                                <option className='fw-light' value="1">Más vendidos</option>
-                                <option className='fw-light' value="2">Características</option>
-                                <option className='fw-light' value="3">Alfabéticamente: A-Z</option>
-                                <option className='fw-light' value="4">Alfabéticamente: Z-A</option>
-                                <option className='fw-light' value="5">Precio: menor a mayor</option>
-                                <option className='fw-light' value="6">Precio: mayor a menor</option>
-                                <option className='fw-light' value="7">Fecha: antiguo a reciente</option>
-                                <option className='fw-light' value="8">Fecha: reciente a antiguo</option>
-                            </Form.Select>
-
-                        </Container>}
-
-                        {showOrder && <Button variant='outline-primary' className='fw-light fs-4' onClick={handleCloseOrder}>Aplicar</Button>}
-
-                    </Offcanvas.Body>
-
-                </Offcanvas>
+                <FilterPrice loading={loading}/>
 
                 <Row className="justify-content-center">
                     <Col>
 
-                        <Filters productos={producto} filters={filters} setFilters={setFilters} loading={loading} />
+                        <FilterCategory productos={producto} loading={loading} />
 
                     </Col>
                     <Col lg={10}>
@@ -151,14 +101,7 @@ function All() {
                                 .map((producto) => (
                                     <Col className='d-flex px-2 mb-4 justify-content-center' xs={12} sm={6} md={4} lg={3} key={producto.id}>
                                         <CardFav
-                                            id={producto.id}
-                                            name={producto.name}
-                                            price={producto.price}
-                                            stars={producto.rating}
-                                            img={producto.api_featured_image}
-                                            stock={producto.stock}
-                                            colors={producto.product_colors}
-                                            type={producto.product_type}
+                                            product={producto}
                                         />
                                     </Col>
                                 ))}

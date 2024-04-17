@@ -3,14 +3,14 @@ import InitialShop from './InitialShop';
 import Favoritos from './Favoritos';
 import ProductoEstrella from './ProductoEstrella';
 import VeganSection from './VeganSection';
-import Initial from './Initial';
+import Hero from './Hero';
 
 
 
 function Landing() {
     return (<div>
         {/* <InitialShop/> */}
-        <Initial/>
+        <Hero/>
         <Favoritos/>
         <ProductoEstrella />
         <VeganSection />

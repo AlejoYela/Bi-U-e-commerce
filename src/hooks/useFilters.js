@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { FiltersContext } from "../context/Filters";
 
-export function useFilters (){
+export function useFilters() {
     const [filters, setFilters] = useContext(FiltersContext)
 
     const handlePrecioMinChange = (event) => {
@@ -20,6 +20,19 @@ export function useFilters (){
         })
     };
 
+    const handleCategoryFilter = (event) => {
+        const { checked } = event.target;
+        const category = event.target.getAttribute('data-category');
+
+        setFilters(prevFilters => {
+            if (checked) {
+                return { ...prevFilters, category };
+            } else {
+                return prevFilters.category === category ? { ...prevFilters, category: 'all' } : prevFilters;
+            }
+        });
+    }
+
     const filteredProducts = (products) => {
         return products.filter(product => {
             return (
@@ -32,5 +45,5 @@ export function useFilters (){
         });
     };
 
-    return {filters, filteredProducts, setFilters, handlePrecioMaxChange, handlePrecioMinChange}
+    return { filters, filteredProducts, setFilters, handlePrecioMaxChange, handlePrecioMinChange, handleCategoryFilter }
 }

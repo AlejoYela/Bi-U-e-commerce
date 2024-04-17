@@ -5,6 +5,7 @@ import Navegador from './components/Navegador.jsx';
 import Footer from './components/Footer.jsx';
 import Producto from './components/Producto.jsx';
 import All from './components/All.jsx';
+import Cart from './components/Cart.jsx';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path='/' element={<Landing />} />
         <Route path='/producto/:product_type/:id' element={<Producto />} />
         <Route path='/productos' element={<All/>} />
+        
       </Routes>
 
       <Footer />
