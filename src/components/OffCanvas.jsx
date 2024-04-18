@@ -12,7 +12,7 @@ function OffCanvas() {
         <div>
             <Nav.Link className='text-primary fs-5 fw-light' href="#action2" onClick={handleShow}>Categorías</Nav.Link >
 
-            <Offcanvas show={show} onHide={handleClose} backdrop={false} placement="start"> {/* Añade opciones de configuración */}
+            <Offcanvas show={show} onHide={handleClose} placement="start"> {/* Añade opciones de configuración */}
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title className='fw-light fs-2'>Categorías</Offcanvas.Title>
                 </Offcanvas.Header>
@@ -48,8 +48,8 @@ function OffCanvas() {
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item className='m-3'>
-                            <a href='#' className='fs-5 fw-light' style={{textDecoration: 'none'}}>Accesorios</a>
-                        
+                            <a href='#' className='fs-5 fw-light' style={{ textDecoration: 'none' }}>Accesorios</a>
+
                         </Accordion.Item>
                     </Accordion>
                 </Offcanvas.Body>

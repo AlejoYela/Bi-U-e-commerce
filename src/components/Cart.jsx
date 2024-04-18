@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Button, Offcanvas, Badge, OverlayTrigger, ListGroup, Image } from "react-bootstrap";
-import { renderTooltip, tooltipText } from '../hooks/renderTooltip.js';
+import { Button, Offcanvas, Badge, ListGroup, Image, ButtonGroup, ButtonToolbar } from "react-bootstrap";
 import { useCart } from "../hooks/useCart.js";
 
 
@@ -11,47 +10,56 @@ function Cart() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const { cart, clearCart, addToCart } = useCart()
+    const { cart, clearCart, addToCart, removeFromCart } = useCart()
 
     return (
-        <OverlayTrigger
-            placement="bottom"
-            delay={{ show: 100, hide: 100 }}
-            overlay={renderTooltip(tooltipText, 'cart')}>
-            <div>
+        <div>
 
-                <Button className="boton" variant="outline-primary border-0 bg-transparent" onClick={handleShow}>
-                    <a href="#"><img src='icons/cart.svg' alt="Carrito" /><Badge bg="primary">0</Badge></a>
+            <Button className="boton" variant="outline-primary border-0 bg-transparent" onClick={handleShow}>
+                <a href="#"><img src='icons/cart.svg' alt="Carrito" /><Badge bg="primary">0</Badge></a>
+            </Button>
+
+            <Offcanvas show={show} onHide={handleClose} scroll backdrop={false} placement="end">
+                <Offcanvas.Header closeButton>
+
+                    <Offcanvas.Title className='fw-light fs-2'><Badge bg="primary">0</Badge> Bolsa</Offcanvas.Title>
+                </Offcanvas.Header>
+                <hr />
+                <Offcanvas.Body>
+                    <ListGroup className="mb-5">
+                        {cart.map(product => (
+                            <ListGroup.Item className="d-flex justify-content-start gap-3">
+                                <Image className='border-0 rounded' src={product.api_featured_image} width={80} height={80} />
+                                <div className="m-0 p-0">
+                                    <small className="text-uppercase fw-normal w-100">{product.name}</small ><br />
+                                    <small className="text-body-tertiary">$ {product.price} </small><br />
+                                    {product.product_colors && product.product_colors.length > 0 && (
+                                        <Button className='rounded-pill border-primary border-0 p-1 mb-2' style={{ backgroundColor: product.product_colors[0].hex_value, height: '1rem', width: '1rem' }} />
+                                    )}{' '}
+                                    <ButtonToolbar>
+                                        <ButtonGroup className="border border-1 border-primary me-2">
+                                            <Button className="border-0" variant="outline-primary">-</Button>
+                                            <Button className="border-0 fw-light" variant="outline-primary">{product.quantity}</Button>
+                                            <Button className="border-0" variant="outline-primary" onClick={() => addToCart(product)}>+</Button>
+                                        </ButtonGroup>
+                                        <ButtonGroup>
+                                            <Button className='fw-light' onClick={() => removeFromCart(product)} variant="outline-primary">Eliminar</Button>
+                                        </ButtonGroup>
+                                    </ButtonToolbar>
+                                </div>
+
+                            </ListGroup.Item>
+                        ))}
+                    </ListGroup>
+
+
+                </Offcanvas.Body>
+                <Button variant="outline-primary mx-4 my-3" onClick={clearCart}>
+                    Vaciar bolsa
                 </Button>
+            </Offcanvas>
+        </div>
 
-                <Offcanvas show={show} onHide={handleClose} backdrop={false} placement="end">
-                    <Offcanvas.Header closeButton>
-                        <Offcanvas.Title className='fw-light fs-2'>Carrito</Offcanvas.Title>
-                    </Offcanvas.Header>
-                    <Offcanvas.Body>
-                        <ListGroup>
-                            {cart.map(product => (
-                                <ListGroup.Item className="d-flex">
-                                    <Image src={product.api_featured_image} width={150} />
-                                    <div>
-                                        <h2>{product.name}</h2>
-                                        <p>{product.quantity}</p>
-                                        <Button onClick={() => addToCart(product)}>+</Button>
-                                    </div>
-
-                                </ListGroup.Item>
-                            ))}
-                        </ListGroup>
-
-
-                        <Button variant="outline-primary" onClick={clearCart}>
-                            Vaciar bolsa
-                        </Button>
-                    </Offcanvas.Body>
-                </Offcanvas>
-            </div>
-
-        </OverlayTrigger>
     );
 }
 

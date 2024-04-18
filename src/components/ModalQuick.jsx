@@ -50,7 +50,7 @@ function ModalQuick({ product, state }) {
                         </Col>
                         <Col>
                             <Container width='250svw'>
-                                <h2 className='fs-5 fw-light' >{product.name.toUpperCase()}</h2>
+                                <h2 className='fs-5 fw-light text-uppercase' >{product.name}</h2>
                                 <p >$ {product.price}</p>
                                 <hr />
                                 <Variantes colors={product.product_colors} />
@@ -71,8 +71,8 @@ function ModalQuick({ product, state }) {
                                                 className="boton"
                                                 variant="outline-primary border-1 fw-light"
 
-                                                onClick={() => isProductInCart 
-                                                    ? removeFromCart(product) 
+                                                onClick={() => isProductInCart
+                                                    ? removeFromCart(product)
                                                     : addToCart(product)
                                                 }
 
@@ -83,8 +83,8 @@ function ModalQuick({ product, state }) {
                                                     <img src={isProductInCart ? 'icons/cart-check.svg' : 'icons/cart-add.svg'} alt="Buscar" width={20} />
                                                 </a>
 
-                                                {isProductInCart 
-                                                    ? ' Quitar de la bolsa' 
+                                                {isProductInCart
+                                                    ? ' Quitar de la bolsa'
                                                     : ' Añadir a la bolsa'
                                                 }
 

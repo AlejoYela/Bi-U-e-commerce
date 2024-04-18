@@ -10,8 +10,8 @@ import Hero from './Hero';
 function Landing() {
     return (<div>
         {/* <InitialShop/> */}
-        <Hero/>
-        <Favoritos/>
+        <Hero />
+        <Favoritos />
         <ProductoEstrella />
         <VeganSection />
     </div>);
