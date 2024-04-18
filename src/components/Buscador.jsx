@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Form, Button, Fade } from 'react-bootstrap';
+import { SearchIcon } from '../icons/Icons';
 
 function Buscador() {
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
 
 
-  const handleClose = () => setShow(false);
   const handleShow = () => {
     setShow(true);
     setOpen(!open)
@@ -26,7 +26,7 @@ function Buscador() {
           onMouseEnter={handleShow}
           aria-label="Abrir buscador"
         >
-          <img src='icons/search-vine.svg' alt="Buscar" />
+          <SearchIcon/>
         </Button>
       </div>
     </div>

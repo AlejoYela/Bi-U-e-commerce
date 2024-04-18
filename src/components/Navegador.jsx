@@ -1,10 +1,10 @@
 import React from 'react';
 import Buscador from './Buscador';
 import OffCanvas from './OffCanvas';
-import { renderTooltip, tooltipText } from '../hooks/renderTooltip.js';
-import { Container, Navbar, Nav, Button, Badge, OverlayTrigger } from 'react-bootstrap';
+import { Container, Navbar, Nav, Button, Badge} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Cart from './Cart.jsx';
+import { FavIcon, UserIcon } from '../icons/Icons.jsx';
 
 function Navegador() {
 
@@ -31,24 +31,16 @@ function Navegador() {
                         <Nav.Link className='text-primary fs-5 fw-light' href="#action2">Contacto</Nav.Link>
                     </Nav>
                     <Nav className='d-flex flex-row-reverse'>
-                        <OverlayTrigger
-                            placement="bottom"
-                            delay={{ show: 100, hide: 100 }}
-                            overlay={renderTooltip(tooltipText, 'user')}
-                        >
-                            <Button className="boton" variant="primary border-0 bg-transparent">
-                                <a href="#"><img src='icons/user.svg' alt="Usuario" /></a>
-                            </Button>
-                        </OverlayTrigger>
-                        <OverlayTrigger
-                            placement="bottom"
-                            delay={{ show: 100, hide: 100 }}
-                            overlay={renderTooltip(tooltipText, 'fav')}
-                        >
-                            <Button className="boton" variant="outline-primary border-0 bg-transparent">
-                                <a href="#"><img src='icons/fav.svg' alt="Favoritos" /><Badge bg="primary">0</Badge></a>
-                            </Button>
-                        </OverlayTrigger>
+
+                        <Button className="boton" variant="primary border-0 bg-transparent">
+                            <UserIcon />
+                        </Button>
+
+
+                        <Button className="boton" variant="outline-primary border-0 bg-transparent">
+                            <FavIcon /><Badge bg="primary">0</Badge>
+                        </Button>
+
 
                         <Cart />
 

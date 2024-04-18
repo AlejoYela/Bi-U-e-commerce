@@ -3,10 +3,13 @@ import { Button, Modal, Image, Col, Row, CloseButton, Container } from 'react-bo
 import Variantes from './Variantes';
 import { Link } from 'react-router-dom';
 import { useCart } from '../hooks/useCart';
+import MultiToast from './MultiToast';
+
 
 function ModalQuick({ product, state }) {
     const [show, setShow] = useState(false);
     const [hover, setHover] = useState(false);
+    const [showToast, setShowToast] = useState(false)
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -71,9 +74,13 @@ function ModalQuick({ product, state }) {
                                                 className="boton"
                                                 variant="outline-primary border-1 fw-light"
 
-                                                onClick={() => isProductInCart
+                                                onClick={
+                                                    () => {isProductInCart
                                                     ? removeFromCart(product)
-                                                    : addToCart(product)
+                                                    : addToCart(product);
+
+                                                    setShowToast(true)
+                                                }
                                                 }
 
                                                 onMouseEnter={() => setHover(true)}
@@ -84,17 +91,19 @@ function ModalQuick({ product, state }) {
                                                 </a>
 
                                                 {isProductInCart
-                                                    ? ' Quitar de la bolsa'
+                                                    ? ' Agregado a la bolsa'
                                                     : ' Añadir a la bolsa'
                                                 }
 
                                             </Button>
+                                            <MultiToast showToast={showToast} setShowToast={setShowToast}/>
                                         </Col>
                                     </Row>
                                 </Container>
                             </Container>
                         </Col>
                     </Row>
+
                 </Modal.Body>
             </Modal>
         </>

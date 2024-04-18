@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Card, Badge, Fade } from 'react-bootstrap';
 import ModalQuick from './ModalQuick';
 import { Link } from 'react-router-dom';
+import { StarIcon } from '../icons/Icons';
 
 function CardFav({ product }) {
 
@@ -21,10 +22,12 @@ function CardFav({ product }) {
           <small>{product.name.toUpperCase()}</small>
         </Card.Title>
         <p className='fs-4 text-primary'>
-          <Badge bg="secondary" text='primary' className='fw-normal'>
-            <img alt="" src="icons/star.svg" width="17" height="17" className="d-inline-block align-top" /> {product.rating ? product.rating : 'Sin calificación'}
+          <Badge bg="secondary" text='primary' className='d-inline-flex align-items-center align-content-center fw-normal'>
+            <StarIcon/>
+            {product.rating ? product.rating : 'Sin calificación'}
           </Badge>
         </p>
+
         <Card.Text className='fw-light text-primary fs-5'>
           $ {product.price}
         </Card.Text>

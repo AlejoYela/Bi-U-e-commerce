@@ -55,7 +55,7 @@ function Contador() {
                 onMouseLeave={() => setHover(false)}
             >
                 <img
-                    src={hover ? '/icons/cart-white.svg' : '/icons/cart.svg'}
+                    src='/icons/cart.svg'
                     alt="Añadir a la bolsa"
                     width={20}
                     className='d-inline-block align-text-bottom'

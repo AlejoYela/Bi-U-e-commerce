@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, Offcanvas, Badge, ListGroup, Image, ButtonGroup, ButtonToolbar } from "react-bootstrap";
 import { useCart } from "../hooks/useCart.js";
+import { CartIcon } from "../icons/Icons.jsx";
 
 
 function Cart() {
@@ -16,7 +17,7 @@ function Cart() {
         <div>
 
             <Button className="boton" variant="outline-primary border-0 bg-transparent" onClick={handleShow}>
-                <a href="#"><img src='icons/cart.svg' alt="Carrito" /><Badge bg="primary">0</Badge></a>
+                <CartIcon></CartIcon><Badge bg="primary">0</Badge>
             </Button>
 
             <Offcanvas show={show} onHide={handleClose} scroll backdrop={false} placement="end">
