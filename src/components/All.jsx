@@ -38,7 +38,7 @@ function All() {
             <Container fluid='md'>
                 <h2 className='text-center my-5 text-uppercase fw-light fs-3'>Todos los productos</h2>
 
-                <div className='d-flex gap-3 text-center justify-content-center mb-4 bg-secondary py-2 px-0'>
+                <div className='d-flex gap-3 text-center justify-content-center mb-4 py-2 px-0'>
                     <p className='m-0 p-0 fw-light fs-5'>Maquillaje</p>
                     <div className='d-flex align-items-center'>
                         <Form.Check
@@ -54,12 +54,12 @@ function All() {
                     <Form.Control
                         type="search"
                         placeholder="Escribe el producto o categoría a buscar"
-                        className="me-2 fs-5 fw-light border-primary bg-transparent text-start"
+                        className="me-2 fs-5 fw-light border bg-transparent text-start"
                         aria-label="Buscar"
                     />
                     <Button
                         className="boton bg-transparent"
-                        variant="outline-primary border-1"
+                        variant="outline-primary border"
                         aria-label="Buscar"
                     >
                         <img src='icons/search-vine.svg' alt="Buscar" />
@@ -79,7 +79,7 @@ function All() {
                         {loading && <Row className="d-flex justify-content-center">
                             {[1, 2, 3, 4].map((index) => (
                                 <Col className='d-flex px-2 mb-4 justify-content-center' xs={12} sm={6} md={4} lg={3} key={index}>
-                                    <Card style={{ width: '18rem' }}>
+                                    <Card style={{ width: '15rem' }}>
                                         <Card.Img style={{ height: '200px', objectFit: 'cover' }} variant="top" src={`images/holders/${index}.png`} />
                                         <Card.Body>
                                             <Placeholder as={Card.Title} animation="glow">
@@ -99,7 +99,7 @@ function All() {
                             {filteredProduct
                                 .slice(0, cardsToShow)
                                 .map((producto) => (
-                                    <Col className='d-flex px-2 mb-4 justify-content-center' xs={12} sm={6} md={4} lg={3} key={producto.id}>
+                                    <Col className='d-flex px-1 mb-4 justify-content-center' xs={12} sm={6} md={4} lg={3} key={producto.id}>
                                         <CardFav
                                             product={producto}
                                         />

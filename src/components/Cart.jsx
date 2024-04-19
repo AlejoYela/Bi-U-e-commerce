@@ -17,15 +17,25 @@ function Cart() {
         <div>
 
             <Button className="boton" variant="outline-primary border-0 bg-transparent" onClick={handleShow}>
-                <CartIcon></CartIcon><Badge bg="primary">0</Badge>
+                <CartIcon></CartIcon><Badge bg="primary">{cart.length}</Badge>
             </Button>
 
             <Offcanvas show={show} onHide={handleClose} scroll backdrop={false} placement="end">
                 <Offcanvas.Header closeButton>
 
-                    <Offcanvas.Title className='fw-light fs-2'><Badge bg="primary">0</Badge> Bolsa</Offcanvas.Title>
+                    <Offcanvas.Title className='fw-light fs-2 d-inline-flex gap-1'>
+                        <CartIcon />
+                        Bolsa
+                        <h5>
+
+                            <Badge className="d-flex align-items-center" bg="primary">
+                                {cart.length}
+                            </Badge>
+                        </h5>
+                    </Offcanvas.Title>
+
                 </Offcanvas.Header>
-                <hr />
+                <hr className="mt-0" />
                 <Offcanvas.Body>
                     <ListGroup className="mb-5">
                         {cart.map(product => (

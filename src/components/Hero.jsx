@@ -1,20 +1,37 @@
 import React from 'react';
-import { Container, Image, Button } from 'react-bootstrap';
+import { Container, Image, Button, Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 function Hero() {
 
     return (
-        <div className='w-100 position-relative'>
-            <Image fluid src='images/faces/gif-eye.gif' className='w-100' />
-            <Container fluid className='position-absolute bottom-0 start-0 m-5 w-50 p-3'>
-                <h2 className='text-light fs-3 m-0'>Descubre tu belleza auténtica</h2>
-                <p className='text-light fs-5 fw-light'>Accede a todos los productos de nuestro catálogo con la mejor calidad</p>
-                <Link to='/productos'>
-                    <Button variant='outline-light'>Ver catálogo completo</Button>
-                </Link>
-            </Container>
-        </div>
+        <Carousel indicators={false}>
+            <Carousel.Item className='position-relative'>
+                <Image fluid src='images/faces/gif-eye.gif' className='w-100' />
+                <div className='position-absolute bottom-0 start-0 m-3 m-md-5 p-3 p-md-4'>
+
+                    <h2 className='fs-3 m-0 text-light'>Resalta tu belleza con estilo</h2>
+                    <p className='fs-5 fw-light d-none d-md-block text-light'>Descubre Nuestra Colección de Maquillaje</p>
+
+                    <Link to='/productos'>
+                        <Button variant='outline-light'>Ver catálogo completo</Button>
+                    </Link>
+                </div>
+
+            </Carousel.Item>
+            <Carousel.Item className='position-relative'>
+                <Image fluid src='images/faces/gif-skincare.gif' className='w-100' />
+                <div className='position-absolute bottom-0 start-0 m-3 m-md-5 p-3 p-md-4'>
+
+                    <h2 className=' fs-3 m-0'>Descubre tu belleza auténtica</h2>
+                    <p className=' fs-5 fw-light d-none d-md-block'>Explora Nuestra Colección de Cuidado de la Piel</p>
+                    <Link to='/productos'>
+                        <Button variant='outline-dark'>Ver catálogo de skincare</Button>
+                    </Link>
+                </div>
+
+            </Carousel.Item>
+        </Carousel>
     );
 }
 

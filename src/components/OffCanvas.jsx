@@ -10,7 +10,7 @@ function OffCanvas() {
 
     return (
         <div>
-            <Nav.Link className='text-primary fs-5 fw-light' href="#action2" onClick={handleShow}>Categorías</Nav.Link >
+            <Nav.Link className='fs-5 fw-light' href="#action2" onClick={handleShow}>Categorías</Nav.Link >
 
             <Offcanvas show={show} onHide={handleClose} placement="start"> {/* Añade opciones de configuración */}
                 <Offcanvas.Header closeButton>

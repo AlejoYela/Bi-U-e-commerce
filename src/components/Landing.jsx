@@ -9,7 +9,7 @@ import Hero from './Hero';
 
 function Landing() {
     return (<div>
-        {/* <InitialShop/> */}
+        {/* <InitialShop /> */}
         <Hero />
         <Favoritos />
         <ProductoEstrella />

@@ -18,7 +18,7 @@ function Buscador() {
 
 
         <Fade in={open}>
-          <Form.Control type='text' className='bg-transparent border-primary' />
+          <Form.Control type='text' className='bg-transparent border-primary fw-light' placeholder='Buscar en la página' />
         </Fade>
 
         <Button
@@ -26,7 +26,7 @@ function Buscador() {
           onMouseEnter={handleShow}
           aria-label="Abrir buscador"
         >
-          <SearchIcon/>
+          <SearchIcon />
         </Button>
       </div>
     </div>

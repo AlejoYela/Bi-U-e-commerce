@@ -6,13 +6,14 @@ import { useCart } from '../hooks/useCart';
 import MultiToast from './MultiToast';
 
 
-function ModalQuick({ product, state }) {
+function ModalQuick({ product, state, setState }) {
     const [show, setShow] = useState(false);
     const [hover, setHover] = useState(false);
     const [showToast, setShowToast] = useState(false)
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
 
     const { addToCart, removeFromCart, cart } = useCart()
 
@@ -27,11 +28,15 @@ function ModalQuick({ product, state }) {
             <Button
                 className={state ? "visible boton bg-transparent position-absolute top-50 start-50 translate-middle" : "invisible boton bg-transparent position-absolute top-50 start-50 translate-middle"}
                 variant="outline-primary border-0"
-                onClick={handleShow}
+                onClick={() => {
+                    handleShow();
+                    setState(false)
+                }
+                }
             >
                 <img src={state ? 'icons/search-vine.svg' : 'icons/search-white.svg'} alt="Buscar" width={50} height={50} />
                 <p className='fs-6 text-primary'>Vista rápida</p>
-            </Button>
+            </Button >
 
             <Modal show={show} onHide={handleClose} centered size='lg' className='text-primary'>
                 <Modal.Body>
@@ -75,12 +80,13 @@ function ModalQuick({ product, state }) {
                                                 variant="outline-primary border-1 fw-light"
 
                                                 onClick={
-                                                    () => {isProductInCart
-                                                    ? removeFromCart(product)
-                                                    : addToCart(product);
+                                                    () => {
+                                                        isProductInCart
+                                                            ? removeFromCart(product)
+                                                            : addToCart(product);
 
-                                                    setShowToast(true)
-                                                }
+                                                        setShowToast(true);
+                                                    }
                                                 }
 
                                                 onMouseEnter={() => setHover(true)}
@@ -96,7 +102,7 @@ function ModalQuick({ product, state }) {
                                                 }
 
                                             </Button>
-                                            <MultiToast showToast={showToast} setShowToast={setShowToast}/>
+                                            <MultiToast showToast={showToast} setShowToast={setShowToast} />
                                         </Col>
                                     </Row>
                                 </Container>

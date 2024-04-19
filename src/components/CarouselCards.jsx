@@ -21,7 +21,7 @@ function CarouserCards({ productos, loading }) {
     };
 
     const responsive = {
-        items: width >= 1189 && width < 1500 ? 2 : width >= 1500 ? 3 : 1,
+        items: width >= 2000 ? 4 : width >= 1500 ? 3 : width >= 1189 ? 2 : 1,
     };
 
     return (

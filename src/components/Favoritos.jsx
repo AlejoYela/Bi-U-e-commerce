@@ -23,21 +23,14 @@ function Favoritos() {
       });
   }, []);
 
-  // Definir la configuración de responsive para el carrusel
-  const responsive = {
-    desktop: "3svw auto 3svw auto",
-    mobile: "10svw 5svw 10svw 5svw"
-  };
-
   return (
-    <div style={{ margin: width >= 1289 ? responsive.desktop : responsive.mobile }} id='Favoritos'>
-      <div className='text-center mb-5'>
-        <h1 className='fw-light'>BiU: TIENDA DE MAQUILLAJE, SKINCARE Y ACCESORIOS</h1>
-      </div>
+    <div id='Favoritos' className='my-5'>
+      <h1 className='text-center mb-3 fw-normal'>BiU: Tienda de Maquillaje, Skincare y Accesorios</h1>
       <Row className='mw-100'>
-        <Col className='d-flex align-items-center m-5 p-5'>
+        <Col className='d-flex align-items-center justify-content-center mx-5 px-5 text-center'>
           <div>
-            <h2>Favoritos: lo mejor en maquillaje y skincare según nuestros clientes</h2>
+            <h2 className='mt-5 d-block d-md-none'>Favoritos</h2>
+            <h2 className='d-none d-md-block'>Los favoritos en maquillaje y skincare de nuestros clientes</h2>
           </div>
         </Col>
         <Col className='w-75'>
