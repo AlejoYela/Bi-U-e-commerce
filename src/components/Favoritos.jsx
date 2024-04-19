@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CarouserCards from './CarouselCards';
 import useScreenSize from '../hooks/useScreenSize';
+import { Col, Row } from 'react-bootstrap';
 import axios from 'axios';
 
 function Favoritos() {
@@ -31,10 +32,18 @@ function Favoritos() {
   return (
     <div style={{ margin: width >= 1289 ? responsive.desktop : responsive.mobile }} id='Favoritos'>
       <div className='text-center mb-5'>
-        <h2 className='text-primary fw-light'>F A V O R I T O S</h2>
-        <h3 className='text-primary fs-4 fw-light'>¡Los productos más populares!</h3>
+        <h1 className='fw-light'>BiU: TIENDA DE MAQUILLAJE, SKINCARE Y ACCESORIOS</h1>
       </div>
-      <CarouserCards productos={productosFav} loading={loading} />
+      <Row className='mw-100'>
+        <Col className='d-flex align-items-center m-5 p-5'>
+          <div>
+            <h2>Favoritos: lo mejor en maquillaje y skincare según nuestros clientes</h2>
+          </div>
+        </Col>
+        <Col className='w-75'>
+          <CarouserCards productos={productosFav} loading={loading} />
+        </Col>
+      </Row>
     </div>
   );
 }

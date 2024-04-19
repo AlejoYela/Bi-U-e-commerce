@@ -21,17 +21,17 @@ function CarouserCards({ productos, loading }) {
     };
 
     const responsive = {
-        items: width >= 1189 && width < 1500 ? 3 : width >= 1500 ? 4 : 1,
+        items: width >= 1189 && width < 1500 ? 2 : width >= 1500 ? 3 : 1,
     };
 
     return (
         <div className='d-flex justify-content-center'>
-            <Carousel className='w-75' interval={null} responsive={responsive} indicators={false} nextIcon={<Button className='rounded-pill'><img src="icons/next.svg" alt="" /></Button>} prevIcon={<Button className='rounded-pill'><img src="icons/prev.svg" alt="" /></Button>}>
+            <Carousel interval={null} responsive={responsive} indicators={false} nextIcon={<Button className='rounded-pill'><img src="icons/next.svg" alt="" /></Button>} prevIcon={<Button className='rounded-pill'><img src="icons/prev.svg" alt="" /></Button>}>
 
-                {loading && <Carousel.Item key={0} className='d-flex justify-content-center gap-4 px-4 '>
-                    {[1, 2, 3, 4].map((index) => (
+                {loading && <Carousel.Item key={0} className='d-flex justify-content-center gap-4 px-4'>
+                    {[1, 2, 3].map((index) => (
 
-                        <Card style={{ width: '18rem' }}>
+                        <Card width='18rem' style={{ width: '18rem' }}>
                             <Card.Img style={{ height: '200px', objectFit: 'cover' }} variant="top" src={`images/holders/${index}.png`} />
                             <Card.Body>
                                 <Placeholder as={Card.Title} animation="glow">
@@ -50,7 +50,7 @@ function CarouserCards({ productos, loading }) {
 
                 {groupProductos(productos, responsive.items).map((group, index) => (
                     <Carousel.Item key={index}>
-                        <div className="d-flex justify-content-center gap-4 px-4">
+                        <div className="d-flex justify-content-center gap-3 px-2 py-4" xs={12} sm={6} md={4} lg={3}>
                             {group.map((product) => (
 
                                 <CardFav key={index} product={product} />

@@ -11,7 +11,7 @@ function All() {
     const [cardsToShow, setCardsToShow] = useState(12);
     const [loading, setLoading] = useState(true);
 
-    const {filteredProducts} = useFilters()
+    const { filteredProducts } = useFilters()
 
     useEffect(() => {
         axios.get(`http://makeup-api.herokuapp.com/api/v1/products.json`)
@@ -25,7 +25,7 @@ function All() {
                 setLoading(true)
             });
     }, []);
-    
+
 
     const handleLoadMore = () => {
         setCardsToShow(prevCards => prevCards + 12);
@@ -66,7 +66,7 @@ function All() {
                     </Button>
                 </Form>
 
-                <FilterPrice loading={loading}/>
+                <FilterPrice loading={loading} />
 
                 <Row className="justify-content-center">
                     <Col>
