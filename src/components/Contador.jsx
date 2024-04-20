@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Button, ButtonGroup, Container } from 'react-bootstrap'
+import { useCart } from '../hooks/useCart';
 
-function Contador() {
+function Contador({ product }) {
     const [cantidad, setCantidad] = useState(0);
     const [hover, setHover] = useState(false);
 
@@ -15,42 +16,19 @@ function Contador() {
         }
     }
 
-    const addToCart = () => {
-        // Aquí puedes agregar la lógica para añadir el producto al carrito de compras
-    }
+
+    const { addToCart } = useCart()
 
     return (
         <Container className='d-flex gap-3 p-0'>
-            <ButtonGroup className='border border-1 border-primary w-auto'>
-                <Button
-                    className='fs-4 fw-light border-0'
-                    variant='outline-primary'
-                    onClick={disminuirCantidad}
-                    aria-label="Disminuir cantidad"
-                >
-                    -
-                </Button>
-                <Button
-                    className='fw-normal border-0'
-                    variant='outline-primary'
-                    aria-label="Cantidad actual"
-                >
-                    {cantidad}
-                </Button>
-                <Button
-                    className='fs-4 fw-light border-0'
-                    variant='outline-primary'
-                    onClick={aumentarCantidad}
-                    aria-label="Aumentar cantidad"
-                >
-                    +
-                </Button>
-            </ButtonGroup>
+
             <Button
                 variant="outline-primary"
                 size='lg'
                 className='fw-light border-1'
-                onClick={addToCart}
+                onClick={() => {
+                    addToCart(product)
+                }}
                 onMouseEnter={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}
             >

@@ -1,12 +1,15 @@
 import React from 'react';
 import Buscador from './Buscador';
-import OffCanvas from './OffCanvas';
 import { Container, Navbar, Nav, Button, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Cart from './Cart.jsx';
 import { FavIcon, UserIcon } from '../icons/Icons.jsx';
+import { useFav } from '../hooks/useFav.js';
+import Categorias from './Categorias.jsx';
 
 function Navegador() {
+
+    const { fav } = useFav()
 
     return (
         <Navbar expand="lg" className="bluring bg-secondary px-4 sticky-top bg-opacity-50">
@@ -26,9 +29,9 @@ function Navegador() {
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav className="mx-auto" style={{ maxHeight: '200px' }} navbarScroll>
-                        <OffCanvas />
+                        <Categorias />
                         <Nav.Link className='fs-5 fw-light' href="#Favoritos">Favoritos</Nav.Link>
-                        <Nav.Link className='fs-5 fw-light' href="#action2">Contacto</Nav.Link>
+                        <Nav.Link className='fs-5 fw-light' href="#Favoritos">Contacto</Nav.Link>
                     </Nav>
                     <Nav className='d-flex flex-row-reverse'>
 
@@ -36,10 +39,11 @@ function Navegador() {
                             <UserIcon />
                         </Button>
 
-
-                        <Button className="boton" variant="outline-primary border-0 bg-transparent">
-                            <FavIcon /><Badge bg="primary">0</Badge>
-                        </Button>
+                        <Link to='/favoritos'>
+                            <Button className="boton" variant="outline-primary border-0 bg-transparent">
+                                <FavIcon /><Badge bg="primary">{fav.length}</Badge>
+                            </Button>
+                        </Link>
 
 
                         <Cart />

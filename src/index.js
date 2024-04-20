@@ -6,14 +6,17 @@ import './App.scss';
 import { BrowserRouter } from 'react-router-dom';
 import { FiltersProvider } from './context/Filters.jsx';
 import { CartProvider } from './context/CartContext.jsx';
+import { FavProvider } from './context/FavContext.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <CartProvider>
-      <FiltersProvider>
-        <App />
-      </FiltersProvider>
+      <FavProvider>
+        <FiltersProvider>
+          <App />
+        </FiltersProvider>
+      </FavProvider>
     </CartProvider>
   </BrowserRouter>
 );

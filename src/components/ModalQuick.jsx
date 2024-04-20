@@ -3,7 +3,9 @@ import { Button, Modal, Image, Col, Row, CloseButton, Container } from 'react-bo
 import Variantes from './Variantes';
 import { Link } from 'react-router-dom';
 import { useCart } from '../hooks/useCart';
+import { useFav } from '../hooks/useFav';
 import MultiToast from './MultiToast';
+import { FavIcon, FavFillIcon, CartIcon, CheckCartIcon, AddToCartIcon } from '../icons/Icons';
 
 
 function ModalQuick({ product, state, setState }) {
@@ -16,12 +18,18 @@ function ModalQuick({ product, state, setState }) {
 
 
     const { addToCart, removeFromCart, cart } = useCart()
+    const { addToFav, removeFromFav, fav } = useFav()
 
     const checkProductInCart = product => {
         return cart.some(item => item.id === product.id)
     }
 
+    const checkProductInFav = product => {
+        return fav.some(item => item.id === product.id)
+    }
+
     const isProductInCart = checkProductInCart(product)
+    const isProductInFav = checkProductInFav(product)
 
     return (
         <>
@@ -43,18 +51,28 @@ function ModalQuick({ product, state, setState }) {
                     <div className='position-absolute top-0 end-0 m-3' onClick={handleClose}>
                         <CloseButton />
                     </div>
+                    <div className='position-absolute top-0 start-0 m-3'>
+                        <Button
 
-                    <Row className='my-3 mx-auto gap-5'>
-                        <Col className='position-relative d-flex justify-content-center' xl={4}>
+                            variant="outline-primary border-0 bg-transparent p-0"
+                            onClick={
+                                () => {
+                                    isProductInFav
+                                        ? removeFromFav(product)
+                                        : addToFav(product);
+                                }
+                            }
+                        >
+
+                            {isProductInFav ? <FavFillIcon /> : <FavIcon />}
+
+                        </Button>
+                    </div>
+
+                    <Row className='my-2 mx-auto gap-5'>
+                        <Col className='d-flex justify-content-center' xl={4}>
                             <Image className='rounded shadow ms-5' src={product.api_featured_image} height={250} />
-                            <Button
-                                className="boton position-absolute top-0 start-0 mx-2"
-                                variant="outline-primary border-0 bg-transparent"
-                            >
-                                <a href="#">
-                                    <img src='icons/fav.svg' alt="Buscar" width={30} />
-                                </a>
-                            </Button>
+
                         </Col>
                         <Col>
                             <Container width='250svw'>
@@ -93,7 +111,7 @@ function ModalQuick({ product, state, setState }) {
                                                 onMouseLeave={() => setHover(false)}
                                             >
                                                 <a href="#" className='d-inline-block align-text-bottom'>
-                                                    <img src={isProductInCart ? 'icons/cart-check.svg' : 'icons/cart-add.svg'} alt="Buscar" width={20} />
+                                                    {isProductInCart ? <CheckCartIcon /> : <AddToCartIcon />}
                                                 </a>
 
                                                 {isProductInCart
@@ -102,7 +120,7 @@ function ModalQuick({ product, state, setState }) {
                                                 }
 
                                             </Button>
-                                            <MultiToast showToast={showToast} setShowToast={setShowToast} />
+                                            <MultiToast titulo={'¡Agregado!'} texto={'Clickea en el ícono de bolsa para ver todos los productos que has agregado.'} icono={CartIcon} showToast={showToast} setShowToast={setShowToast} />
                                         </Col>
                                     </Row>
                                 </Container>

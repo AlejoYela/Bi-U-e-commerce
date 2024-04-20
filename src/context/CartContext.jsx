@@ -4,7 +4,7 @@ import { cartReducer, cartInitialState, CART_ACTIONS_TYPES } from "../reducers/c
 export const CartContext = createContext()
 
 
-function useCartReducer (){
+function useCartReducer() {
     const [state, dispatch] = useReducer(cartReducer, cartInitialState)
 
     const addToCart = product => dispatch({
@@ -17,9 +17,9 @@ function useCartReducer (){
         payload: product
     })
 
-    const clearCart = () => dispatch({type: CART_ACTIONS_TYPES.CLEAR_CART})
+    const clearCart = () => dispatch({ type: CART_ACTIONS_TYPES.CLEAR_CART })
 
-    return {state, addToCart, removeFromCart, clearCart}
+    return { state, addToCart, removeFromCart, clearCart }
 }
 
 
@@ -27,7 +27,7 @@ function useCartReducer (){
 
 
 export function CartProvider({ children }) {
-    const {state, addToCart, removeFromCart, clearCart} = useCartReducer()
+    const { state, addToCart, removeFromCart, clearCart } = useCartReducer()
 
     return (
         <CartContext.Provider value={{

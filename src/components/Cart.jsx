@@ -49,7 +49,6 @@ function Cart() {
                                     )}{' '}
                                     <ButtonToolbar>
                                         <ButtonGroup className="border border-1 border-primary me-2">
-                                            <Button className="border-0" variant="outline-primary">-</Button>
                                             <Button className="border-0 fw-light" variant="outline-primary">{product.quantity}</Button>
                                             <Button className="border-0" variant="outline-primary" onClick={() => addToCart(product)}>+</Button>
                                         </ButtonGroup>

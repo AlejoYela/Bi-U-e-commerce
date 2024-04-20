@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import Variantes from './Variantes';
-import { Image, Col, Row, Container, Badge, Accordion } from 'react-bootstrap'
-import Contador from './Contador';
+import Variantes from '../components/Variantes';
+import { Image, Col, Row, Container, Accordion } from 'react-bootstrap'
+import Contador from '../components/Contador';
+import { useCart } from '../hooks/useCart';
+import { StarIcon } from '../icons/Icons';
 
 function Producto() {
+
+    const { addToCart } = useCart()
 
     let productoFiltrado = {};
     const { product_type, id } = useParams();
@@ -27,20 +31,22 @@ function Producto() {
     return (
         <Container>
             <Row className='gap-5 p-5'>
-                <Col xs={12} sm={12} md={12} lg={5} xl={5}><Image src={producto.api_featured_image} className='w-100 border border-1 border-primary img-fluid' rounded /></Col>
+                <Col className='d-flex justify-content-center h-75' xs={12} sm={12} md={12} lg={5} xl={5}><Image src={producto.api_featured_image} className='border w-100' rounded /></Col>
                 <Col >
                     <Container>
                         <h2 className='fs-4 fw-normal text-uppercase mb-3'>{producto.name}</h2>
-                        <p className='fs-4 text-primary'>
-                            <Badge bg="secondary" text='primary' className='fw-normal'>
-                                <img alt="" src="/icons/star.svg" width="17" height="17" className="d-inline-block align-top" /> {producto.rating ? producto.rating : "Sin calificaciones"}
-                            </Badge>
-                        </p>
-                        <p className='fs-4 fw-light'>{producto.price}</p>
+
+                        {producto.rating &&
+                            <div className='d-flex mb-3 '>
+                                <StarIcon />
+                                {producto.rating}
+                            </div>
+                        }
+                        <p className='fs-4 fw-light'>$ {producto.price}</p>
 
                         <Variantes colors={producto.product_colors} />
 
-                        <Contador />
+                        <Contador product={producto} />
 
                         <Accordion flush className='my-3' >
                             <Accordion.Item eventKey="0">

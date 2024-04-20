@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
+import { WhatsappIcon, InstagramIcon, GithubIcon, LinkedinIcon } from '../icons/Icons';
 
 function Footer() {
     return (
@@ -7,22 +8,22 @@ function Footer() {
             <Nav>
                 <Nav.Item>
                     <Nav.Link href="https://api.whatsapp.com" target="_blank" rel="noopener noreferrer">
-                        <img src="icons/wpp.svg" alt="Whatsapp" title="Whatsapp" />
+                        <WhatsappIcon />
                     </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Nav.Link href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-                        <img src="icons/ig.svg" alt="Instagram" title="Instagram" />
+                        <InstagramIcon />
                     </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Nav.Link href="https://github.com" target="_blank" rel="noopener noreferrer">
-                        <img src="icons/github.svg" alt="Github" title="Github" />
+                        <GithubIcon />
                     </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Nav.Link href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
-                        <img src="icons/linkedin.svg" alt="Linkedin" title="Linkedin" />
+                        <LinkedinIcon />
                     </Nav.Link>
                 </Nav.Item>
             </Nav>

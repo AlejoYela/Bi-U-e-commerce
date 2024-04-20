@@ -14,7 +14,7 @@ function Hero() {
                     <p className='fs-5 fw-light d-none d-md-block text-light'>Descubre Nuestra Colección de Maquillaje</p>
 
                     <Link to='/productos'>
-                        <Button variant='outline-light'>Ver catálogo completo</Button>
+                        <Button variant='outline-light'>Ver catálogo completo →</Button>
                     </Link>
                 </div>
 
@@ -26,7 +26,7 @@ function Hero() {
                     <h2 className=' fs-3 m-0'>Descubre tu belleza auténtica</h2>
                     <p className=' fs-5 fw-light d-none d-md-block'>Explora Nuestra Colección de Cuidado de la Piel</p>
                     <Link to='/productos'>
-                        <Button variant='outline-dark'>Ver catálogo de skincare</Button>
+                        <Button variant='outline-primary'>Ver catálogo de skincare →</Button>
                     </Link>
                 </div>
 

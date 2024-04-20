@@ -4,7 +4,7 @@ import useScreenSize from '../hooks/useScreenSize';
 import { Col, Row } from 'react-bootstrap';
 import axios from 'axios';
 
-function Favoritos() {
+function BestRating() {
   const [loading, setLoading] = useState(true)
   const [productosFav, setProductos] = useState([]);
   const { width } = useScreenSize();
@@ -29,8 +29,8 @@ function Favoritos() {
       <Row className='mw-100'>
         <Col className='d-flex align-items-center justify-content-center mx-5 px-5 text-center'>
           <div>
-            <h2 className='mt-5 d-block d-md-none'>Favoritos</h2>
-            <h2 className='d-none d-md-block'>Los favoritos en maquillaje y skincare de nuestros clientes</h2>
+            <h2 className='mt-5 d-block d-md-none'>Los Preferidos</h2>
+            <h2 className='d-none d-md-block'>Los mejor calificados en maquillaje y skincare por nuestros clientes</h2>
           </div>
         </Col>
         <Col className='w-75'>
@@ -41,4 +41,4 @@ function Favoritos() {
   );
 }
 
-export default Favoritos;
+export default BestRating;

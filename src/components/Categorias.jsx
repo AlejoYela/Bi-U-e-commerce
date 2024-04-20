@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Offcanvas, Nav, Accordion, Container, Col } from 'react-bootstrap';
 import TargetCategoria from './TargetCategoria';
 
-function OffCanvas() {
+function Categorias() {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -58,4 +58,4 @@ function OffCanvas() {
     );
 }
 
-export default OffCanvas;
+export default Categorias;
