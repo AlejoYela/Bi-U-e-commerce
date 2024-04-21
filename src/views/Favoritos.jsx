@@ -1,7 +1,8 @@
 import { useFav } from "../hooks/useFav";
 import { useCart } from "../hooks/useCart";
 import { Button, Container, ListGroup, Image } from "react-bootstrap";
-import { FavIcon, CartIcon, FavFillIcon } from "../icons/Icons";
+import { CartIcon, FavFillIcon } from "../icons/Icons";
+import { Link } from "react-router-dom";
 
 function Favoritos() {
 
@@ -19,7 +20,9 @@ function Favoritos() {
                 {fav.map(product => (
                     <ListGroup.Item className="d-inline-flex justify-content-between align-items-center">
                         <div className="">
-                            <Image fluid className='border-0 rounded' src={product.api_featured_image} width={100}></Image>
+                            <Link to={`/producto/${product.product_type}/${product.id}`}>
+                                <Image fluid className='border-0 rounded' src={product.api_featured_image} width={100}></Image>
+                            </Link>
                         </div>
                         <div className="w-50">
                             <h2 className="text-truncate text-uppercase fs-5">{product.name}</h2>

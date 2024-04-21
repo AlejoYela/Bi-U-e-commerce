@@ -64,8 +64,11 @@ function Cart() {
 
 
                 </Offcanvas.Body>
-                <Button variant="outline-primary mx-4 my-3" onClick={clearCart}>
+                <Button variant="outline-primary mx-4 mb-1" onClick={clearCart}>
                     Vaciar bolsa
+                </Button>
+                <Button variant="outline-primary mx-4 mb-3">
+                    Ir a pagar
                 </Button>
             </Offcanvas>
         </div>

@@ -1,11 +1,12 @@
 import React from 'react';
-import Buscador from './Buscador';
-import { Container, Navbar, Nav, Button, Badge } from 'react-bootstrap';
+import { Container, Navbar, Nav, Button, Badge, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Cart from './Cart.jsx';
 import { FavIcon, UserIcon } from '../icons/Icons.jsx';
 import { useFav } from '../hooks/useFav.js';
 import Categorias from './Categorias.jsx';
+import { SearchIcon } from '../icons/Icons.jsx';
+import { BiuLogo } from '../icons/Icons.jsx';
 
 function Navegador() {
 
@@ -15,14 +16,8 @@ function Navegador() {
         <Navbar expand="lg" className="bluring bg-secondary px-4 sticky-top bg-opacity-50">
             <Container fluid>
                 <Link to='/' style={{ textDecoration: 'none' }}>
-                    <Navbar.Brand className='fw-medium'>
-                        <img
-                            alt=""
-                            src="icons/logo.svg"
-                            width="40"
-                            height="30"
-                            className="d-inline-block align-top fs-3"
-                        />
+                    <Navbar.Brand className='fw-normal'>
+                        <BiuLogo strokeWidth={3} color='#000000' size={55} />
                         {' '}Bi･U Cosmetics
                     </Navbar.Brand>
                 </Link>
@@ -48,7 +43,16 @@ function Navegador() {
 
                         <Cart />
 
-                        <Buscador />
+                        <Form className='d-flex'>
+                            <Button
+                                variant="outline-primary border-0 bg-transparent"
+
+                                aria-label="Abrir buscador"
+                            >
+                                <SearchIcon />
+                            </Button>
+                        </Form>
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>

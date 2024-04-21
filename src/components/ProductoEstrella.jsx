@@ -1,25 +1,18 @@
 import React from 'react';
-import { Container, Image, Button, Col, Row } from 'react-bootstrap';
+import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 
 function ProductoEstrella() {
     return (
-        <Container className='p-0 border' fluid>
-            <Row>
-                <Col xs={4}>
-                    <Image src='images/2.png' fluid className='w-100'></Image>
+        <Container className="border d-flex flex-column p-0 my-5">
+            <Row className="flex-wrap-reverse flex-md-nowrap">
+                <Col xs={12} md={6} className="my-3">
+                    <h2 className="fs-5 fw-light text-uppercase lh-sm mb-4">Lleva ahora tu</h2>
+                    <h3 className="display-5 fw-light">Suero Revitalizante</h3>
+                    <p className="lead text-muted mb-0">Con Retinol y Vitamina B3 para una piel radiante y rejuvenecida.</p>
+                    <Button variant="outline-primary" size="lg" className="mt-4">Preordenar hasta con 30% OFF →</Button>
                 </Col>
-                <Col className='d-grid m-5  py-4 text-center'>
-
-
-                    <h3 className='mb-1 fw-light fst-italic fs-5'>L L E V A &nbsp;A H O R A &nbsp;T U</h3>
-                    <h2 className='fw-light'>Suero Revitalizante</h2>
-                    <h4 className='fw-light text-break'>Con Retinol y Vitamina B3</h4>
-
-                    <Button fluid variant="outline-primary" className="d-lg-inline-block fw-light mb-1">Preordenar hasta con 30% OFF →</Button>
-
-                </Col>
-                <Col xs={4}>
-                    <Image src='images/2.png' fluid className='w-100'></Image>
+                <Col xs={12} md={6} className="my-3">
+                    <Image src="images/2.png" alt="Producto estrella" fluid className="rounded-3 shadow" />
                 </Col>
             </Row>
         </Container>

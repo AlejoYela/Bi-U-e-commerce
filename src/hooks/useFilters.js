@@ -33,17 +33,30 @@ export function useFilters() {
         });
     }
 
+    const handleSearchChange = (event) => {
+        const searchTerm = event.target.value;
+        setFilters({
+            ...filters,
+            search: searchTerm
+        });
+    };
+
     const filteredProducts = (products) => {
         return products.filter(product => {
             return (
-                product.price >= filters.minPrice && product.price <= filters.maxPrice &&
+                product.price >= filters.minPrice &&
+                product.price <= filters.maxPrice &&
                 (
                     filters.category === 'all' ||
                     product.category === filters.category
+                ) &&
+                (
+                    filters.search === '' ||
+                    product.name.toLowerCase().includes(filters.search.toLowerCase())
                 )
             );
         });
     };
 
-    return { filters, filteredProducts, setFilters, handlePrecioMaxChange, handlePrecioMinChange, handleCategoryFilter }
+    return { filters, filteredProducts, setFilters, handlePrecioMaxChange, handlePrecioMinChange, handleCategoryFilter, handleSearchChange }
 }

@@ -1,6 +1,7 @@
 import { ListGroup, Form, Button, Offcanvas, Placeholder, Spinner } from "react-bootstrap";
 import { useState, useMemo } from "react";
 import { useFilters } from '../hooks/useFilters';
+import { FilterIcon } from "../icons/Icons";
 
 function FilterCategory({ productos, loading }) {
 
@@ -26,19 +27,13 @@ function FilterCategory({ productos, loading }) {
     return (
         <>
             <div className=' mb-3 fw-normal fs-5 d-none d-xl-block d-lg-block d-xl-block'>
-                <img
-                    alt=""
-                    src="icons/filter.svg"
-                    width="40"
-                    height="30"
-                    className="d-inline-block align-top"
-                />
+                <FilterIcon size={25} />
                 {loading ? 'Cargando filtros' : 'Filtrar por:'}
 
             </div>
 
             <Button variant="outline-primary mb-3" className="d-lg-none" onClick={handleShowFilter}>
-                <img src="/icons/filter.svg" alt="Filtrar" />
+                <FilterIcon />
             </Button>
 
             <Offcanvas show={showFilter} onHide={handleCloseFilter} responsive="lg">

@@ -1,35 +1,23 @@
-import { useState } from 'react';
-import { Form, Button, Fade } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { SearchIcon } from '../icons/Icons';
+import { useFilters } from '../hooks/useFilters';
 
 function Buscador() {
 
-  const [open, setOpen] = useState(false);
+  const { handleSearchChange } = useFilters()
 
-
-  const handleShow = () => {
-    setOpen(!open)
-  }
 
   return (
-    <div>
-      <div className='d-flex'>
+    <Form className='d-flex'>
+      <Form.Control type='text' className='bg-transparent border fw-light fs-5' placeholder='Buscar en la página' onChange={handleSearchChange} />
+      <Button
+        variant="outline-primary border-0 bg-transparent"
 
-
-        <Fade in={open}>
-          <Form.Control type='text' className='bg-transparent border-primary fw-light' placeholder='Buscar en la página' />
-        </Fade>
-
-
-        <Button
-          variant="outline-primary border-0 bg-transparent"
-          onMouseEnter={handleShow}
-          aria-label="Abrir buscador"
-        >
-          <SearchIcon />
-        </Button>
-      </div>
-    </div>
+        aria-label="Abrir buscador"
+      >
+        <SearchIcon />
+      </Button>
+    </Form>
   );
 }
 

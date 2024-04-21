@@ -1,6 +1,7 @@
 import { Carousel, Button, Placeholder, Card } from 'react-bootstrap';
 import CardFav from './CardFav';
 import useScreenSize from '../hooks/useScreenSize';
+import { PrevIcon, NextIcon } from '../icons/Icons';
 
 
 function CarouserCards({ productos, loading }) {
@@ -26,7 +27,7 @@ function CarouserCards({ productos, loading }) {
 
     return (
         <div className='d-flex justify-content-center'>
-            <Carousel interval={null} responsive={responsive} indicators={false} nextIcon={<Button className='rounded-pill'><img src="icons/next.svg" alt="" /></Button>} prevIcon={<Button className='rounded-pill'><img src="icons/prev.svg" alt="" /></Button>}>
+            <Carousel interval={null} responsive={responsive} indicators={false} nextIcon={<Button className='rounded-pill'><NextIcon /></Button>} prevIcon={<Button className='rounded-pill'><PrevIcon /></Button>}>
 
                 {loading && <Carousel.Item key={0} className='d-flex justify-content-center gap-4 px-4'>
                     {[1, 2, 3].map((index) => (

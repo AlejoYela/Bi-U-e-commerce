@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Variantes from '../components/Variantes';
-import { Image, Col, Row, Container, Accordion } from 'react-bootstrap'
-import Contador from '../components/Contador';
+import { Image, Col, Row, Container, Accordion, Button } from 'react-bootstrap'
 import { useCart } from '../hooks/useCart';
-import { StarIcon } from '../icons/Icons';
+import { StarIcon, CheckCartIcon, AddToCartIcon } from '../icons/Icons';
 
 function Producto() {
 
-    const { addToCart } = useCart()
+    const { cart, addToCart, removeFromCart } = useCart()
 
     let productoFiltrado = {};
     const { product_type, id } = useParams();
@@ -28,10 +27,16 @@ function Producto() {
             });
     }, []);
 
+    const checkProductInCart = product => {
+        return cart.some(item => item.id === product.id)
+    }
+
+    const isProductInCart = checkProductInCart(producto)
+
     return (
-        <Container>
-            <Row className='gap-5 p-5'>
-                <Col className='d-flex justify-content-center h-75' xs={12} sm={12} md={12} lg={5} xl={5}><Image src={producto.api_featured_image} className='border w-100' rounded /></Col>
+        <Container className='px-5'>
+            <Row className='gap-1 p-3'>
+                <Col className='d-flex justify-content-center h-75 w-50' xs={12} sm={12} md={12} lg={5} xl={5}><Image src={producto.api_featured_image} className='border w-100' rounded /></Col>
                 <Col >
                     <Container>
                         <h2 className='fs-4 fw-normal text-uppercase mb-3'>{producto.name}</h2>
@@ -44,21 +49,24 @@ function Producto() {
                         }
                         <p className='fs-4 fw-light'>$ {producto.price}</p>
 
-                        <Variantes colors={producto.product_colors} />
 
-                        <Contador product={producto} />
+                        <p className='fw-light mt-3'>{producto.description}</p>
+                        <Variantes colors={producto.product_colors} />
+                        <Button
+                            variant='outline-primary'
+                            size='lg'
+                            className='fw-light'
+                            onClick={isProductInCart
+                                ? () => removeFromCart(producto)
+                                : () => addToCart(producto)
+                            }
+                        >
+
+                            {isProductInCart ? <CheckCartIcon size={25} strokeWidth={1} /> : <AddToCartIcon size={25} strokeWidth={1} />}
+                            {isProductInCart ? ' Producto agregado' : ' Agregar a la bolsa'}
+                        </Button>
 
                         <Accordion flush className='my-3' >
-                            <Accordion.Item eventKey="0">
-                                <Accordion.Header>
-                                    <p className='m-0 p-0 fs-5 fw-light'>
-                                        Descripción
-                                    </p>
-                                </Accordion.Header>
-                                <Accordion.Body>
-                                    <p className='fw-light fs-5 m-0'>{producto.description}</p>
-                                </Accordion.Body>
-                            </Accordion.Item>
                             <Accordion.Item eventKey="1">
                                 <Accordion.Header><p className='m-0 p-0 fs-5 fw-light'>
                                     Características y beneficios

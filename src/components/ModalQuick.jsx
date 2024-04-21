@@ -5,12 +5,11 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../hooks/useCart';
 import { useFav } from '../hooks/useFav';
 import MultiToast from './MultiToast';
-import { FavIcon, FavFillIcon, CartIcon, CheckCartIcon, AddToCartIcon } from '../icons/Icons';
+import { FavIcon, FavFillIcon, CartIcon, CheckCartIcon, AddToCartIcon, SearchIcon, CheckIcon, AlertIcon } from '../icons/Icons';
 
 
 function ModalQuick({ product, state, setState }) {
     const [show, setShow] = useState(false);
-    const [hover, setHover] = useState(false);
     const [showToast, setShowToast] = useState(false)
 
     const handleClose = () => setShow(false);
@@ -42,7 +41,7 @@ function ModalQuick({ product, state, setState }) {
                 }
                 }
             >
-                <img src={state ? 'icons/search-vine.svg' : 'icons/search-white.svg'} alt="Buscar" width={50} height={50} />
+                <SearchIcon />
                 <p className='fs-6 text-primary'>Vista rápida</p>
             </Button >
 
@@ -81,9 +80,9 @@ function ModalQuick({ product, state, setState }) {
                                 <hr />
                                 <Variantes colors={product.product_colors} />
                                 {product.stock ? (
-                                    <p style={{ fontSize: '0.9rem' }} className='d-inline-block text-success fw-light mb-2'><img width="15" className="d-inline-block align-text-bottom" src="icons/check.svg" alt="" /> Producto disponible</p>
+                                    <p style={{ fontSize: '0.9rem' }} className='d-inline-block text-success fw-light mb-2'><CheckIcon size={18} /> Producto disponible</p>
                                 ) : (
-                                    <p style={{ fontSize: '0.9rem' }} className='d-inline-block text-danger fw-light mb-2'><img width="15" className="d-inline-block align-text-bottom" src="icons/alert.svg" alt="" /> Producto agotado</p>
+                                    <p style={{ fontSize: '0.9rem' }} className='d-inline-block text-danger fw-light mb-2'><AlertIcon size={18} /> Producto agotado</p>
                                 )}
                                 <Container className='p-0'>
                                     <Row class="d-flex gap-3">
@@ -106,16 +105,13 @@ function ModalQuick({ product, state, setState }) {
                                                         setShowToast(true);
                                                     }
                                                 }
-
-                                                onMouseEnter={() => setHover(true)}
-                                                onMouseLeave={() => setHover(false)}
                                             >
-                                                <a href="#" className='d-inline-block align-text-bottom'>
-                                                    {isProductInCart ? <CheckCartIcon /> : <AddToCartIcon />}
-                                                </a>
+
+                                                {isProductInCart ? <CheckCartIcon size={25} strokeWidth={1} /> : <AddToCartIcon size={25} strokeWidth={1} />}
+
 
                                                 {isProductInCart
-                                                    ? ' Agregado a la bolsa'
+                                                    ? ' Producto agregado'
                                                     : ' Añadir a la bolsa'
                                                 }
 

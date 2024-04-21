@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import CarouserCards from './CarouselCards';
-import useScreenSize from '../hooks/useScreenSize';
 import { Col, Row } from 'react-bootstrap';
 import axios from 'axios';
 
 function BestRating() {
   const [loading, setLoading] = useState(true)
   const [productosFav, setProductos] = useState([]);
-  const { width } = useScreenSize();
 
   useEffect(() => {
     axios.get(`http://makeup-api.herokuapp.com/api/v1/products.json?rating_greater_than=4.8`)
@@ -25,7 +23,7 @@ function BestRating() {
 
   return (
     <div id='Favoritos' className='my-5'>
-      <h1 className='text-center mb-3 fw-normal'>BiU: Tienda de Maquillaje, Skincare y Accesorios</h1>
+      <h1 className='display-4 text-center mb-3 fw-normal'>BiU: Tienda de Maquillaje, Skincare y Accesorios</h1>
       <Row className='mw-100'>
         <Col className='d-flex align-items-center justify-content-center mx-5 px-5 text-center'>
           <div>
