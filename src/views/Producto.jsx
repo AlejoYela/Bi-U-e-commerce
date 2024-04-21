@@ -4,7 +4,9 @@ import axios from 'axios';
 import Variantes from '../components/Variantes';
 import { Image, Col, Row, Container, Accordion, Button } from 'react-bootstrap'
 import { useCart } from '../hooks/useCart';
-import { StarIcon, CheckCartIcon, AddToCartIcon } from '../icons/Icons';
+import { StarIcon, CheckCartIcon, AddToCartIcon, CartIcon } from '../icons/Icons';
+import MultiToast from '../components/MultiToast';
+
 
 function Producto() {
 
@@ -13,6 +15,8 @@ function Producto() {
     let productoFiltrado = {};
     const { product_type, id } = useParams();
     const [producto, setProducto] = useState([]);
+    const [hover, setHover] = useState(false)
+    const [showToast, setShowToast] = useState(false)
 
     useEffect(() => {
         axios(`http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${product_type}`)
@@ -36,7 +40,7 @@ function Producto() {
     return (
         <Container className='px-5'>
             <Row className='gap-1 p-3'>
-                <Col className='d-flex justify-content-center h-75 w-50' xs={12} sm={12} md={12} lg={5} xl={5}><Image src={producto.api_featured_image} className='border w-100' rounded /></Col>
+                <Col className='d-flex justify-content-center h-75 w-50' xs={12} sm={12} md={12} lg={5} xl={5}><Image src={producto.api_featured_image} className='shadow w-100' rounded /></Col>
                 <Col >
                     <Container>
                         <h2 className='fs-4 fw-normal text-uppercase mb-3'>{producto.name}</h2>
@@ -52,19 +56,60 @@ function Producto() {
 
                         <p className='fw-light mt-3'>{producto.description}</p>
                         <Variantes colors={producto.product_colors} />
+
+
                         <Button
-                            variant='outline-primary'
-                            size='lg'
-                            className='fw-light'
-                            onClick={isProductInCart
-                                ? () => removeFromCart(producto)
-                                : () => addToCart(producto)
+                            className="boton"
+                            variant="outline-primary border-1 fw-light"
+
+                            onClick={
+                                () => {
+                                    if (isProductInCart) {
+                                        removeFromCart(producto);
+                                    } else {
+                                        addToCart(producto);
+                                        setShowToast(true); // Mostrar el toast solo cuando se agrega el producto
+                                    }
+                                }
                             }
+
+                            onMouseEnter={() => setHover(true)}
+                            onMouseLeave={() => setHover(false)}
                         >
 
-                            {isProductInCart ? <CheckCartIcon size={25} strokeWidth={1} /> : <AddToCartIcon size={25} strokeWidth={1} />}
-                            {isProductInCart ? ' Producto agregado' : ' Agregar a la bolsa'}
+                            {isProductInCart ? (
+                                <>
+                                    {hover ? (
+                                        <>
+                                            <CheckCartIcon size={25} strokeWidth={1} />
+                                            Eliminar de la bolsa
+                                        </>
+                                    ) : (
+                                        <>
+                                            <CheckCartIcon size={25} strokeWidth={1} />
+                                            Producto agregado
+                                        </>
+                                    )}
+                                </>
+                            ) : (
+                                <>
+                                    {hover ? (
+                                        <>
+                                            <AddToCartIcon size={25} strokeWidth={1} />
+                                            Añadir a la bolsa
+                                        </>
+                                    ) : (
+                                        <>
+                                            <AddToCartIcon size={25} strokeWidth={1} />
+                                            Añadir a la bolsa
+                                        </>
+                                    )}
+                                </>
+                            )}
+
                         </Button>
+
+                        <MultiToast titulo={'¡Agregado!'} texto={'Clickea en el ícono de bolsa para ver todos los productos que has agregado.'} icono={<CartIcon size={20} />} showToast={showToast} setShowToast={setShowToast} />
 
                         <Accordion flush className='my-3' >
                             <Accordion.Item eventKey="1">

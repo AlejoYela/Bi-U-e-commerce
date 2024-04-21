@@ -11,6 +11,7 @@ import { FavIcon, FavFillIcon, CartIcon, CheckCartIcon, AddToCartIcon, SearchIco
 function ModalQuick({ product, state, setState }) {
     const [show, setShow] = useState(false);
     const [showToast, setShowToast] = useState(false)
+    const [hover, setHover] = useState(false)
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -98,25 +99,51 @@ function ModalQuick({ product, state, setState }) {
 
                                                 onClick={
                                                     () => {
-                                                        isProductInCart
-                                                            ? removeFromCart(product)
-                                                            : addToCart(product);
-
-                                                        setShowToast(true);
+                                                        if (isProductInCart) {
+                                                            removeFromCart(product);
+                                                        } else {
+                                                            addToCart(product);
+                                                            setShowToast(true); // Mostrar el toast solo cuando se agrega el producto
+                                                        }
                                                     }
                                                 }
+
+                                                onMouseEnter={() => setHover(true)}
+                                                onMouseLeave={() => setHover(false)}
                                             >
 
-                                                {isProductInCart ? <CheckCartIcon size={25} strokeWidth={1} /> : <AddToCartIcon size={25} strokeWidth={1} />}
-
-
-                                                {isProductInCart
-                                                    ? ' Producto agregado'
-                                                    : ' Añadir a la bolsa'
-                                                }
+                                                {isProductInCart ? (
+                                                    <>
+                                                        {hover ? (
+                                                            <>
+                                                                <CheckCartIcon size={25} strokeWidth={1} />
+                                                                Eliminar de la bolsa
+                                                            </>
+                                                        ) : (
+                                                            <>
+                                                                <CheckCartIcon size={25} strokeWidth={1} />
+                                                                Producto agregado
+                                                            </>
+                                                        )}
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        {hover ? (
+                                                            <>
+                                                                <AddToCartIcon size={25} strokeWidth={1} />
+                                                                Añadir a la bolsa
+                                                            </>
+                                                        ) : (
+                                                            <>
+                                                                <AddToCartIcon size={25} strokeWidth={1} />
+                                                                Añadir a la bolsa
+                                                            </>
+                                                        )}
+                                                    </>
+                                                )}
 
                                             </Button>
-                                            <MultiToast titulo={'¡Agregado!'} texto={'Clickea en el ícono de bolsa para ver todos los productos que has agregado.'} icono={CartIcon} showToast={showToast} setShowToast={setShowToast} />
+                                            <MultiToast titulo={'¡Agregado!'} texto={'Clickea en el ícono de bolsa para ver todos los productos que has agregado.'} icono={<CartIcon size={20} />} showToast={showToast} setShowToast={setShowToast} />
                                         </Col>
                                     </Row>
                                 </Container>

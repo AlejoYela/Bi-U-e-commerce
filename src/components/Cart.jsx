@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Button, Offcanvas, Badge, ListGroup, Image, ButtonGroup, ButtonToolbar } from "react-bootstrap";
 import { useCart } from "../hooks/useCart.js";
-import { CartIcon } from "../icons/Icons.jsx";
+import { CartIcon, CheckIcon, AlertIcon, CartOffIcon } from "../icons/Icons.jsx";
 
 
 function Cart() {
+
 
     const [show, setShow] = useState(false);
 
@@ -13,22 +14,28 @@ function Cart() {
 
     const { cart, clearCart, addToCart, removeFromCart } = useCart()
 
+    let total = 0
+
+    cart.forEach(element => {
+        total += parseFloat(element.price)
+    });
+
     return (
         <div>
 
             <Button className="boton" variant="outline-primary border-0 bg-transparent" onClick={handleShow}>
-                <CartIcon></CartIcon><Badge bg="primary">{cart.length}</Badge>
+                <CartIcon /><Badge bg="primary">{cart.length}</Badge>
             </Button>
 
             <Offcanvas show={show} onHide={handleClose} scroll backdrop={false} placement="end">
                 <Offcanvas.Header closeButton>
 
                     <Offcanvas.Title className='fw-light fs-2 d-inline-flex gap-1'>
-                        <CartIcon />
+                        <CartIcon size={40} />
                         Bolsa
                         <h5>
 
-                            <Badge className="d-flex align-items-center" bg="primary">
+                            <Badge className="d-flex align-items-center fw-normal" bg="primary">
                                 {cart.length}
                             </Badge>
                         </h5>
@@ -37,39 +44,62 @@ function Cart() {
                 </Offcanvas.Header>
                 <hr className="mt-0" />
                 <Offcanvas.Body>
+                    {cart.length == 0 &&
+                        <div className="text-center">
+                            <CartOffIcon />
+                            <p className="fw-light">No tienes productos en la bolsa</p>
+                        </div>
+                    }
                     <ListGroup className="mb-5">
                         {cart.map(product => (
-                            <ListGroup.Item className="d-flex justify-content-start gap-3">
-                                <Image className='border-0 rounded' src={product.api_featured_image} width={80} height={80} />
-                                <div className="m-0 p-0">
-                                    <small className="text-uppercase fw-normal w-100">{product.name}</small ><br />
-                                    <small className="text-body-tertiary">$ {product.price} </small><br />
-                                    {product.product_colors && product.product_colors.length > 0 && (
-                                        <Button className='rounded-pill border-primary border-0 p-1 mb-2' style={{ backgroundColor: product.product_colors[0].hex_value, height: '1rem', width: '1rem' }} />
-                                    )}{' '}
-                                    <ButtonToolbar>
-                                        <ButtonGroup className="border border-1 border-primary me-2">
-                                            <Button className="border-0 fw-light" variant="outline-primary">{product.quantity}</Button>
-                                            <Button className="border-0" variant="outline-primary" onClick={() => addToCart(product)}>+</Button>
-                                        </ButtonGroup>
-                                        <ButtonGroup>
-                                            <Button className='fw-light' onClick={() => removeFromCart(product)} variant="outline-primary">Eliminar</Button>
-                                        </ButtonGroup>
-                                    </ButtonToolbar>
+                            <ListGroup.Item className="d-flex flex-column gap-3">
+                                <div className="d-flex justify-content-between gap-3">
+                                    <Image className='border-0 rounded' src={product.api_featured_image} width={80} height={80} />
+                                    <div className="w-50">
+                                        <small className="text-uppercase fw-normal w-100">{product.name}</small ><br />
+                                        {product.product_colors && product.product_colors.length > 0 && (
+                                            <Button className='rounded-pill border-primary border-0 p-1 mb-2' style={{ backgroundColor: product.product_colors[0].hex_value, height: '1rem', width: '1rem' }} />
+                                        )}<br />
+                                        {product.stock ? (
+                                            <p style={{ fontSize: '0.9rem' }} className='d-inline-block text-success fw-light mb-2'><CheckIcon size={18} /> Disponible</p>
+                                        ) : (
+                                            <p style={{ fontSize: '0.9rem' }} className='d-inline-block text-danger fw-light mb-2'><AlertIcon size={18} /> Agotado</p>
+                                        )}
+                                    </div>
+                                    <div>
+                                        <span className=" fw-light">$ {product.price}</span>
+                                    </div>
                                 </div>
+
+                                <ButtonToolbar className="d-flex justify-content-center">
+                                    <ButtonGroup className="border border-1 border-primary me-2">
+                                        <Button className="border-0 fw-light" variant="outline-primary">{product.quantity}</Button>
+                                        <Button className="border-0" variant="outline-primary" onClick={() => addToCart(product)}>+</Button>
+                                    </ButtonGroup>
+                                    <ButtonGroup className="w-75">
+                                        <Button className='fw-light' onClick={() => removeFromCart(product)} variant="outline-primary">Eliminar</Button>
+                                    </ButtonGroup>
+                                </ButtonToolbar>
+
 
                             </ListGroup.Item>
                         ))}
                     </ListGroup>
 
-
                 </Offcanvas.Body>
-                <Button variant="outline-primary mx-4 mb-1" onClick={clearCart}>
-                    Vaciar bolsa
-                </Button>
-                <Button variant="outline-primary mx-4 mb-3">
-                    Ir a pagar
-                </Button>
+
+
+                {cart.length != 0 && <span className="mx-3 mt-4 fs-5 fw-light text-end">Total: $ {total}</span>}
+                <ButtonGroup className="m-3">
+
+                    <Button variant="outline-primary fw-light fs-5" onClick={clearCart}>
+                        Vaciar bolsa
+                    </Button>
+                    <Button variant="outline-primary fw-light fs-5">
+                        Ir a pagar
+                    </Button>
+                </ButtonGroup>
+
             </Offcanvas>
         </div>
 

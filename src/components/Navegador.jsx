@@ -1,16 +1,17 @@
 import React from 'react';
-import { Container, Navbar, Nav, Button, Badge, Form } from 'react-bootstrap';
+import { Container, Navbar, Nav, Button, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Cart from './Cart.jsx';
 import { FavIcon, UserIcon } from '../icons/Icons.jsx';
 import { useFav } from '../hooks/useFav.js';
 import Categorias from './Categorias.jsx';
-import { SearchIcon } from '../icons/Icons.jsx';
 import { BiuLogo } from '../icons/Icons.jsx';
+import ModalSearch from './ModalSearch.jsx';
 
 function Navegador() {
 
     const { fav } = useFav()
+
 
     return (
         <Navbar expand="lg" className="bluring bg-secondary px-4 sticky-top bg-opacity-50">
@@ -43,15 +44,7 @@ function Navegador() {
 
                         <Cart />
 
-                        <Form className='d-flex'>
-                            <Button
-                                variant="outline-primary border-0 bg-transparent"
-
-                                aria-label="Abrir buscador"
-                            >
-                                <SearchIcon />
-                            </Button>
-                        </Form>
+                        <ModalSearch />
 
                     </Nav>
                 </Navbar.Collapse>

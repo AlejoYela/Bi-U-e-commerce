@@ -2,11 +2,19 @@ import React, { useState } from 'react';
 import { Button, Card, Fade } from 'react-bootstrap';
 import ModalQuick from './ModalQuick';
 import { Link } from 'react-router-dom';
-import { StarIcon } from '../icons/Icons';
+import { StarIcon, FavIcon, FavFillIcon } from '../icons/Icons';
+import { useFav } from '../hooks/useFav';
 
 function CardFav({ product }) {
 
   const [isHovered, setIsHovered] = useState(false);
+  const { fav, addToFav } = useFav()
+
+  const checkProductInFav = product => {
+    return fav.some(item => item.id === product.id)
+  }
+
+  const isProductInFav = checkProductInFav(product)
 
   return (
     <Card
@@ -32,6 +40,14 @@ function CardFav({ product }) {
       </div>
 
       <Card.Body>
+
+        <Button
+          className='position-absolute top-0 start-0 bg-transparent border-0'
+          onClick={() => addToFav(product)}
+        >
+          {isProductInFav ? <FavFillIcon /> : <FavIcon />}
+        </Button>
+
         <Card.Title className='fw-bold fs-6 text-primary text-truncate'>
           <small className='fw-normal text-black'>{product.name.toUpperCase()}</small>
         </Card.Title>
