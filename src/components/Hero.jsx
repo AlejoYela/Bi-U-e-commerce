@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Image, Button, Carousel } from 'react-bootstrap';
+import { Image, Button, Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 function Hero() {

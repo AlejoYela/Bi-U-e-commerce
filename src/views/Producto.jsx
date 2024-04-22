@@ -12,17 +12,15 @@ function Producto() {
 
     const { cart, addToCart, removeFromCart } = useCart()
 
-    let productoFiltrado = {};
-    const { product_type, id } = useParams();
+    const { id } = useParams();
     const [producto, setProducto] = useState([]);
     const [hover, setHover] = useState(false)
     const [showToast, setShowToast] = useState(false)
 
     useEffect(() => {
-        axios(`http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${product_type}`)
-            .then(({ data }) => {
-                productoFiltrado = data.find(item => item.id == id);
-                setProducto(productoFiltrado);
+        axios(`http://makeup-api.herokuapp.com/api/v1/products/${id}.json`)
+            .then(({ data }) => {;
+                setProducto(data);
             })
             .catch((error) => {
                 console.error(error);

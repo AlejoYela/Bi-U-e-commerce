@@ -66,7 +66,7 @@ function CardFav({ product }) {
 
 
       <Card.Footer className='bg-transparent border-0'>
-        <Link className="d-grid" style={{ textDecoration: 'none' }} to={`/producto/${product.product_type}/${product.id}`}>
+        <Link className="d-grid" style={{ textDecoration: 'none' }} to={`/producto/${product.id}`}>
           <Button variant="outline-primary border" size='lg' className='fw-light border-1 mb-2'>Ver producto</Button>
         </Link>
       </Card.Footer>

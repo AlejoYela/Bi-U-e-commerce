@@ -16,7 +16,7 @@ function App() {
       <Navegador />
       <Routes>
         <Route path='/' element={<Landing />} />
-        <Route path='/producto/:product_type/:id' element={<Producto />} />
+        <Route path='/producto/:id' element={<Producto />} />
         <Route path='/productos' element={<All />} />
         <Route path='/favoritos' element={<Favoritos />} />
       </Routes>
