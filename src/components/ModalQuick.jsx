@@ -71,15 +71,15 @@ function ModalQuick({ product, state, setState }) {
 
                     <Row className='my-2 mx-auto gap-5'>
                         <Col className='d-flex justify-content-center' xl={4}>
-                            <Image className='rounded shadow ms-5' src={product.api_featured_image} height={250} />
+                            <Image className='rounded shadow ms-5' src={product.src} height={250} />
 
                         </Col>
                         <Col>
                             <Container width='250svw'>
-                                <h2 className='fs-5 fw-light text-uppercase' >{product.name}</h2>
-                                <p >$ {product.price}</p>
+                                <h2 className='fs-5 fw-light text-uppercase' >{product.nombre}</h2>
+                                <p >$ {product.precio}</p>
                                 <hr />
-                                <Variantes colors={product.product_colors} />
+                                <Variantes colors={product.colores} />
                                 {product.stock ? (
                                     <p style={{ fontSize: '0.9rem' }} className='d-inline-block text-success fw-light mb-2'><CheckIcon size={18} /> Producto disponible</p>
                                 ) : (
@@ -88,7 +88,7 @@ function ModalQuick({ product, state, setState }) {
                                 <Container className='p-0'>
                                     <Row class="d-flex gap-3">
                                         <Col className='d-grid'>
-                                            <Link className="d-grid" style={{ textDecoration: 'none' }} to={`/producto/${product.product_type}/${product.id}`}>
+                                            <Link className="d-grid" style={{ textDecoration: 'none' }} to={`/producto/${product.id}`}>
                                                 <Button variant="outline-primary fw-light" onClick={handleClose}>Ver detalles</Button>
                                             </Link>
                                         </Col>

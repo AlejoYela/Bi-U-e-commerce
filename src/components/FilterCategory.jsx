@@ -8,8 +8,8 @@ function FilterCategory({ productos, loading }) {
     const categories = useMemo(() => {
         const uniqueCategories = [];
         productos.forEach(element => {
-            if (element.category && !uniqueCategories.includes(element.category)) {
-                uniqueCategories.push(element.category);
+            if (element.categoria && !uniqueCategories.includes(element.categoria)) {
+                uniqueCategories.push(element.categoria);
             }
         });
         return uniqueCategories;
@@ -59,7 +59,7 @@ function FilterCategory({ productos, loading }) {
                                 label='Todas'
                                 name='category'
                                 data-category='all'
-                                checked={filters.category === 'all'}
+                                checked={filters.categoria === 'all'}
                                 onChange={handleCategoryFilter}
                             />
                         </ListGroup.Item>

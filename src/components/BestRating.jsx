@@ -8,7 +8,7 @@ function BestRating() {
   const [productosFav, setProductos] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://makeup-api.herokuapp.com/api/v1/products.json?rating_greater_than=4.8`)
+    axios.get(`http://localhost:4321/productos`)
       .then(({ data }) => {
         // Limitar la cantidad de productos obtenidos
         setProductos(data.slice(0, 12));

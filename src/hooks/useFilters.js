@@ -22,13 +22,13 @@ export function useFilters() {
 
     const handleCategoryFilter = (event) => {
         const { checked } = event.target;
-        const category = event.target.getAttribute('data-category');
+        const categoria = event.target.getAttribute('data-category');
 
         setFilters(prevFilters => {
             if (checked) {
-                return { ...prevFilters, category };
+                return { ...prevFilters, categoria };
             } else {
-                return prevFilters.category === category ? { ...prevFilters, category: 'all' } : prevFilters;
+                return prevFilters.categoria === categoria ? { ...prevFilters, categoria: 'all' } : prevFilters;
             }
         });
     }
@@ -44,11 +44,11 @@ export function useFilters() {
     const filteredProducts = (products) => {
         return products.filter(product => {
             return (
-                product.price >= filters.minPrice &&
-                product.price <= filters.maxPrice &&
+                product.precio >= filters.minPrice &&
+                product.precio <= filters.maxPrice &&
                 (
-                    filters.category === 'all' ||
-                    product.category === filters.category
+                    filters.categoria === 'all' ||
+                    product.categoria === filters.categoria
                 ) &&
                 (
                     filters.search === '' ||

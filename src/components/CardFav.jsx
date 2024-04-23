@@ -32,7 +32,7 @@ function CardFav({ product }) {
           <Card.Img
             loading='lazy'
             variant="top"
-            src={product.api_featured_image}
+            src={product.src}
             style={{ opacity: isHovered ? 0.2 : 1, height: '200px', objectFit: 'cover' }}
           />
         </Fade>
@@ -49,19 +49,19 @@ function CardFav({ product }) {
         </Button>
 
         <Card.Title className='fw-bold fs-6 text-primary text-truncate'>
-          <small className='fw-normal text-black'>{product.name.toUpperCase()}</small>
+          <small className='fw-normal text-black'>{product.nombre.toUpperCase()}</small>
         </Card.Title>
 
       </Card.Body>
-      {product.rating &&
+      {product.calificacion &&
         <div className='d-flex mx-3'>
           <StarIcon />
-          {product.rating}
+          {product.calificacion}
         </div>
       }
 
       <p className='fw-light fs-5 mx-3'>
-        $ {product.price}
+        $ {product.precio}
       </p>
 
 

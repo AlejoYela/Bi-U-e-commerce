@@ -16,9 +16,10 @@ function All() {
 
 
     useEffect(() => {
-        axios.get(`http://makeup-api.herokuapp.com/api/v1/products.json`)
+        axios.get(`http://localhost:4321/productos`)
             .then(({ data }) => {
                 setProducto(data);
+                console.log('producto en all: ', producto);
                 setLoading(false)
             })
             .catch((error) => {

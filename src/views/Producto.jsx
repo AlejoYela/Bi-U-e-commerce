@@ -19,7 +19,8 @@ function Producto() {
 
     useEffect(() => {
         axios(`http://makeup-api.herokuapp.com/api/v1/products/${id}.json`)
-            .then(({ data }) => {;
+            .then(({ data }) => {
+                ;
                 setProducto(data);
             })
             .catch((error) => {
@@ -41,19 +42,19 @@ function Producto() {
                 <Col className='d-flex justify-content-center h-75 w-50' xs={12} sm={12} md={12} lg={5} xl={5}><Image src={producto.api_featured_image} className='shadow w-100' rounded /></Col>
                 <Col >
                     <Container>
-                        <h2 className='fs-4 fw-normal text-uppercase mb-3'>{producto.name}</h2>
+                        <h2 className='fs-4 fw-normal text-uppercase mb-3'>{producto.nombre}</h2>
 
-                        {producto.rating &&
+                        {producto.calificacion &&
                             <div className='d-flex mb-3 '>
                                 <StarIcon />
-                                {producto.rating}
+                                {producto.calificacion}
                             </div>
                         }
-                        <p className='fs-4 fw-light'>$ {producto.price}</p>
+                        <p className='fs-4 fw-light'>$ {producto.precio}</p>
 
 
-                        <p className='fw-light mt-3'>{producto.description}</p>
-                        <Variantes colors={producto.product_colors} />
+                        <p className='fw-light mt-3'>{producto.descripcion}</p>
+                        <Variantes colors={producto.colores} />
 
 
                         <Button
