@@ -293,3 +293,24 @@ export function CartOffIcon({ color = '#593A23', size = 32, strokeWidth = 1 }) {
         </svg>
     )
 }
+
+export function MailboxIcon({ color = '#593A23', size = 32, strokeWidth = 1 }) {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mailbox" width={size} height={size} viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke={color} fill="none" strokeLinecap="round" strokeLinejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M10 14l11 -11" />
+            <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5" />
+        </svg>
+    )
+}
+
+export function DropletIcon({ color = '#593A23', size = 32, strokeWidth = 1 }) {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-droplet-question" width={size} height={size} viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke={color} fill="none" strokeLinecap="round" strokeLinejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M18.064 10.877l-4.89 -7.26c-.42 -.625 -1.287 -.803 -1.936 -.397a1.376 1.376 0 0 0 -.41 .397l-4.893 7.26c-1.695 2.838 -1.035 6.441 1.567 8.546c2.203 1.782 5.259 2.056 7.723 .82" />
+            <path d="M19 22v.01" />
+            <path d="M19 19a2.003 2.003 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" />
+        </svg>
+    )
+}

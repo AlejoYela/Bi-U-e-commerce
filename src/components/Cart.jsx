@@ -17,7 +17,7 @@ function Cart() {
     let total = 0
 
     cart.forEach(element => {
-        total += parseFloat(element.price)
+        total += parseFloat(element.precio)
     });
 
     return (
@@ -54,11 +54,11 @@ function Cart() {
                         {cart.map(product => (
                             <ListGroup.Item className="d-flex flex-column gap-3">
                                 <div className="d-flex justify-content-between gap-3">
-                                    <Image className='border-0 rounded' src={product.api_featured_image} width={80} height={80} />
-                                    <div className="w-50">
-                                        <small className="text-uppercase fw-normal w-100">{product.name}</small ><br />
-                                        {product.product_colors && product.product_colors.length > 0 && (
-                                            <Button className='rounded-pill border-primary border-0 p-1 mb-2' style={{ backgroundColor: product.product_colors[0].hex_value, height: '1rem', width: '1rem' }} />
+                                    <Image className='border-0 rounded' src={product.src} width={80} height={80} />
+                                    <div className="w-50 text-truncate">
+                                        <small className="text-uppercase fw-normal ">{product.nombre}</small ><br />
+                                        {product.colores && product.colores.length > 0 && (
+                                            <Button className='rounded-pill border-primary border-0 p-1 mb-2' style={{ backgroundColor: product.colores[0].hex, height: '1rem', width: '1rem' }} />
                                         )}<br />
                                         {product.stock ? (
                                             <p style={{ fontSize: '0.9rem' }} className='d-inline-block text-success fw-light mb-2'><CheckIcon size={18} /> Disponible</p>
@@ -67,7 +67,7 @@ function Cart() {
                                         )}
                                     </div>
                                     <div>
-                                        <span className=" fw-light">$ {product.price}</span>
+                                        <span className=" fw-light text-nowrap">$ {product.precio}</span>
                                     </div>
                                 </div>
 

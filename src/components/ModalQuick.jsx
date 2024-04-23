@@ -76,8 +76,9 @@ function ModalQuick({ product, state, setState }) {
                         </Col>
                         <Col>
                             <Container width='250svw'>
-                                <h2 className='fs-5 fw-light text-uppercase' >{product.nombre}</h2>
-                                <p >$ {product.precio}</p>
+                                <h2 className='fs-5 fw-light text-uppercase m-0' >{product.nombre}</h2>
+                                <small className='text-body-tertiary'>Colección: {product.coleccion}</small>
+                                <p className='mt-3'>$ {product.precio}</p>
                                 <hr />
                                 <Variantes colors={product.colores} />
                                 {product.stock ? (

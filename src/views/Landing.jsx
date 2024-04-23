@@ -1,5 +1,5 @@
 import React from 'react';
-import Favoritos from '../components/BestRating';
+import BestRating from '../components/BestRating';
 import ProductoEstrella from '../components/ProductoEstrella';
 import VeganSection from '../components/VeganSection';
 import Hero from '../components/Hero';
@@ -9,7 +9,8 @@ import Hero from '../components/Hero';
 function Landing() {
     return (<div>
         <Hero />
-        <Favoritos />
+        <h1 className='display-4 text-center mt-5 pt-5 fw-normal'>BiU: Tienda de Maquillaje, Skincare y Accesorios</h1>
+        <BestRating />
         <ProductoEstrella />
         <VeganSection />
     </div>);

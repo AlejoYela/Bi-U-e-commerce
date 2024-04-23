@@ -84,10 +84,13 @@ function All() {
                     </Row>
 
                     <div className="text-center mt-4">
-                        <Button className='fw-light fs-4 mb-5' variant="outline-primary" onClick={handleLoadMore}>
-                            Mostrar más
-                        </Button>
+                        {cardsToShow < filteredProduct.length && (
+                            <Button className='fw-light fs-4 mb-5' variant="outline-primary" onClick={handleLoadMore}>
+                                Mostrar más
+                            </Button>
+                        )}
                     </div>
+
 
                 </Col>
             </Row>

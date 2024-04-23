@@ -27,23 +27,23 @@ function Favoritos() {
                 {fav.map(product => (
                     <ListGroup.Item className="d-inline-flex justify-content-between align-items-center">
                         <div>
-                            <Link to={`/producto/${product.product_type}/${product.id}`}>
-                                <Image fluid className='border-0 rounded' src={product.api_featured_image} width={100} style={{ objectFit: 'cover', height: '100px' }}></Image>
+                            <Link to={`/productos/${product.id}`}>
+                                <Image fluid className='border-0 rounded' src={product.src} width={100} style={{ objectFit: 'cover', height: '100px' }}></Image>
                             </Link>
                         </div>
                         <div className="w-50">
-                            <p className="text-truncate text-uppercase fs-5 m-0">{product.name}</p>
+                            <p className="text-truncate text-uppercase fs-5 m-0">{product.nombre}</p>
 
                             {product.stock ? (
                                 <p style={{ fontSize: '0.9rem' }} className='d-inline-block text-success fw-light mb-2'><CheckIcon size={18} /> Producto disponible</p>
                             ) : (
                                 <p style={{ fontSize: '0.9rem' }} className='d-inline-block text-danger fw-light mb-2'><AlertIcon size={18} /> Producto agotado</p>
                             )}
-                            <p className="fw-light text-truncate m-0">{product.description}</p>
+                            <p className="fw-light text-truncate m-0">{product.descripcion}</p>
                         </div>
 
                         <div>
-                            <h3 className="fw-light">$ {product.price}</h3>
+                            <h3 className="fw-light">$ {product.precio}</h3>
                         </div>
                         <div>
                             <Button variant="outline-dark d-inline-flex" className="fw-light" size="lg" onClick={() => addToCart(product)}><CartIcon />Agregar al carrito</Button>

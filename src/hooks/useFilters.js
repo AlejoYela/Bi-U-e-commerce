@@ -52,7 +52,7 @@ export function useFilters() {
                 ) &&
                 (
                     filters.search === '' ||
-                    product.name.toLowerCase().includes(filters.search.toLowerCase())
+                    product.nombre.toLowerCase().includes(filters.search.toLowerCase())
                 )
             );
         });

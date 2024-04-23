@@ -8,7 +8,7 @@ import { useFav } from '../hooks/useFav';
 function CardFav({ product }) {
 
   const [isHovered, setIsHovered] = useState(false);
-  const { fav, addToFav } = useFav()
+  const { fav, addToFav, removeFromFav } = useFav()
 
   const checkProductInFav = product => {
     return fav.some(item => item.id === product.id)
@@ -43,13 +43,21 @@ function CardFav({ product }) {
 
         <Button
           className='position-absolute top-0 start-0 bg-transparent border-0'
-          onClick={() => addToFav(product)}
+          onClick={
+            () => {
+              isProductInFav
+                ? removeFromFav(product)
+                : addToFav(product);
+            }
+          }
         >
           {isProductInFav ? <FavFillIcon /> : <FavIcon />}
         </Button>
 
         <Card.Title className='fw-bold fs-6 text-primary text-truncate'>
-          <small className='fw-normal text-black'>{product.nombre.toUpperCase()}</small>
+          <small className='fw-normal text-black'>{product.nombre.toUpperCase()}</small><br/>
+          
+          <small className='text-body-tertiary fw-lighter'>{product.coleccion}</small>
         </Card.Title>
 
       </Card.Body>

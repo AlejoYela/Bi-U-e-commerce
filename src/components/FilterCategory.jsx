@@ -6,6 +6,7 @@ import { FilterIcon } from "../icons/Icons";
 function FilterCategory({ productos, loading }) {
 
     const categories = useMemo(() => {
+        if (!productos) return []; // Verificar si productos es undefined
         const uniqueCategories = [];
         productos.forEach(element => {
             if (element.categoria && !uniqueCategories.includes(element.categoria)) {
@@ -14,7 +15,7 @@ function FilterCategory({ productos, loading }) {
         });
         return uniqueCategories;
     }, [productos]);
-
+    
 
     const [showFilter, setShowFilter] = useState(false);
 
@@ -74,7 +75,7 @@ function FilterCategory({ productos, loading }) {
                                     label={category}
                                     name='category'
                                     data-category={category}
-                                    checked={filters.category === category}
+                                    checked={filters.categoria === category}
                                     onChange={handleCategoryFilter}
                                 />
                             </ListGroup.Item>

@@ -23,7 +23,6 @@ function BestRating() {
 
   return (
     <div id='Favoritos' className='my-5'>
-      <h1 className='display-4 text-center mb-3 fw-normal'>BiU: Tienda de Maquillaje, Skincare y Accesorios</h1>
       <Row className='mw-100'>
         <Col className='d-flex align-items-center justify-content-center mx-5 px-5 text-center'>
           <div>

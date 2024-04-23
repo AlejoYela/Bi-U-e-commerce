@@ -17,11 +17,20 @@ function Variantes({ colors }) {
     return (
         <Container className='p-0'>
             {showColorName &&
-                <small style={{ fontSize: '0.7rem' }} className='fw-bolder text-uppercase'>COLOR: {selectedVariant}</small>}
+                <small style={{ fontSize: '0.7rem' }} className='fw-bolder text-uppercase text-body-tertiary'>COLOR: {selectedVariant}</small>}
             <Container fluid className='d-flex flex-wrap justify-content-start gap-2 mb-4 p-0'>
-                {/* Mapear los colores y crear botones */}
                 {colors && colors.map((variante, index) => (
-                    <Button key={index} className='rounded-pill border-primary border-0 p-1' style={{ backgroundColor: variante.hex, height: '1rem', width: '1rem' }} onClick={() => handleVariant(variante.nombre)}></Button>
+                    <Button 
+                        key={index} 
+                        className={`rounded-pill p-1 ${selectedVariant === variante.nombre ? 'selected' : ''}`} 
+                        style={{ 
+                            backgroundColor: variante.hex, 
+                            height: '1rem', 
+                            width: '1rem',
+                            border: selectedVariant === variante.nombre ? '1.5px solid black' : 'none', // Agrega borde negro cuando seleccionado
+                        }} 
+                        onClick={() => handleVariant(variante.nombre)}
+                    ></Button>
                 ))}
             </Container>
         </Container>

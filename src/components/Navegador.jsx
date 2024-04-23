@@ -18,7 +18,7 @@ function Navegador() {
             <Container fluid>
                 <Link to='/' style={{ textDecoration: 'none' }}>
                     <Navbar.Brand className='fw-normal'>
-                        <BiuLogo strokeWidth={3} color='#000000' size={55} />
+                        <BiuLogo strokeWidth={3} color='#000000' size={45} />
                         {' '}Bi･U Cosmetics
                     </Navbar.Brand>
                 </Link>

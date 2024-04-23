@@ -12,11 +12,14 @@ export function FiltersProvider({ children }) {
         maxPrice: 100000,
         search: ''
     })
+    const [loading, setLoading] = useState(true);
 
     return (
         <FiltersContext.Provider value={[
             filters,
-            setFilters
+            setFilters,
+            loading, // Agrega el estado de carga al valor del contexto
+            setLoading // Agrega la función para establecer el estado de carga
         ]}
         >
             {children}

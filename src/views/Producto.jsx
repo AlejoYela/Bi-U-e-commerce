@@ -2,15 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Variantes from '../components/Variantes';
-import { Image, Col, Row, Container, Accordion, Button } from 'react-bootstrap'
+import { Image, Col, Row, Container, Accordion, Button, ButtonGroup } from 'react-bootstrap'
 import { useCart } from '../hooks/useCart';
-import { StarIcon, CheckCartIcon, AddToCartIcon, CartIcon } from '../icons/Icons';
+import { useFav } from '../hooks/useFav';
+import { StarIcon, CheckCartIcon, AddToCartIcon, CartIcon, MailboxIcon, CheckIcon, DropletIcon, FavIcon, FavFillIcon } from '../icons/Icons';
 import MultiToast from '../components/MultiToast';
 
 
 function Producto() {
 
     const { cart, addToCart, removeFromCart } = useCart()
+    const { fav, addToFav, removeFromFav } = useFav()
 
     const { id } = useParams();
     const [producto, setProducto] = useState([]);
@@ -18,10 +20,10 @@ function Producto() {
     const [showToast, setShowToast] = useState(false)
 
     useEffect(() => {
-        axios(`http://makeup-api.herokuapp.com/api/v1/products/${id}.json`)
+        axios(`http://localhost:4321/productos/${id}`)
             .then(({ data }) => {
-                ;
                 setProducto(data);
+                console.log(producto.src);
             })
             .catch((error) => {
                 console.error(error);
@@ -34,18 +36,28 @@ function Producto() {
         return cart.some(item => item.id === product.id)
     }
 
+    const checkProductInFav = product => {
+        return fav.some(item => item.id === product.id)
+    }
+
     const isProductInCart = checkProductInCart(producto)
+    const isProductInFav = checkProductInFav(producto)
 
     return (
         <Container className='px-5'>
             <Row className='gap-1 p-3'>
-                <Col className='d-flex justify-content-center h-75 w-50' xs={12} sm={12} md={12} lg={5} xl={5}><Image src={producto.api_featured_image} className='shadow w-100' rounded /></Col>
+
+                <Col className='d-flex justify-content-center h-75 w-50' xs={12} sm={12} md={12} lg={5} xl={5}>
+                    <Image src={producto.src} className='shadow w-100' rounded />
+                </Col>
+
                 <Col >
                     <Container>
-                        <h2 className='fs-4 fw-normal text-uppercase mb-3'>{producto.nombre}</h2>
+                        <h2 className='fs-4 fw-normal text-uppercase m-0'>{producto.nombre}</h2>
+                        <small className='text-body-tertiary'>Colección: {producto.coleccion}</small>
 
                         {producto.calificacion &&
-                            <div className='d-flex mb-3 '>
+                            <div className='d-flex my-3 '>
                                 <StarIcon />
                                 {producto.calificacion}
                             </div>
@@ -56,102 +68,122 @@ function Producto() {
                         <p className='fw-light mt-3'>{producto.descripcion}</p>
                         <Variantes colors={producto.colores} />
 
+                        <ButtonGroup>
+                            <Button
+                                className="boton"
+                                variant="outline-primary border-1 fw-light d-inline-flex gap-1"
 
-                        <Button
-                            className="boton"
-                            variant="outline-primary border-1 fw-light"
-
-                            onClick={
-                                () => {
-                                    if (isProductInCart) {
-                                        removeFromCart(producto);
-                                    } else {
-                                        addToCart(producto);
-                                        setShowToast(true); // Mostrar el toast solo cuando se agrega el producto
+                                onClick={
+                                    () => {
+                                        if (isProductInCart) {
+                                            removeFromCart(producto);
+                                        } else {
+                                            addToCart(producto);
+                                            setShowToast(true); // Mostrar el toast solo cuando se agrega el producto
+                                        }
                                     }
                                 }
-                            }
 
-                            onMouseEnter={() => setHover(true)}
-                            onMouseLeave={() => setHover(false)}
-                        >
+                                onMouseEnter={() => setHover(true)}
+                                onMouseLeave={() => setHover(false)}
+                            >
 
-                            {isProductInCart ? (
-                                <>
-                                    {hover ? (
-                                        <>
-                                            <CheckCartIcon size={25} strokeWidth={1} />
-                                            Eliminar de la bolsa
-                                        </>
-                                    ) : (
-                                        <>
-                                            <CheckCartIcon size={25} strokeWidth={1} />
-                                            Producto agregado
-                                        </>
-                                    )}
-                                </>
-                            ) : (
-                                <>
-                                    {hover ? (
-                                        <>
-                                            <AddToCartIcon size={25} strokeWidth={1} />
-                                            Añadir a la bolsa
-                                        </>
-                                    ) : (
-                                        <>
-                                            <AddToCartIcon size={25} strokeWidth={1} />
-                                            Añadir a la bolsa
-                                        </>
-                                    )}
-                                </>
-                            )}
+                                {isProductInCart ? (
+                                    <>
+                                        {hover ? (
+                                            <>
+                                                <CheckCartIcon size={20} strokeWidth={1} color='#000000'/>
+                                                Eliminar de la bolsa
+                                            </>
+                                        ) : (
+                                            <>
+                                                <CheckCartIcon size={20} strokeWidth={1} color='#000000'/>
+                                                Producto agregado
+                                            </>
+                                        )}
+                                    </>
+                                ) : (
+                                    <>
+                                        {hover ? (
+                                            <>
+                                                <AddToCartIcon size={20} strokeWidth={1} color='#000000'/>
+                                                Añadir a la bolsa
+                                            </>
+                                        ) : (
+                                            <>
+                                                <AddToCartIcon size={20} strokeWidth={1} color='#000000'/>
+                                                Añadir a la bolsa
+                                            </>
+                                        )}
+                                    </>
+                                )}
 
-                        </Button>
+                            </Button>
+                            <Button
+                                variant="outline-primary d-inline-flex gap-1"
+                                className="fw-light"
+                                onClick={() => {
+                                    if (isProductInFav) {
+                                        removeFromFav(producto);
+                                    } else {
+                                        addToFav(producto);
+                                        // Aquí puedes mostrar un toast o mensaje para confirmar que se ha agregado a favoritos
+                                    }
+                                }}
+                            >
+                                {isProductInFav ? (
+                                    <>
+                                        <FavFillIcon size={20} strokeWidth={1} color='#000000'/>
+                                        Quitar de favoritos
+                                    </>
+                                ) : (
+                                    <>
+                                        <FavIcon size={20} strokeWidth={1} color='#000000'/>
+                                        Añadir a favoritos
+                                    </>
+                                )}
+                            </Button>
+
+                        </ButtonGroup>
 
                         <MultiToast titulo={'¡Agregado!'} texto={'Clickea en el ícono de bolsa para ver todos los productos que has agregado.'} icono={<CartIcon size={20} />} showToast={showToast} setShowToast={setShowToast} />
 
-                        <Accordion flush className='my-3' >
+                        <Accordion flush className='my-4' >
                             <Accordion.Item eventKey="1">
-                                <Accordion.Header><p className='m-0 p-0 fs-5 fw-light'>
-                                    Características y beneficios
+                                <Accordion.Header><p className='m-0 p-0 fs-5 fw-light d-inline-flex gap-2'>
+                                    <CheckIcon size={20} color='#000000' strokeWidth={1} />Características y beneficios
                                 </p></Accordion.Header>
                                 <Accordion.Body>
-                                    <ul className='d-flex gap-5 p-0 m-0 '>
-                                        {producto.tag_list && producto.tag_list.map(tag => {
-                                            return (<li className='m-0 p-0 fs-5 fw-light'>
-                                                {tag}
-                                            </li>)
+                                    <ul className='d-flex gap-5 p-0 m-0 justify-content-evenly'>
+                                        {producto.tag_list && producto.tag_list.map((tag, index) => {
+                                            return (
+                                                <li key={index} className='m-0 p-0 fw-light'>
+                                                    {tag}
+                                                </li>
+                                            );
                                         })}
+
                                     </ul>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="2">
-                                <Accordion.Header><p className='m-0 p-0 fs-5 fw-light'>
-                                    ¿Cómo se usa?
+                                <Accordion.Header><p className='m-0 p-0 fs-5 fw-light d-inline-flex gap-2'>
+                                    <DropletIcon size={20} color='#000000' strokeWidth={1} />¿Cómo se usa?
                                 </p></Accordion.Header>
                                 <Accordion.Body>
-                                    <p className='fw-light fs-5 m-0'>
-                                        Hola soy un texto de acordeón
+                                    <p className='fw-light m-0'>
+                                        {producto.uso}
                                     </p>
                                 </Accordion.Body>
                             </Accordion.Item>
-                            <Accordion.Item eventKey="3">
-                                <Accordion.Header><p className='m-0 p-0 fs-5 fw-light'>
-                                    Ingredientes
-                                </p></Accordion.Header>
-                                <Accordion.Body>
-                                    <p className='fw-light fs-5 m-0'>
-                                        Hola soy un texto de acordeón
-                                    </p>
-                                </Accordion.Body>
-                            </Accordion.Item>
+
                             <Accordion.Item eventKey="4">
-                                <Accordion.Header><p className='m-0 p-0 fs-5 fw-light'>
-                                    Envío
+                                <Accordion.Header><p className='m-0 p-0 fs-5 fw-light d-inline-flex gap-2'>
+                                    <MailboxIcon size={20} color='#000000' strokeWidth={1} />Envío
                                 </p></Accordion.Header>
                                 <Accordion.Body>
-                                    <p className='fw-light fs-5'>
-                                        Hola soy un texto de acordeón
+                                    <p className='fw-light d-inline-flex'>
+                                        ¡Tu ubicación tiene habilitado el envío gratis!
                                     </p>
                                 </Accordion.Body>
                             </Accordion.Item>
