@@ -1,13 +1,20 @@
+import { useState } from "react";
 import { useFav } from "../hooks/useFav";
 import { useCart } from "../hooks/useCart";
 import { Button, Container, ListGroup, Image } from "react-bootstrap";
-import { CartIcon, FavFillIcon, BrokenHearthIcon, CheckIcon, AlertIcon } from "../icons/Icons";
+import { CheckCartIcon, AddToCartIcon, FavFillIcon, BrokenHearthIcon, CheckIcon, AlertIcon } from "../icons/Icons";
 import { Link } from "react-router-dom";
 
 function Favoritos() {
 
     const { fav, clearFav, removeFromFav } = useFav()
-    const { addToCart, } = useCart()
+    const { cart, addToCart, removeFromCart } = useCart()
+    const [hover, setHover] = useState(false)
+
+    const checkProductInCart = product => {
+        return cart.some(item => item.id === product.id)
+    }
+
 
     return (
         <Container fluid='md mb-5'>
@@ -45,8 +52,53 @@ function Favoritos() {
                         <div>
                             <h3 className="fw-light">$ {product.precio}</h3>
                         </div>
-                        <div>
-                            <Button variant="outline-dark d-inline-flex" className="fw-light" size="lg" onClick={() => addToCart(product)}><CartIcon />Agregar al carrito</Button>
+                        <div className="d-inline-flex gap-2">
+                            <Button
+                                variant="outline-dark d-inline-flex gap-1"
+                                className="fw-light"
+                                size="lg"
+                                onClick={() => {
+                                    if (checkProductInCart(product)) {
+                                        removeFromCart(product);
+                                    } else {
+                                        addToCart(product);
+                                    }
+                                }}
+                                onMouseEnter={() => setHover(true)}
+                                onMouseLeave={() => setHover(false)}
+                            >
+                                {checkProductInCart(product) ? (
+                                    <>
+                                        {hover ? (
+                                            <>
+                                                <CheckCartIcon size={25} strokeWidth={1} color="#000000" />
+                                                Eliminar de la bolsa
+                                            </>
+                                        ) : (
+                                            <>
+                                                <CheckCartIcon size={25} strokeWidth={1} color="#000000" />
+                                                Producto agregado
+                                            </>
+                                        )}
+                                    </>
+                                ) : (
+                                    <>
+                                        {hover ? (
+                                            <>
+                                                <AddToCartIcon size={25} strokeWidth={1} color="#000000" />
+                                                Añadir a la bolsa
+                                            </>
+                                        ) : (
+                                            <>
+                                                <AddToCartIcon size={25} strokeWidth={1} color="#000000" />
+                                                Añadir a la bolsa
+                                            </>
+                                        )}
+                                    </>
+                                )}
+                            </Button>
+
+
                         </div>
                         <div>
                             <Button className='bg-transparent border-0' onClick={() => removeFromFav(product)}>

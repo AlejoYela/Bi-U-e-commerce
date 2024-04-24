@@ -33,6 +33,19 @@ export function useFilters() {
         });
     }
 
+    const handleSubcategoryFilter = (event) => {
+        const { checked } = event.target;
+        const subcategoria = event.target.getAttribute('data-category');
+
+        setFilters(prevFilters => {
+            if (checked) {
+                return { ...prevFilters, subcategoria };
+            } else {
+                return prevFilters.subcategoria === subcategoria ? { ...prevFilters, subcategoria: 'all' } : prevFilters;
+            }
+        });
+    }
+
     const handleSearchChange = (event) => {
         const searchTerm = event.target.value;
         setFilters({
@@ -51,6 +64,10 @@ export function useFilters() {
                     product.categoria === filters.categoria
                 ) &&
                 (
+                    filters.subcategoria === 'all' ||
+                    product.subcategoria === filters.subcategoria
+                ) &&
+                (
                     filters.search === '' ||
                     product.nombre.toLowerCase().includes(filters.search.toLowerCase())
                 )
@@ -58,5 +75,5 @@ export function useFilters() {
         });
     };
 
-    return { filters, filteredProducts, setFilters, handlePrecioMaxChange, handlePrecioMinChange, handleCategoryFilter, handleSearchChange }
+    return { filters, filteredProducts, setFilters, handlePrecioMaxChange, handlePrecioMinChange, handleCategoryFilter, handleSubcategoryFilter, handleSearchChange }
 }

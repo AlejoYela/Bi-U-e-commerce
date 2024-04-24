@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useFilters } from '../hooks/useFilters';
-import { Button, ButtonGroup, Offcanvas, Container, Form } from "react-bootstrap";
+import { Button, Offcanvas, Container, Form } from "react-bootstrap";
 import Buscador from "./Buscador";
 import { OrderIcon } from "../icons/Icons";
 
@@ -9,12 +9,12 @@ function FilterPrice({ loading }) {
     const { filters, handlePrecioMaxChange, handlePrecioMinChange } = useFilters()
 
     const [showOrder, setShowOrder] = useState(false);
-    const [toggle, setToggle] = useState(true)
+
 
     const handleCloseOrder = () => setShowOrder(false);
     const handleShowOrder = () => setShowOrder(true);
 
-    const handleToggle = () => setToggle(!toggle)
+
 
     return (
         <>
@@ -28,11 +28,6 @@ function FilterPrice({ loading }) {
                 <Offcanvas.Body>
                     {!loading && <Container className={showOrder ? 'd-grid gap-3 mb-5 align-items-center px-0' : 'd-flex justify-content-end gap-3 mb-5 align-items-center px-0'}>
 
-
-                        <ButtonGroup>
-                            <Button variant='outline-primary fw-light fs-5 border' active={toggle} onClick={handleToggle}>Maquillaje</Button>
-                            <Button variant='outline-primary fw-light fs-5 border' active={!toggle} onClick={handleToggle}>Skincare</Button>
-                        </ButtonGroup>
 
                         <h3 className='fw-light fs-5 m-0 align-middle'>Precio:</h3>
 

@@ -8,6 +8,7 @@ export function FiltersProvider({ children }) {
 
     const [filters, setFilters] = useState({
         categoria: 'all',
+        subcategoria: 'all',
         minPrice: 0,
         maxPrice: 100000,
         search: ''
@@ -18,8 +19,6 @@ export function FiltersProvider({ children }) {
         <FiltersContext.Provider value={[
             filters,
             setFilters,
-            loading, // Agrega el estado de carga al valor del contexto
-            setLoading // Agrega la función para establecer el estado de carga
         ]}
         >
             {children}
