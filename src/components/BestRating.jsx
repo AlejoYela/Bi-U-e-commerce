@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import CarouserCards from './CarouselCards';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row, Button } from 'react-bootstrap';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function BestRating() {
   const [loading, setLoading] = useState(true)
@@ -34,6 +35,11 @@ function BestRating() {
           <CarouserCards productos={productosFav} loading={loading} />
         </Col>
       </Row>
+      <div className='text-center'>
+        <Link to='/productos'>
+          <Button variant='primary' className='fw-light mt-4' size='lg'>Ver todos</Button>
+        </Link>
+      </div>
     </div>
   );
 }

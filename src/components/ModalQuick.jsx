@@ -95,7 +95,7 @@ function ModalQuick({ product, state, setState }) {
                                         </Col>
                                         <Col className='d-grid'>
                                             <Button
-                                                className="boton"
+                                                className="boton d-inline-flex gap-1 justify-content-center"
                                                 variant="outline-primary border-1 fw-light"
 
                                                 onClick={
@@ -117,12 +117,12 @@ function ModalQuick({ product, state, setState }) {
                                                     <>
                                                         {hover ? (
                                                             <>
-                                                                <CheckCartIcon size={25} strokeWidth={1} />
+                                                                <CheckCartIcon size={20} strokeWidth={1} color='#FFFFFF'/>
                                                                 Eliminar de la bolsa
                                                             </>
                                                         ) : (
                                                             <>
-                                                                <CheckCartIcon size={25} strokeWidth={1} />
+                                                                <CheckCartIcon size={20} strokeWidth={1} color='#000000'/>
                                                                 Producto agregado
                                                             </>
                                                         )}
@@ -131,12 +131,12 @@ function ModalQuick({ product, state, setState }) {
                                                     <>
                                                         {hover ? (
                                                             <>
-                                                                <AddToCartIcon size={25} strokeWidth={1} />
+                                                                <AddToCartIcon size={20} strokeWidth={1} color='#FFFFFF'/>
                                                                 Añadir a la bolsa
                                                             </>
                                                         ) : (
                                                             <>
-                                                                <AddToCartIcon size={25} strokeWidth={1} />
+                                                                <AddToCartIcon size={20} strokeWidth={1} color='#000000'/>
                                                                 Añadir a la bolsa
                                                             </>
                                                         )}
