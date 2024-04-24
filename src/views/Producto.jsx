@@ -54,10 +54,10 @@ function Producto() {
                 <Col >
                     <Container>
                         <h2 className='fs-4 fw-normal text-uppercase m-0'>{producto.nombre}</h2>
-                        <small className='text-body-tertiary'>Colección: {producto.coleccion}</small>
+                        <small className='text-body-tertiary'>Colección: {producto.coleccion}</small><br />
 
                         {producto.calificacion &&
-                            <div className='d-flex my-3 '>
+                            <div className='d-inline-flex my-3 gap-1'>
                                 <StarIcon />
                                 {producto.calificacion}
                             </div>
@@ -92,12 +92,12 @@ function Producto() {
                                     <>
                                         {hover ? (
                                             <>
-                                                <CheckCartIcon size={20} strokeWidth={1} color='#000000'/>
+                                                <CheckCartIcon size={20} strokeWidth={1} color='#000000' />
                                                 Eliminar de la bolsa
                                             </>
                                         ) : (
                                             <>
-                                                <CheckCartIcon size={20} strokeWidth={1} color='#000000'/>
+                                                <CheckCartIcon size={20} strokeWidth={1} color='#000000' />
                                                 Producto agregado
                                             </>
                                         )}
@@ -106,12 +106,12 @@ function Producto() {
                                     <>
                                         {hover ? (
                                             <>
-                                                <AddToCartIcon size={20} strokeWidth={1} color='#000000'/>
+                                                <AddToCartIcon size={20} strokeWidth={1} color='#000000' />
                                                 Añadir a la bolsa
                                             </>
                                         ) : (
                                             <>
-                                                <AddToCartIcon size={20} strokeWidth={1} color='#000000'/>
+                                                <AddToCartIcon size={20} strokeWidth={1} color='#000000' />
                                                 Añadir a la bolsa
                                             </>
                                         )}
@@ -133,12 +133,12 @@ function Producto() {
                             >
                                 {isProductInFav ? (
                                     <>
-                                        <FavFillIcon size={20} strokeWidth={1} color='#000000'/>
+                                        <FavFillIcon size={20} strokeWidth={1} color='#000000' />
                                         Quitar de favoritos
                                     </>
                                 ) : (
                                     <>
-                                        <FavIcon size={20} strokeWidth={1} color='#000000'/>
+                                        <FavIcon size={20} strokeWidth={1} color='#000000' />
                                         Añadir a favoritos
                                     </>
                                 )}

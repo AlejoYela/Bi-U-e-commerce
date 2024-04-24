@@ -34,7 +34,7 @@ function Favoritos() {
                 {fav.map(product => (
                     <ListGroup.Item className="d-inline-flex justify-content-between align-items-center">
                         <div>
-                            <Link to={`/productos/${product.id}`}>
+                            <Link to={`/producto/${product.id}`}>
                                 <Image fluid className='border-0 rounded' src={product.src} width={100} style={{ objectFit: 'cover', height: '100px' }}></Image>
                             </Link>
                         </div>
