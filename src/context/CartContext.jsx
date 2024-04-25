@@ -16,22 +16,28 @@ function useCartReducer () {
     payload: product
   })
 
+  const isProductInCart = product => dispatch({
+    type: CART_ACTIONS_TYPES.IS_PRODUCT_IN_CART,
+    payload: product
+  })
+
   const clearCart = () => dispatch({ type: CART_ACTIONS_TYPES.CLEAR_CART })
 
-  return { state, addToCart, removeFromCart, clearCart }
+  return { state, addToCart, removeFromCart, clearCart, isProductInCart }
 }
 
 // Provider
 
 export function CartProvider ({ children }) {
-  const { state, addToCart, removeFromCart, clearCart } = useCartReducer()
+  const { state, addToCart, removeFromCart, clearCart, isProductInCart } = useCartReducer()
 
   return (
     <CartContext.Provider value={{
       cart: state,
       addToCart,
       removeFromCart,
-      clearCart
+      clearCart,
+      isProductInCart
     }}
     >
       {children}
