@@ -1,132 +1,130 @@
-import { ListGroup, Form, Button, Offcanvas, Placeholder, Spinner } from "react-bootstrap";
-import { useState, useMemo } from "react";
-import { useFilters } from '../hooks/useFilters';
-import { FilterIcon } from "../icons/Icons";
+import { ListGroup, Form, Button, Offcanvas, Placeholder, Spinner } from 'react-bootstrap'
+import { useState, useMemo } from 'react'
+import { useFilters } from '../hooks/useFilters'
+import { FilterIcon } from '../icons/Icons'
 
-function FilterCategory({ productos, loading }) {
+function FilterCategory ({ productos, loading }) {
+  const categories = useMemo(() => {
+    if (!productos) return [] // Verificar si productos es undefined
+    const uniqueCategories = []
+    productos.forEach(element => {
+      if (element.categoria && !uniqueCategories.includes(element.categoria)) {
+        uniqueCategories.push(element.categoria)
+      }
+    })
+    return uniqueCategories
+  }, [productos])
 
-    const categories = useMemo(() => {
-        if (!productos) return []; // Verificar si productos es undefined
-        const uniqueCategories = [];
-        productos.forEach(element => {
-            if (element.categoria && !uniqueCategories.includes(element.categoria)) {
-                uniqueCategories.push(element.categoria);
-            }
-        });
-        return uniqueCategories;
-    }, [productos]);
+  const subcategories = useMemo(() => {
+    if (!productos) return [] // Verificar si productos es undefined
+    const uniqueSubCategories = []
+    productos.forEach(element => {
+      if (element.subcategoria && !uniqueSubCategories.includes(element.subcategoria)) {
+        uniqueSubCategories.push(element.subcategoria)
+      }
+    })
+    return uniqueSubCategories
+  }, [productos])
 
-    const subcategories = useMemo(() => {
-        if (!productos) return []; // Verificar si productos es undefined
-        const uniqueSubCategories = [];
-        productos.forEach(element => {
-            if (element.subcategoria && !uniqueSubCategories.includes(element.subcategoria)) {
-                uniqueSubCategories.push(element.subcategoria);
-            }
-        });
-        return uniqueSubCategories;
-    }, [productos]);
+  const [showFilter, setShowFilter] = useState(false)
 
+  const { filters, handleCategoryFilter, handleSubcategoryFilter } = useFilters()
 
-    const [showFilter, setShowFilter] = useState(false);
+  const handleCloseFilter = () => setShowFilter(false)
+  const handleShowFilter = () => setShowFilter(true)
 
-    const { filters, handleCategoryFilter, handleSubcategoryFilter } = useFilters()
+  return (
+    <>
+      <div className=' mb-3 fw-normal fs-5 d-none d-xl-block d-lg-block d-xl-block'>
+        <FilterIcon size={25} />
+        {loading ? 'Cargando filtros' : 'Filtrar por:'}
 
-    const handleCloseFilter = () => setShowFilter(false);
-    const handleShowFilter = () => setShowFilter(true);
+      </div>
 
+      <Button variant='outline-primary mb-3' className='d-lg-none' onClick={handleShowFilter}>
+        <FilterIcon />
+      </Button>
 
-    return (
-        <>
-            <div className=' mb-3 fw-normal fs-5 d-none d-xl-block d-lg-block d-xl-block'>
-                <FilterIcon size={25} />
-                {loading ? 'Cargando filtros' : 'Filtrar por:'}
+      <Offcanvas show={showFilter} onHide={handleCloseFilter} responsive='lg'>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title className='d-lg-none'>Filtrar productos:</Offcanvas.Title>
 
-            </div>
+        </Offcanvas.Header>
+        <Offcanvas.Body className='d-grid'>
+          <ListGroup className='mb-4'>
+            {!loading && <h4 className='fw-light fs-5 mb-3'>Categorías</h4>}
 
-            <Button variant="outline-primary mb-3" className="d-lg-none" onClick={handleShowFilter}>
-                <FilterIcon />
-            </Button>
+            {categories.length <= 0 && [1, 2, 3, 4, 5].map(() => (
+              <ListGroup.Item className='fs-5 fw-light' key={categories.id}>
+                <Placeholder as={Form.Check} animation='glow'>
+                  <Spinner animation='grow' size='sm' />
+                </Placeholder>
+              </ListGroup.Item>
+            ))}
 
-            <Offcanvas show={showFilter} onHide={handleCloseFilter} responsive="lg">
-                <Offcanvas.Header closeButton>
-                    <Offcanvas.Title className="d-lg-none">Filtrar productos:</Offcanvas.Title>
+            {categories.length > 0 &&
+              <ListGroup.Item className='fs-5 fw-light'>
+                <Form.Check
+                  type='checkbox'
+                  label='Todas'
+                  name='category'
+                  data-category='all'
+                  checked={filters.categoria === 'all'}
+                  onChange={handleCategoryFilter}
+                />
+              </ListGroup.Item>}
 
-                </Offcanvas.Header>
-                <Offcanvas.Body className='d-grid'>
-                    <ListGroup className='mb-4'>
-                        {!loading && <h4 className='fw-light fs-5 mb-3'>Categorías</h4>}
+            {categories.map((category) => (
+              <ListGroup.Item className='fs-5 fw-light' key={category}>
+                <Form.Check
+                  key={category}
+                  type='checkbox'
+                  id={`category-${category}`}
+                  label={category}
+                  name='category'
+                  data-category={category}
+                  checked={filters.categoria === category}
+                  onChange={handleCategoryFilter}
+                />
+              </ListGroup.Item>
+            ))}
 
-                        {categories.length <= 0 && [1, 2, 3, 4, 5].map(() => (
-                            <ListGroup.Item className='fs-5 fw-light'>
-                                <Placeholder as={Form.Check} animation="glow">
-                                    <Spinner animation="grow" size="sm" />
-                                </Placeholder>
-                            </ListGroup.Item>
-                        ))}
+            {!loading && <h4 className='fw-light fs-5 my-3'>Subcategorías</h4>}
 
-                        {categories.length > 0 && <ListGroup.Item className='fs-5 fw-light'>
-                            <Form.Check
-                                type='checkbox'
-                                label='Todas'
-                                name='category'
-                                data-category='all'
-                                checked={filters.categoria === 'all'}
-                                onChange={handleCategoryFilter}
-                            />
-                        </ListGroup.Item>}
+            {subcategories.length > 0 &&
+              <ListGroup.Item className='fs-5 fw-light'>
+                <Form.Check
+                  type='checkbox'
+                  label='Todas'
+                  name='subcategory'
+                  data-category='all'
+                  checked={filters.subcategoria === 'all'}
+                  onChange={handleSubcategoryFilter}
+                />
+              </ListGroup.Item>}
 
+            {subcategories.map((subcategory) => (
+              <ListGroup.Item className='fs-5 fw-light' key={subcategory}>
+                <Form.Check
+                  key={subcategory}
+                  type='checkbox'
+                  id={`subcategory-${subcategory}`}
+                  label={subcategory}
+                  name='subcategory'
+                  data-category={subcategory}
+                  checked={filters.subcategoria === subcategory}
+                  onChange={handleSubcategoryFilter}
+                />
+              </ListGroup.Item>
+            ))}
 
-                        {categories.map((category) => (
-                            <ListGroup.Item className='fs-5 fw-light'>
-                                <Form.Check
-                                    key={category}
-                                    type='checkbox'
-                                    id={`category-${category}`}
-                                    label={category}
-                                    name='category'
-                                    data-category={category}
-                                    checked={filters.categoria === category}
-                                    onChange={handleCategoryFilter}
-                                />
-                            </ListGroup.Item>
-                        ))}
+            {showFilter && <Button variant='outline-primary' className='fw-light fs-4 my-5' onClick={handleCloseFilter}>Aplicar</Button>}
+          </ListGroup>
 
-                        {!loading && <h4 className='fw-light fs-5 my-3'>Subcategorías</h4>}
-
-                        {subcategories.length > 0 && <ListGroup.Item className='fs-5 fw-light'>
-                            <Form.Check
-                                type='checkbox'
-                                label='Todas'
-                                name='subcategory'
-                                data-category='all'
-                                checked={filters.subcategoria === 'all'}
-                                onChange={handleSubcategoryFilter}
-                            />
-                        </ListGroup.Item>}
-
-                        {subcategories.map((subcategory) => (
-                            <ListGroup.Item className='fs-5 fw-light'>
-                                <Form.Check
-                                    key={subcategory}
-                                    type='checkbox'
-                                    id={`subcategory-${subcategory}`}
-                                    label={subcategory}
-                                    name='subcategory'
-                                    data-category={subcategory}
-                                    checked={filters.subcategoria === subcategory}
-                                    onChange={handleSubcategoryFilter}
-                                />
-                            </ListGroup.Item>
-                        ))}
-
-                        {showFilter && <Button variant='outline-primary' className='fw-light fs-4 my-5' onClick={handleCloseFilter}>Aplicar</Button>}
-                    </ListGroup>
-
-                </Offcanvas.Body>
-            </Offcanvas>
-        </>
-    )
+        </Offcanvas.Body>
+      </Offcanvas>
+    </>
+  )
 }
 
-export default FilterCategory;
+export default FilterCategory

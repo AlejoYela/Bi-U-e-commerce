@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
-import { Button, Card, Fade } from 'react-bootstrap';
-import ModalQuick from './ModalQuick';
-import { Link } from 'react-router-dom';
-import { StarIcon, FavIcon, FavFillIcon } from '../icons/Icons';
-import { useFav } from '../hooks/useFav';
+import React, { useState } from 'react'
+import { Button, Card, Fade } from 'react-bootstrap'
+import ModalQuick from './ModalQuick'
+import { Link } from 'react-router-dom'
+import { StarIcon, FavIcon, FavFillIcon } from '../icons/Icons'
+import { useFav } from '../hooks/useFav'
 
-function CardFav({ product }) {
-
-  const [isHovered, setIsHovered] = useState(false);
+function CardFav ({ product }) {
+  const [isHovered, setIsHovered] = useState(false)
   const { fav, addToFav, removeFromFav } = useFav()
 
   const checkProductInFav = product => {
@@ -22,7 +21,7 @@ function CardFav({ product }) {
       style={{
         width: '15rem',
         transition: 'transform 0.3s ease',
-        transform: isHovered ? 'translateY(-20px)' : 'translateY(0)',
+        transform: isHovered ? 'translateY(-20px)' : 'translateY(0)'
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -31,7 +30,7 @@ function CardFav({ product }) {
         <Fade in={isHovered} appear>
           <Card.Img
             loading='lazy'
-            variant="top"
+            variant='top'
             src={product.src}
             style={{ opacity: isHovered ? 0.2 : 1, height: '200px', objectFit: 'cover' }}
           />
@@ -47,7 +46,7 @@ function CardFav({ product }) {
             () => {
               isProductInFav
                 ? removeFromFav(product)
-                : addToFav(product);
+                : addToFav(product)
             }
           }
         >
@@ -55,8 +54,8 @@ function CardFav({ product }) {
         </Button>
 
         <Card.Title className='fw-bold fs-6 text-primary text-truncate'>
-          <small className='fw-normal text-black'>{product.nombre.toUpperCase()}</small><br/>
-          
+          <small className='fw-normal text-black'>{product.nombre.toUpperCase()}</small><br />
+
           <small className='text-body-tertiary fw-lighter'>{product.coleccion}</small>
         </Card.Title>
 
@@ -65,21 +64,19 @@ function CardFav({ product }) {
         <div className='d-flex mx-3'>
           <StarIcon />
           {product.calificacion}
-        </div>
-      }
+        </div>}
 
       <p className='fw-light fs-5 mx-3'>
         $ {product.precio}
       </p>
 
-
       <Card.Footer className='bg-transparent border-0'>
-        <Link className="d-grid" style={{ textDecoration: 'none' }} to={`/producto/${product.id}`}>
-          <Button variant="outline-primary border" size='lg' className='fw-light border-1 mb-2'>Ver producto</Button>
+        <Link className='d-grid' style={{ textDecoration: 'none' }} to={`/producto/${product.id}`}>
+          <Button variant='outline-primary border' size='lg' className='fw-light border-1 mb-2'>Ver producto</Button>
         </Link>
       </Card.Footer>
     </Card>
-  );
+  )
 }
 
-export default CardFav;
+export default CardFav

@@ -1,24 +1,21 @@
-import { Form, Button } from 'react-bootstrap';
-import { SearchIcon } from '../icons/Icons';
-import { useFilters } from '../hooks/useFilters';
+import { Form, Button } from 'react-bootstrap'
+import { SearchIcon } from '../icons/Icons'
+import { useFilters } from '../hooks/useFilters'
 
-function Buscador() {
-
+function Buscador () {
   const { handleSearchChange } = useFilters()
-
 
   return (
     <Form className='d-flex'>
       <Form.Control type='text' className='bg-transparent border fw-light fs-5' placeholder='Buscar en la página' onChange={handleSearchChange} />
       <Button
-        variant="outline-primary border-0 bg-transparent"
-
-        aria-label="Abrir buscador"
+        variant='outline-primary border-0 bg-transparent'
+        aria-label='Abrir buscador'
       >
         <SearchIcon />
       </Button>
     </Form>
-  );
+  )
 }
 
-export default Buscador;
+export default Buscador
