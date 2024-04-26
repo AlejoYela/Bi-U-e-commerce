@@ -69,10 +69,10 @@ function Cart () {
                   </div>
                 </div>
 
-                <ButtonToolbar className='d-flex justify-content-center'>
-                  <ButtonGroup className='border border-1 border-primary me-2'>
-                    <Button className='border-0 fw-light' variant='outline-primary'>{product.quantity}</Button>
-                    <Button className='border-0' variant='outline-primary' onClick={() => addToCart(product)}>+</Button>
+                <ButtonToolbar className='d-flex justify-content-between'>
+                  <ButtonGroup className='border border-1 border-primary'>
+                    <Button className='border-0 fw-light px-3' variant='outline-primary'>{product.quantity}</Button>
+                    <Button className='border-0 px-3' variant='outline-primary' onClick={() => addToCart(product)}>+</Button>
                   </ButtonGroup>
                   <ButtonGroup className='w-75'>
                     <Button className='fw-light' onClick={() => removeFromCart(product)} variant='outline-primary'>Eliminar</Button>

@@ -11,7 +11,7 @@ function All () {
   const [cardsToShow, setCardsToShow] = useState(12)
   const [loading, setLoading] = useState(true)
 
-  const { filteredProducts } = useFilters()
+  const { filters, filteredProducts } = useFilters()
 
   useEffect(() => {
     axios.get('http://localhost:4321/productos')
@@ -25,7 +25,7 @@ function All () {
         console.error(error)
         setLoading(true)
       })
-  }, [producto])
+  }, [])
 
   const handleLoadMore = () => {
     setCardsToShow(prevCards => prevCards + 12)
@@ -35,7 +35,8 @@ function All () {
 
   return (
     <Container fluid='md'>
-      <h2 className='text-center my-5 text-uppercase fw-light fs-2'>Todos los productos</h2>
+      <h2 className='text-center mt-5 text-uppercase fw-light fs-2'>{filters.categoria === 'all' ? 'Todos los productos' : filters.categoria}</h2>
+      <h2 className='text-center text-uppercase fw-light fs-5'>{filters.subcategoria === 'all' ? '' : filters.subcategoria}</h2>
 
       <hr className='my-5' />
 

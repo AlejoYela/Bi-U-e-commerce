@@ -41,7 +41,7 @@ npm install
 ```bash
 https://github.com/AlejoYela/Biu-API.git
 ```
-5. In the c¿backend folder, start the server:
+5. In the backend folder, start the server:
 ```bash
 npm run dev
 ```
@@ -61,7 +61,6 @@ npm start
 ![screenshot1](https://raw.githubusercontent.com/AlejoYela/Bi-U-e-commerce/main/public/images/readme/4.png)
 ![screenshot1](https://raw.githubusercontent.com/AlejoYela/Bi-U-e-commerce/main/public/images/readme/5.png)
 ![screenshot1](https://raw.githubusercontent.com/AlejoYela/Bi-U-e-commerce/main/public/images/readme/6.png)
-![screenshot1](https://raw.githubusercontent.com/AlejoYela/Bi-U-e-commerce/main/public/images/readme/7.png)
 ![screenshot1](https://raw.githubusercontent.com/AlejoYela/Bi-U-e-commerce/main/public/images/readme/8.png)
 
 ## Sources and Credits

@@ -3,7 +3,7 @@ import CardFav from './CardFav'
 import useScreenSize from '../hooks/useScreenSize'
 import { PrevIcon, NextIcon } from '../icons/Icons'
 
-function CarouserCards ({ productos, loading }) {
+function CarouselCards ({ productos, loading }) {
   const { width } = useScreenSize()
 
   // Helper function to group productos based on responsive breakpoints
@@ -27,26 +27,23 @@ function CarouserCards ({ productos, loading }) {
     <div className='d-flex justify-content-center'>
       <Carousel interval={null} responsive={responsive} indicators={false} nextIcon={<Button className='rounded-pill'><NextIcon /></Button>} prevIcon={<Button className='rounded-pill'><PrevIcon /></Button>}>
 
-        {loading &&
-          <Carousel.Item key={0} className='d-flex justify-content-center gap-4 px-4'>
-            {[1, 2, 3].map((index) => (
-
-              <Card key={index} width='18rem' style={{ width: '18rem' }}>
-                <Card.Img style={{ height: '200px', objectFit: 'cover' }} variant='top' src={`images/holders/${index}.png`} />
-                <Card.Body>
-                  <Placeholder as={Card.Title} animation='glow'>
-                    <Placeholder xs={6} />
-                  </Placeholder>
-                  <Placeholder as={Card.Text} animation='glow'>
-                    <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
-                    <Placeholder xs={6} /> <Placeholder xs={8} />
-                  </Placeholder>
-                  <Placeholder.Button variant='primary' xs={6} />
-                </Card.Body>
-              </Card>
-
-            ))}
-          </Carousel.Item>}
+        {loading ?? groupProductos([1, 2, 3], responsive.items).map((index) => (
+          <Carousel.Item key={0} className='d-flex justify-content-center gap-3 px-2 py-4'>
+            <Card key={index} width='18rem' style={{ width: '18rem' }}>
+              <Card.Img style={{ height: '200px', objectFit: 'cover' }} variant='top' src={`images/holders/${index}.png`} />
+              <Card.Body>
+                <Placeholder as={Card.Title} animation='glow'>
+                  <Placeholder xs={6} />
+                </Placeholder>
+                <Placeholder as={Card.Text} animation='glow'>
+                  <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
+                  <Placeholder xs={6} /> <Placeholder xs={8} />
+                </Placeholder>
+                <Placeholder.Button variant='primary' xs={6} />
+              </Card.Body>
+            </Card>
+          </Carousel.Item>
+        ))}
 
         {groupProductos(productos, responsive.items).map((group, index) => (
           <Carousel.Item key={index}>
@@ -63,4 +60,4 @@ function CarouserCards ({ productos, loading }) {
   )
 }
 
-export default CarouserCards
+export default CarouselCards

@@ -33,6 +33,18 @@ export function useFilters () {
     })
   }
 
+  const selectCategory = (category) => {
+    setFilters(prevFilters => {
+      return { ...prevFilters, categoria: category }
+    })
+  }
+
+  const selectSubcategory = (subcategory) => {
+    setFilters(prevFilters => {
+      return { ...prevFilters, subcategoria: subcategory }
+    })
+  }
+
   const handleSubcategoryFilter = (event) => {
     const { checked } = event.target
     const subcategoria = event.target.getAttribute('data-category')
@@ -75,5 +87,5 @@ export function useFilters () {
     })
   }
 
-  return { filters, filteredProducts, setFilters, handlePrecioMaxChange, handlePrecioMinChange, handleCategoryFilter, handleSubcategoryFilter, handleSearchChange }
+  return { filters, filteredProducts, setFilters, handlePrecioMaxChange, handlePrecioMinChange, handleCategoryFilter, handleSubcategoryFilter, handleSearchChange, selectCategory, selectSubcategory }
 }
