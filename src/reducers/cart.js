@@ -3,8 +3,7 @@ export const cartInitialState = []
 export const CART_ACTIONS_TYPES = {
   ADD_TO_CART: 'ADD_TO_CART',
   REMOVE_FROM_CART: 'REMOVE_FROM_CART',
-  CLEAR_CART: 'CLEAR-CART',
-  IS_PRODUCT_IN_CART: 'IS_PRODUCT_IN_CART'
+  CLEAR_CART: 'CLEAR-CART'
 }
 
 export const cartReducer = (state, action) => {
@@ -36,11 +35,6 @@ export const cartReducer = (state, action) => {
 
     case CART_ACTIONS_TYPES.CLEAR_CART: {
       return cartInitialState
-    }
-
-    case CART_ACTIONS_TYPES.IS_PRODUCT_IN_CART: {
-      const { id } = actionPayload
-      return state.some(item => item.id === id)
     }
 
     default: {

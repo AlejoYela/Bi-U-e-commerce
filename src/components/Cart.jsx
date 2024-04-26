@@ -14,7 +14,7 @@ function Cart () {
   let total = 0
 
   cart.forEach(element => {
-    total += parseFloat(element.precio)
+    total += parseFloat(element.precio) * parseFloat(element.quantity)
   })
 
   return (

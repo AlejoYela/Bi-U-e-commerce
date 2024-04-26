@@ -45,7 +45,7 @@ function Producto () {
     <Container className='px-5'>
       <Row className='gap-1 p-3'>
 
-        <Col className='d-flex justify-content-center h-75 w-50' xs={12} sm={12} md={12} lg={5} xl={5}>
+        <Col className='d-flex h-75 w-50 mb-5 mb-md-0' xs={12} sm={12} md={12} lg={5} xl={5}>
           <Image src={producto.src} className='shadow w-100' rounded />
         </Col>
 
@@ -88,7 +88,7 @@ function Producto () {
                       {hover
                         ? (
                           <>
-                            <CheckCartIcon size={20} strokeWidth={1} color='#000000' />
+                            <CheckCartIcon size={20} strokeWidth={1} color='#FFFFFF' />
                             Eliminar de la bolsa
                           </>
                           )
@@ -105,7 +105,7 @@ function Producto () {
                       {hover
                         ? (
                           <>
-                            <AddToCartIcon size={20} strokeWidth={1} color='#000000' />
+                            <AddToCartIcon size={20} strokeWidth={1} color='#FFFFFF' />
                             Añadir a la bolsa
                           </>
                           )
