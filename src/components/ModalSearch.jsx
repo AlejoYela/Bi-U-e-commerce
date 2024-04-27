@@ -55,12 +55,13 @@ function ModalSearch () {
         </Modal.Header>
         <Modal.Body>
           <ListGroup>
-            {filteredProductos.slice(0, 4).map(producto => (
+            {filteredProductos.slice(0, 3).map(producto => (
               <Link
                 className='focus-ring focus-ring-primary'
                 key={producto.id}
                 to={`/producto/${producto.id}`}
                 style={{ textDecoration: 'none' }}
+                onClick={handleClose}
               >
                 <ListGroup.Item className='d-inline-flex justify-content-between gap-2 w-100'>
                   <Image src={producto.src} className='w-25 h-25 shadow' rounded />
@@ -87,10 +88,10 @@ function ModalSearch () {
         </Modal.Body>
         <Modal.Footer>
           <Link to='/productos'>
-            <Button variant='outline-primary' className='fw-light'>Maquillaje</Button>
+            <Button variant='outline-primary' className='fw-light' onClick={handleClose}>Maquillaje</Button>
           </Link>
           <Link to='/productos'>
-            <Button variant='outline-primary' className='fw-light'>Skincare</Button>
+            <Button variant='outline-primary' className='fw-light' onClick={handleClose}>Skincare</Button>
           </Link>
           <BiuLogo />
         </Modal.Footer>

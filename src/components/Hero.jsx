@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useFilters } from '../hooks/useFilters'
 
 function Hero () {
-  const { selectCategory } = useFilters()
+  const { selectCategory, selectSubcategory } = useFilters()
   return (
     <>
       <Carousel indicators={false} controls={false} fade>
@@ -16,10 +16,10 @@ function Hero () {
             <p className='fs-5 fw-light text-light'>Descubre Nuestra Colección de Maquillaje</p>
             <div className='d-flex align-items-center gap-2'>
               <Link to='/productos'>
-                <Button variant='light z-3 text-truncate' onClick={() => selectCategory('all')}>Ver catálogo completo</Button>
+                <Button variant='light z-3 text-truncate' onClick={() => { selectCategory('all'); selectSubcategory('all') }}>Ver catálogo completo</Button>
               </Link>
               <Link to='/productos'>
-                <Button variant='outline-light z-3 text-truncate' onClick={() => selectCategory('Maquillaje')}>Ver maquillaje</Button>
+                <Button variant='outline-light z-3 text-truncate' onClick={() => { selectCategory('Maquillaje'); selectSubcategory('all') }}>Ver maquillaje</Button>
               </Link>
             </div>
           </div>
@@ -33,10 +33,10 @@ function Hero () {
             <p className=' fs-5 fw-light'>Explora Nuestra Colección de Skincare</p>
             <div className='d-flex align-items-center gap-2'>
               <Link to='/productos'>
-                <Button variant='dark z-3 text-truncate' onClick={() => selectCategory('all')}>Ver catálogo completo</Button>
+                <Button variant='dark z-3 text-truncate' onClick={() => { selectCategory('all'); selectSubcategory('all') }}>Ver catálogo completo</Button>
               </Link>
               <Link to='/productos'>
-                <Button variant='outline-dark z-3 text-truncate' name='Skincare' onClick={() => selectCategory('Skincare')}>Ver catálogo de skincare</Button>
+                <Button variant='outline-dark z-3 text-truncate' name='Skincare' onClick={() => { selectCategory('Skincare'); selectSubcategory('all') }}>Ver catálogo de skincare</Button>
               </Link>
             </div>
           </div>
