@@ -7,17 +7,23 @@ import { BrowserRouter } from 'react-router-dom'
 import { FiltersProvider } from './context/Filters.jsx'
 import { CartProvider } from './context/CartContext.jsx'
 import { FavProvider } from './context/FavContext.jsx'
+import { Auth0Provider } from '@auth0/auth0-react'
+
+const domain = process.env.REACT_APP_AUTH0_DOMAIN
+const clientID = process.env.REACT_APP_AUTH0_CLIENT_ID
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <BrowserRouter>
-    <CartProvider>
-      <FavProvider>
-        <FiltersProvider>
-          <App />
-        </FiltersProvider>
-      </FavProvider>
-    </CartProvider>
+    <Auth0Provider domain={domain} clientId={clientID} redirectUri={window.location.origin}>
+      <CartProvider>
+        <FavProvider>
+          <FiltersProvider>
+            <App />
+          </FiltersProvider>
+        </FavProvider>
+      </CartProvider>
+    </Auth0Provider>
   </BrowserRouter>
 )
 

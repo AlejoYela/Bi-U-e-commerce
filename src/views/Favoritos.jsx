@@ -4,8 +4,10 @@ import { useCart } from '../hooks/useCart'
 import { Button, Container, ListGroup, Image } from 'react-bootstrap'
 import { CheckCartIcon, AddToCartIcon, FavFillIcon, BrokenHearthIcon, CheckIcon, AlertIcon } from '../icons/Icons'
 import { Link } from 'react-router-dom'
+import { useAuth0 } from '@auth0/auth0-react'
 
 function Favoritos () {
+  const { isAuthenticated } = useAuth0()
   const { fav, clearFav, removeFromFav } = useFav()
   const { cart, addToCart, removeFromCart } = useCart()
   const [hover, setHover] = useState(false)
@@ -31,7 +33,7 @@ function Favoritos () {
         {fav.map(product => (
           <ListGroup.Item key={product.id} className='d-inline-flex justify-content-between align-items-center'>
             <div>
-              <Link to={`/producto/${product.id}`}>
+              <Link to={isAuthenticated ? `/producto/${product.id}` : '/login'}>
                 <Image fluid className='border-0 rounded' src={product.src} width={100} style={{ objectFit: 'cover', height: '100px' }} />
               </Link>
             </div>
