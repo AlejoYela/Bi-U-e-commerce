@@ -5,7 +5,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 function BestRating () {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const [productosFav, setProductos] = useState([])
 
   useEffect(() => {

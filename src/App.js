@@ -9,11 +9,13 @@ import Landing from './views/Landing.jsx'
 import Favoritos from './views/Favoritos.jsx'
 import Profile from './views/Profile.jsx'
 import Login from './views/Login.jsx'
+import LiveChat from './components/LiveChat.jsx'
 
 function App () {
   return (
     <div className='App'>
       <Navegador />
+      <LiveChat />
       <Routes>
         <Route path='/' element={<Landing />} />
         <Route path='/producto/:id' element={<Producto />} />
@@ -22,7 +24,6 @@ function App () {
         <Route path='/profile' element={<Profile />} />
         <Route path='/login' element={<Login />} />
       </Routes>
-
       <Footer />
 
     </div>

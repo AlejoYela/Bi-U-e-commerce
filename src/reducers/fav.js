@@ -1,9 +1,13 @@
-export const favInitialState = []
+export const favInitialState = JSON.parse(window.localStorage.getItem('fav')) || []
 
 export const FAV_ACTION_TYPES = {
   ADD_TO_FAV: 'ADD_TO_FAV',
   REMOVE_FROM_FAV: 'REMOVE_FROM_FAV',
   CLEAR_FAV: 'CLEAR_FAV'
+}
+
+export const updateLocalStorage = state => {
+  window.localStorage.setItem('fav', JSON.stringify(state))
 }
 
 export const favReducer = (state, action) => {
@@ -20,21 +24,27 @@ export const favReducer = (state, action) => {
         return newState
       }
 
-      return [
+      const newState = [
         ...state,
         {
           ...actionPayload,
           quantity: 1
         }
       ]
+
+      updateLocalStorage(newState)
+      return newState
     }
 
     case FAV_ACTION_TYPES.REMOVE_FROM_FAV: {
       const { id } = actionPayload
-      return state.filter(item => item.id !== id)
+      const newState = state.filter(item => item.id !== id)
+      updateLocalStorage(newState)
+      return newState
     }
 
     case FAV_ACTION_TYPES.CLEAR_FAV: {
+      updateLocalStorage(favInitialState)
       return favInitialState
     }
 

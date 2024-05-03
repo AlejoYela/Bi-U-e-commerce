@@ -4,7 +4,7 @@ import { LeafIcon, PawIcon, RecyclableIcon, FlaskOffIcon } from '../icons/Icons'
 
 function VeganSection () {
   return (
-    <Container fluid className='d-flex flex-wrap gap-5 text-center justify-content-center my-5'>
+    <Container className='d-flex flex-row justify-content-center align-items-center gap-5 text-center my-5'>
       <div>
         <LeafIcon size={50} />
         <p>Vegano</p>

@@ -27,7 +27,7 @@ function CarouselCards ({ productos, loading }) {
     <div className='d-flex justify-content-center'>
       <Carousel interval={null} responsive={responsive} indicators={false} nextIcon={<Button className='rounded-pill'><NextIcon /></Button>} prevIcon={<Button className='rounded-pill'><PrevIcon /></Button>}>
 
-        {loading ?? groupProductos([1, 2, 3], responsive.items).map((index) => (
+        {loading && [1, 2, 3].map((index) => (
           <Carousel.Item key={0} className='d-flex justify-content-center gap-3 px-2 py-4'>
             <Card key={index} width='18rem' style={{ width: '18rem' }}>
               <Card.Img style={{ height: '200px', objectFit: 'cover' }} variant='top' src={`images/holders/${index}.png`} />
