@@ -72,7 +72,7 @@ function Favoritos () {
                       {hover
                         ? (
                           <>
-                            <CheckCartIcon size={25} strokeWidth={1} color='#000000' />
+                            <CheckCartIcon size={25} strokeWidth={1} color='#FFFFFF' />
                             Eliminar de la bolsa
                           </>
                           )
@@ -89,7 +89,7 @@ function Favoritos () {
                       {hover
                         ? (
                           <>
-                            <AddToCartIcon size={25} strokeWidth={1} color='#000000' />
+                            <AddToCartIcon size={25} strokeWidth={1} color='#FFFFFF' />
                             Añadir a la bolsa
                           </>
                           )

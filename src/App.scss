@@ -60,6 +60,14 @@ $font-family-base: "Josefin Sans", sans-serif;
     bottom: 50px;
 }
 
+[data-bs-theme="primary"] {
+    --bs-body-color: white;
+    --bs-body-color-rgb: white;
+    --bs-body-bg: $primary;
+    --bs-body-bg-rgb: $primary;
+    --bs-tertiary-bg: $primary;
+  }
+
 @media (max-width: 768px) {
 
     .text-overlay {

@@ -39,16 +39,22 @@ function All () {
       <h2 className='text-center text-uppercase fw-light fs-5'>{filters.subcategoria === 'all' ? '' : filters.subcategoria}</h2>
 
       <hr className='my-5' />
-
-      <FilterPrice loading={loading} />
+      <div className='d-flex gap-3 justify-content-end'>
+        <div>
+          <FilterPrice loading={loading} />
+        </div>
+        <div className='d-block d-md-none'>
+          <FilterCategory productos={producto} loading={loading} />
+        </div>
+      </div>
 
       <Row className='justify-content-center'>
-        <Col>
+        <Col className='d-none d-md-block'>
 
           <FilterCategory productos={producto} loading={loading} />
 
         </Col>
-        <Col lg={10}>
+        <Col lg={9}>
 
           {loading &&
             <Row className='d-flex justify-content-center'>
@@ -74,7 +80,7 @@ function All () {
             {filteredProduct
               .slice(0, cardsToShow)
               .map((producto) => (
-                <Col className='d-flex px-1 mb-4 justify-content-center' xs={12} sm={6} md={4} lg={3} key={producto.id}>
+                <Col className='d-flex px-1 mb-4 justify-content-center' xs={5} sm={6} md={4} lg={3} key={producto.id}>
                   <CardFav
                     product={producto}
                   />

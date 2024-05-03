@@ -35,9 +35,9 @@ function FilterCategory ({ productos, loading }) {
 
   return (
     <>
-      <div className=' mb-3 fw-normal fs-5 d-none d-xl-block d-lg-block d-xl-block'>
-        <FilterIcon size={25} />
-        {loading ? 'Cargando filtros' : 'Filtrar por:'}
+      <div className='fw-normal fs-5 d-none d-lg-inline-flex d-xl-inline-flex'>
+        <FilterIcon size={25} color='#000000' />
+        {loading ? <p>Cargando filtros</p> : <p>Filtrar por:</p>}
 
       </div>
 

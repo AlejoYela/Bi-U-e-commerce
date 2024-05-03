@@ -8,7 +8,7 @@ function Landing () {
   return (
     <div>
       <Hero />
-      <h1 className='display-4 text-center mt-5 pt-5 fw-normal'>BiU: Tienda de Maquillaje, Skincare y Accesorios</h1>
+      <h1 id='Favoritos' className='display-4 text-center mt-5 pt-5 fw-normal'>BiU: Tienda de Maquillaje, Skincare y Accesorios</h1>
       <BestRating />
       <ProductoEstrella />
       <VeganSection />

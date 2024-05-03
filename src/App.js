@@ -7,6 +7,7 @@ import Producto from './views/Producto.jsx'
 import All from './views/All.jsx'
 import Landing from './views/Landing.jsx'
 import Favoritos from './views/Favoritos.jsx'
+import Login from './views/Login.jsx'
 
 function App () {
   return (
@@ -17,6 +18,7 @@ function App () {
         <Route path='/producto/:id' element={<Producto />} />
         <Route path='/productos' element={<All />} />
         <Route path='/favoritos' element={<Favoritos />} />
+        <Route path='/login' element={<Login />} />
       </Routes>
 
       <Footer />

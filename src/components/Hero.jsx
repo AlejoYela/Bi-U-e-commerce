@@ -2,6 +2,7 @@ import React from 'react'
 import { Image, Button, Carousel } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useFilters } from '../hooks/useFilters'
+import { SparklesIcon } from '../icons/Icons'
 
 function Hero () {
   const { selectCategory, selectSubcategory } = useFilters()
@@ -16,7 +17,7 @@ function Hero () {
             <p className='fs-5 fw-light text-light'>Descubre Nuestra Colección de Maquillaje</p>
             <div className='d-flex align-items-center gap-2'>
               <Link to='/productos'>
-                <Button variant='light z-3 text-truncate' onClick={() => { selectCategory('all'); selectSubcategory('all') }}>Ver catálogo completo</Button>
+                <Button variant='light z-3 text-truncate' onClick={() => { selectCategory('all'); selectSubcategory('all') }}>Ver catálogo completo <SparklesIcon color='#000000' size={23} /></Button>
               </Link>
               <Link to='/productos'>
                 <Button variant='outline-light z-3 text-truncate' onClick={() => { selectCategory('Maquillaje'); selectSubcategory('all') }}>Ver maquillaje</Button>
@@ -33,7 +34,7 @@ function Hero () {
             <p className=' fs-5 fw-light'>Explora Nuestra Colección de Skincare</p>
             <div className='d-flex align-items-center gap-2'>
               <Link to='/productos'>
-                <Button variant='dark z-3 text-truncate' onClick={() => { selectCategory('all'); selectSubcategory('all') }}>Ver catálogo completo</Button>
+                <Button variant='dark z-3 text-truncate' onClick={() => { selectCategory('all'); selectSubcategory('all') }}>Ver catálogo completo <SparklesIcon color='#FFFFFF' size={23} /></Button>
               </Link>
               <Link to='/productos'>
                 <Button variant='outline-dark z-3 text-truncate' name='Skincare' onClick={() => { selectCategory('Skincare'); selectSubcategory('all') }}>Ver catálogo de skincare</Button>

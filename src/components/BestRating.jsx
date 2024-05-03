@@ -23,7 +23,7 @@ function BestRating () {
   }, [])
 
   return (
-    <div id='Favoritos' className='my-5'>
+    <div className='my-5'>
       <Row className='mw-100'>
         <Col className='d-flex align-items-center justify-content-center mx-5 px-5 text-center'>
           <div>

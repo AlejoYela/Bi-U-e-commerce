@@ -2,11 +2,12 @@ import React from 'react'
 import { Container, Navbar, Nav, Button, Badge } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Cart from './Cart.jsx'
-import { FavIcon, UserIcon, BiuLogo } from '../icons/Icons.jsx'
+import { FavIcon, BiuLogo } from '../icons/Icons.jsx'
 import { useFav } from '../hooks/useFav.js'
 import Categorias from './Categorias.jsx'
 
 import ModalSearch from './ModalSearch.jsx'
+import User from './User.jsx'
 
 function Navegador () {
   const { fav } = useFav()
@@ -25,13 +26,11 @@ function Navegador () {
           <Nav className='mx-auto' style={{ maxHeight: '200px' }} navbarScroll>
             <Categorias />
             <Nav.Link className='fs-5 fw-light' href='#Favoritos'>Favoritos</Nav.Link>
-            <Nav.Link className='fs-5 fw-light' href='#Favoritos'>Contacto</Nav.Link>
+            <Nav.Link className='fs-5 fw-light' href='#Contacto'>Contacto</Nav.Link>
           </Nav>
           <Nav className='d-flex flex-row-reverse'>
 
-            <Button className='boton' variant='primary border-0 bg-transparent'>
-              <UserIcon />
-            </Button>
+            <User />
 
             <Link to='/favoritos'>
               <Button className='boton' variant='outline-primary border-0 bg-transparent'>

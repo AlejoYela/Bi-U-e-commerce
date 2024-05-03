@@ -20,7 +20,7 @@ function CarouselCards ({ productos, loading }) {
   }
 
   const responsive = {
-    items: width >= 2000 ? 4 : width >= 1500 ? 3 : width >= 1189 ? 2 : 1
+    items: width >= 2000 ? 4 : width >= 1500 ? 3 : width >= 589 ? 2 : 1
   }
 
   return (
