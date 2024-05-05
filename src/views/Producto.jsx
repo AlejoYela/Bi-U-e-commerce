@@ -3,18 +3,16 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import Variantes from '../components/Variantes'
 import { Image, Col, Row, Container, Accordion, Button, ButtonGroup } from 'react-bootstrap'
-import { useCart } from '../hooks/useCart'
 import { useFav } from '../hooks/useFav'
-import { StarIcon, CheckCartIcon, AddToCartIcon, CartIcon, MailboxIcon, CheckIcon, DropletIcon, FavIcon, FavFillIcon } from '../icons/Icons'
+import { StarIcon, CartIcon, MailboxIcon, CheckIcon, DropletIcon, FavIcon, FavFillIcon } from '../icons/Icons'
 import MultiToast from '../components/MultiToast'
+import AddToCartButton from '../components/AddToCartButton'
 
 function Producto () {
-  const { cart, addToCart, removeFromCart } = useCart()
   const { fav, addToFav, removeFromFav } = useFav()
 
   const { id } = useParams()
   const [producto, setProducto] = useState([])
-  const [hover, setHover] = useState(false)
   const [showToast, setShowToast] = useState(false)
 
   useEffect(() => {
@@ -30,15 +28,10 @@ function Producto () {
       })
   }, [producto])
 
-  const checkProductInCart = product => {
-    return cart.some(item => item.id === product.id)
-  }
-
   const checkProductInFav = product => {
     return fav.some(item => item.id === product.id)
   }
 
-  const isProductInCart = checkProductInCart(producto)
   const isProductInFav = checkProductInFav(producto)
 
   return (
@@ -65,60 +58,7 @@ function Producto () {
             <Variantes colors={producto.colores} />
 
             <ButtonGroup>
-              <Button
-                className='boton'
-                variant='outline-primary border-1 fw-light d-inline-flex gap-1'
-                onClick={
-                                    () => {
-                                      if (isProductInCart) {
-                                        removeFromCart(producto)
-                                      } else {
-                                        addToCart(producto)
-                                        setShowToast(true) // Mostrar el toast solo cuando se agrega el producto
-                                      }
-                                    }
-                                }
-                onMouseEnter={() => setHover(true)}
-                onMouseLeave={() => setHover(false)}
-              >
-
-                {isProductInCart
-                  ? (
-                    <>
-                      {hover
-                        ? (
-                          <>
-                            <CheckCartIcon size={20} strokeWidth={1} color='#FFFFFF' />
-                            Eliminar de la bolsa
-                          </>
-                          )
-                        : (
-                          <>
-                            <CheckCartIcon size={20} strokeWidth={1} color='#000000' />
-                            Producto agregado
-                          </>
-                          )}
-                    </>
-                    )
-                  : (
-                    <>
-                      {hover
-                        ? (
-                          <>
-                            <AddToCartIcon size={20} strokeWidth={1} color='#FFFFFF' />
-                            Añadir a la bolsa
-                          </>
-                          )
-                        : (
-                          <>
-                            <AddToCartIcon size={20} strokeWidth={1} color='#000000' />
-                            Añadir a la bolsa
-                          </>
-                          )}
-                    </>
-                    )}
-
-              </Button>
+              <AddToCartButton product={producto} />
               <Button
                 variant='outline-primary d-inline-flex gap-1'
                 className='fw-light'

@@ -2,31 +2,24 @@ import React, { useState } from 'react'
 import { Button, Modal, Image, Col, Row, CloseButton, Container } from 'react-bootstrap'
 import Variantes from './Variantes'
 import { Link } from 'react-router-dom'
-import { useCart } from '../hooks/useCart'
 import { useFav } from '../hooks/useFav'
 import MultiToast from './MultiToast'
-import { FavIcon, FavFillIcon, CartIcon, CheckCartIcon, AddToCartIcon, SearchIcon, CheckIcon, AlertIcon } from '../icons/Icons'
+import { FavIcon, FavFillIcon, CartIcon, SearchIcon, CheckIcon, AlertIcon } from '../icons/Icons'
+import AddToCartButton from './AddToCartButton'
 
 function ModalQuick ({ product, state, setState }) {
   const [show, setShow] = useState(false)
   const [showToast, setShowToast] = useState(false)
-  const [hover, setHover] = useState(false)
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
-  const { addToCart, removeFromCart, cart } = useCart()
   const { addToFav, removeFromFav, fav } = useFav()
-
-  const checkProductInCart = product => {
-    return cart.some(item => item.id === product.id)
-  }
 
   const checkProductInFav = product => {
     return fav.some(item => item.id === product.id)
   }
 
-  const isProductInCart = checkProductInCart(product)
   const isProductInFav = checkProductInFav(product)
 
   return (
@@ -92,60 +85,7 @@ function ModalQuick ({ product, state, setState }) {
                       </Link>
                     </Col>
                     <Col className='d-grid'>
-                      <Button
-                        className='boton d-inline-flex gap-1 justify-content-center'
-                        variant='outline-primary border-1 fw-light'
-                        onClick={
-                                                    () => {
-                                                      if (isProductInCart) {
-                                                        removeFromCart(product)
-                                                      } else {
-                                                        addToCart(product)
-                                                        setShowToast(true) // Mostrar el toast solo cuando se agrega el producto
-                                                      }
-                                                    }
-                                                }
-                        onMouseEnter={() => setHover(true)}
-                        onMouseLeave={() => setHover(false)}
-                      >
-
-                        {isProductInCart
-                          ? (
-                            <>
-                              {hover
-                                ? (
-                                  <>
-                                    <CheckCartIcon size={20} strokeWidth={1} color='#FFFFFF' />
-                                    Eliminar de la bolsa
-                                  </>
-                                  )
-                                : (
-                                  <>
-                                    <CheckCartIcon size={20} strokeWidth={1} color='#000000' />
-                                    Producto agregado
-                                  </>
-                                  )}
-                            </>
-                            )
-                          : (
-                            <>
-                              {hover
-                                ? (
-                                  <>
-                                    <AddToCartIcon size={20} strokeWidth={1} color='#FFFFFF' />
-                                    Añadir a la bolsa
-                                  </>
-                                  )
-                                : (
-                                  <>
-                                    <AddToCartIcon size={20} strokeWidth={1} color='#000000' />
-                                    Añadir a la bolsa
-                                  </>
-                                  )}
-                            </>
-                            )}
-
-                      </Button>
+                      <AddToCartButton product={product} />
                       <MultiToast titulo='¡Agregado!' texto='Clickea en el ícono de bolsa para ver todos los productos que has agregado.' icono={<CartIcon size={20} />} showToast={showToast} setShowToast={setShowToast} />
                     </Col>
                   </Row>

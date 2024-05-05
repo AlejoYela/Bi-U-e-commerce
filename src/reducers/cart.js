@@ -44,8 +44,8 @@ export const cartReducer = (state, action) => {
     }
 
     case CART_ACTIONS_TYPES.CLEAR_CART: {
-      updateLocalStorage(cartInitialState)
-      return cartInitialState
+      updateLocalStorage([])
+      return []
     }
 
     default: {

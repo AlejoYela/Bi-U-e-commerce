@@ -44,8 +44,8 @@ export const favReducer = (state, action) => {
     }
 
     case FAV_ACTION_TYPES.CLEAR_FAV: {
-      updateLocalStorage(favInitialState)
-      return favInitialState
+      updateLocalStorage([])
+      return []
     }
 
     default: {

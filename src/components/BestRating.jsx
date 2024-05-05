@@ -28,18 +28,16 @@ function BestRating () {
         <Col className='d-flex align-items-center justify-content-center mx-5 px-5 text-center'>
           <div>
             <h2 className='mt-5 d-block d-md-none'>Los Preferidos</h2>
-            <h2 className='d-none d-md-block'>Los mejor calificados en maquillaje y skincare por nuestros clientes</h2>
+            <h2 className='d-none d-md-block fw-light'>Los mejor calificados por nuestros clientes</h2>
+            <Link to='/productos'>
+              <Button variant='outline-primary' className='fw-light mt-4' size='lg'>Ver todos los productos</Button>
+            </Link>
           </div>
         </Col>
         <Col className='w-75'>
           <CarouserCards productos={productosFav} loading={loading} />
         </Col>
       </Row>
-      <div className='text-center'>
-        <Link to='/productos'>
-          <Button variant='primary' className='fw-light mt-4' size='lg'>Ver todos</Button>
-        </Link>
-      </div>
     </div>
   )
 }

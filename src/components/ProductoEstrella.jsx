@@ -1,72 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { Image, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { useCart } from '../hooks/useCart'
 import axios from 'axios'
 import MultiToast from '../components/MultiToast'
-import { CartIcon, CheckCartIcon, AddToCartIcon, RemoveFromCartIcon } from '../icons/Icons'
-
-const AddToCartButton = ({ isProductInCart, addToCart, removeFromCart, setShowToast, hover, producto, setHover, size = 'md' }) => {
-  return (
-    <Button
-      className='fw-light d-inline-flex gap-1'
-      variant='outline-primary'
-      size={size}
-      onClick={() => {
-        if (isProductInCart) {
-          removeFromCart(producto)
-        } else {
-          addToCart(producto)
-          setShowToast(true)
-        }
-      }}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-    >
-      {isProductInCart
-        ? (
-          <>
-            {hover
-              ? (
-                <>
-                  <RemoveFromCartIcon size={20} strokeWidth={1} color='#FFFFFF' />
-                  Eliminar de la bolsa
-                </>
-                )
-              : (
-                <>
-                  <CheckCartIcon size={20} strokeWidth={1} color='#000000' />
-                  Producto agregado
-                </>
-                )}
-          </>
-          )
-        : (
-          <>
-            {hover
-              ? (
-                <>
-                  <AddToCartIcon size={20} strokeWidth={1} color='#FFFFFF' />
-                  Añadir a la bolsa
-                </>
-                )
-              : (
-                <>
-                  <AddToCartIcon size={20} strokeWidth={1} color='#000000' />
-                  Añadir a la bolsa
-                </>
-                )}
-          </>
-          )}
-    </Button>
-  )
-}
+import { CartIcon } from '../icons/Icons'
+import AddToCartButton from './AddToCartButton'
 
 function ProductoEstrella () {
-  const { cart, addToCart, removeFromCart } = useCart()
   const [producto, setProducto] = useState([])
   const [showToast, setShowToast] = useState(false)
-  const [hover, setHover] = useState(false)
 
   useEffect(() => {
     axios(`http://localhost:4321/productos/${9}`)
@@ -80,12 +22,6 @@ function ProductoEstrella () {
       })
   }, [])
 
-  const checkProductInCart = product => {
-    return cart.some(item => item.id === product.id)
-  }
-
-  const isProductInCart = checkProductInCart(producto)
-
   return (
     <div className='position-relative'>
       <Image src='images/specials/4.png' className='d-none d-lg-flex flex-column w-100' />
@@ -98,15 +34,7 @@ function ProductoEstrella () {
           <Link to='/producto/9'>
             <Button className='fw-light d-inline-flex gap-1'>Ver producto</Button>
           </Link>
-          <AddToCartButton
-            isProductInCart={isProductInCart}
-            addToCart={addToCart}
-            removeFromCart={removeFromCart}
-            setShowToast={setShowToast}
-            hover={hover}
-            producto={producto}
-            setHover={setHover}
-          />
+          <AddToCartButton product={producto} />
         </div>
       </div>
       <div className='position-absolute bottom-0 start-50 translate-middle-x d-lg-none text-center w-100 mb-4'>
@@ -117,16 +45,7 @@ function ProductoEstrella () {
           <Link to='/producto/9'>
             <Button className='fw-light d-inline-flex gap-1' size='sm'>Ver producto</Button>
           </Link>
-          <AddToCartButton
-            isProductInCart={isProductInCart}
-            addToCart={addToCart}
-            removeFromCart={removeFromCart}
-            setShowToast={setShowToast}
-            hover={hover}
-            producto={producto}
-            setHover={setHover}
-            size='sm'
-          />
+          <AddToCartButton product={producto} size='sm' />
         </div>
       </div>
       <MultiToast titulo='¡Agregado!' texto='Clickea en el ícono de bolsa para ver todos los productos que has agregado.' icono={<CartIcon size={20} />} showToast={showToast} setShowToast={setShowToast} />
