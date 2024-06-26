@@ -34,19 +34,17 @@ https://github.com/AlejoYela/Bi-U-e-commerce.git
 npm install
 ```
 
-3. Configure environment variables.
-
-4. Clone in a separated folder the backend repository:
+3. Clone in a separated folder the backend repository:
 
 ```bash
 https://github.com/AlejoYela/Biu-API.git
 ```
-5. In the backend folder, start the server:
+4. In the backend folder, start the server:
 ```bash
 npm run dev
 ```
 
-4. In the frontend folder, start the project
+5. In the frontend folder, start the project
 
 ```bash
 npm start
@@ -66,7 +64,7 @@ npm start
 ## Sources and Credits
 
 - [Google Fonts](https://fonts.google.com/)
-- [Tabler icons](https://tablericons.com/)
+- [Tabler icons](https://tabler.io/icons)
 
 ## Thank you for viewing!
 Don't forget to leave your star ⭐ on the repository if you found it helpful or useful.
