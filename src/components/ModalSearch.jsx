@@ -12,7 +12,7 @@ function ModalSearch () {
   const [searchValue, setSearchValue] = useState('')
 
   useEffect(() => {
-    axios.get('http://localhost:4321/productos')
+    axios.get('https://biu-api.onrender.com/productos')
       .then(({ data }) => {
         setProductos(data)
       })

@@ -9,7 +9,7 @@ function BestRating () {
   const [productosFav, setProductos] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:4321/productos')
+    axios.get('https://biu-api.onrender.com/productos')
       .then(({ data }) => {
         // Limitar la cantidad de productos obtenidos
         setProductos(data.slice(0, 12))

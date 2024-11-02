@@ -11,7 +11,7 @@ function ProductoEstrella () {
   const [showToast, setShowToast] = useState(false)
 
   useEffect(() => {
-    axios(`http://localhost:4321/productos/${9}`)
+    axios(`https://biu-api.onrender.com/productos/${9}`)
       .then(({ data }) => {
         setProducto(data)
       })

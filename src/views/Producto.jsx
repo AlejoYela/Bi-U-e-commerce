@@ -16,7 +16,7 @@ function Producto () {
   const [showToast, setShowToast] = useState(false)
 
   useEffect(() => {
-    axios(`http://localhost:4321/productos/${id}`)
+    axios(`https://biu-api.onrender.com/productos/${id}`)
       .then(({ data }) => {
         setProducto(data)
         console.log(producto.src)

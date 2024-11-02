@@ -14,7 +14,7 @@ function All () {
   const { filters, filteredProducts } = useFilters()
 
   useEffect(() => {
-    axios.get('http://localhost:4321/productos')
+    axios.get('https://biu-api.onrender.com/productos')
       .then(({ data }) => {
         setProducto(data)
         console.log('producto en all: ', producto)
