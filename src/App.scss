@@ -2,9 +2,11 @@ $body-bg: #fff8f4;
 $primary: #382c26;
 $secondary: #fff8f4;
 $info: #bf837b;
+//$font-family-base: "Nixie One", system-ui;
+$font-family-base: "arsenica-variable",sans-serif;
 // $font-family-base: "Josefin Sans", sans-serif;
 // $font-family-base: "Raleway", sans-serif;
-$font-family-base: "Onest", sans-serif;
+// $font-family-base: "Onest", sans-serif;
 
 .text-overlay {
     position: absolute;
@@ -99,3 +101,5 @@ $font-family-base: "Onest", sans-serif;
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Onest:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://use.typekit.net/xqw1ume.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nixie+One&family=Onest:wght@100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');

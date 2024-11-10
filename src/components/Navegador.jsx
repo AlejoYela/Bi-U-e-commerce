@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Navbar, Nav, Button, Badge } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Cart from './Cart.jsx'
-import { FavIcon, BiuLogo } from '../icons/Icons.jsx'
+import { FavIcon } from '../icons/Icons.jsx'
 import { useFav } from '../hooks/useFav.js'
 import Categorias from './Categorias.jsx'
 
@@ -16,9 +16,9 @@ function Navegador () {
     <Navbar expand='lg' className='bluring bg-secondary px-4 sticky-top bg-opacity-50'>
       <Container fluid>
         <Link to='/' style={{ textDecoration: 'none' }}>
-          <Navbar.Brand className='fw-normal'>
-            <BiuLogo strokeWidth={3} color='#000000' size={45} />
-            {' '}Bi･U Cosmetics
+          <Navbar.Brand className='fw-normal fs-2'>
+
+            {' '}CALEZA
           </Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls='navbarScroll' />
